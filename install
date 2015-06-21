@@ -7,5 +7,9 @@ ln -sf .bash/bash_profile .bash_profile
 ln -sf .bash/bashrc .bashrc
 ln -sf .bash/bash_logout .bash_logout
 ln -sf .bash/dircolors .dircolors
-ln -sf .bash/gitconfig .gitconfig
 ln -sf .bash/inputrc .inputrc
+
+# I need to keep different versions of this file according to installed git
+# version, so better copy it instead of linking
+
+cp -f .bash/gitconfig .gitconfig
