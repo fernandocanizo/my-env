@@ -7,3 +7,5 @@ ln -sf .bash/bash_profile .bash_profile
 ln -sf .bash/bashrc .bashrc
 ln -sf .bash/bash_logout .bash_logout
 ln -sf .bash/dircolors .dircolors
+ln -sf .bash/gitconfig .gitconfig
+ln -sf .bash/inputrc .inputrc
