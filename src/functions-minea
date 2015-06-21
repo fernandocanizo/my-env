@@ -1,0 +1,86 @@
+owner () {
+	# get command package owner
+	pacman -Qo `whereis $1 | awk '{print $2}'`
+}
+
+
+whatelse () {
+	# check what other commands/files are provided by a command package owner
+	package=`owner ${1} | sed -e 's/.*is owned by \([[:alpha:]]\+\).*/\1/'`
+	pacman -Ql $package | grep 'bin'
+}
+
+
+imageshack() { 
+	# upload images to imageshack.us
+	for files in *; do
+		curl -H Expect: -F fileupload="@$files" -F xml=yes -# "http://www.imageshack.us/index.php" | grep image_link | sed -e 's/<image_link>/[IMG]/g' -e 's/<\/image_link>/[\/IMG]/g';
+	done;
+}
+
+
+pretend() {
+	cat /dev/urandom | hexdump -C | grep "$*"
+}
+
+
+pretendCafe() {
+	# pretend you're working and send a subliminal message to get coffee
+	cat /dev/urandom | hexdump -C | grep "ca fe"
+}
+
+
+pretendInstall() {
+	for i in `seq 0 100`; do
+		timeout 1 dialog --gauge "Install..." 6 40 "$i"
+	done
+	reset
+}
+
+pretendGarbage() {
+	while (true) ; do
+		pwgen -ny 72
+		sleep 1
+	done
+}
+
+getMovieLength () {
+	# get movie length
+	mplayer -vo null -ao null -frames 0 -identify $1 2> /dev/null | 
+		gawk '{FS="="}; /ID_LENGTH/{ H=int($2/3600); M=int(($2-H*3600)/60); S=int($2%60); printf("%02d:%02d:%02d\n", H, M, S)}'
+}
+
+
+viewAllProcessesAndCommands() {
+	# Grabs the cmdline used to execute the process, and the environment that the process is being run under
+	#
+	cd /proc && command ps a -opid=|xargs -I'{}' sh -c 'test $PPID -ne {}&&test -r {}/cmdline&&echo -e "\n[{}]"&&tr -s "\000" " "<{}/cmdline&&echo&&tr -s "\000\033" "\nE"<{}/environ|sort'
+}
+
+
+removePdfPassword() {
+	# Remove password from any pdf in current or sub directories
+	# doesnt require knowing the password to pdf
+	for z in */*.pdf; do gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$z new" -c .setpdfwrite -f "$z" mv "$z new" "$z"; done
+}
+
+
+calc() {
+	# quick calculator
+	echo "$*" | bc -l
+}
+
+
+function cue() {
+	# remind you of something to do later
+	if [[ $# -eq 0 ]]; then
+		echo "Usage: $0 <time> <text string>"
+	else
+		sleep $1 && shift && zenity --title 'Remind that...' --info --text "$*" &
+	fi
+}
+
+# an alias for gocurcon that always gives currency conversions in ARS
+function gocurcona() {
+	gocurcon $2 ars $1;
+}

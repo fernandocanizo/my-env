@@ -1,0 +1,2 @@
+
+[[ $BASH_COMPLETION = '' ]] && [[ -r /etc/bash_completion ]] && source /etc/bash_completion

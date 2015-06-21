@@ -1,0 +1,20 @@
+
+# arch doesn't set locale globally anymore?
+export LANG=en_US.UTF-8
+
+# I want meteor to clover system meteor so put it before /usr/bin
+PATH=~/bin/private:~/bin/public:~/bin/alien:~/.gem/ruby/2.2.0/bin:/usr/lib/git-core/:~/.meteor:/usr/local/heroku/bin:/usr/local/bin:$PATH
+
+export MOST_EDITOR=/usr/bin/vim
+
+export EMAIL=`echo -n '"Sreanaqb Y. Pnavmb" <syp@zhevnaqer.pbz>' | tr n-za-mN-ZA-M a-zA-Z`
+
+export PYTHONDOCS="/usr/share/doc/python/html/"
+
+# Avoid Wesnoth taking sound for itself
+export SDL_AUDIODRIVER="alsa"
+
+export TERM=rxvt-unicode
+
+# set my own LS_COLORS, can't see those blue default directories
+eval `dircolors ~/.dircolors`

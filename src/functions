@@ -1,0 +1,122 @@
+extract () {
+	# uncompress any known compressed file
+	#
+	if [ -f $1 ] ; then
+		case $1 in
+			*.tar.bz2) tar xvjf $1 ;;
+			*.tar.gz) tar xvzf $1 ;;
+			*.bz2) bunzip2 $1 ;;
+			*.rar) unrar x $1 ;;
+			*.gz) gunzip $1 ;;
+			*.tar) tar xvf $1 ;;
+			*.tbz2) tar xvjf $1 ;;
+			*.tgz) tar xvzf $1 ;;
+			*.zip) unzip $1 ;;
+			*.Z) uncompress $1 ;;
+			*.7z) 7z x $1 ;;
+			*) echo "don't know how to extract '$1'..." ;;
+		esac
+	else
+		echo "'$1' is not a valid file!"
+	fi
+}
+
+
+bashDebug() {
+	# more precise bash debugging, use it like:
+	# bashdebug /path/to/script.sh
+	#
+	env PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]}) ' sh -x $1;
+}
+
+
+joinArgs() {
+	# join args together using the first one as glue
+	#
+	IFS="$1"
+	shift && echo "$*"
+}
+
+
+myFunctions () {
+	# return defined functions
+	#
+	set | grep '=()'
+}
+
+
+repeat () {
+	# repeat commands, usage: repeat <number> <command>
+	#
+	local count="$1" i;
+	shift;
+	for i in $(seq 1 "$count");
+	do
+		eval "$@";
+	done
+}
+
+prep () {
+	# grepping with perl
+	#
+	# $1 is regexp as in /some regexp/
+	# $2 is a file and is optional
+	perl -nle 'print if '"$1"';' $2
+}
+
+crontest () {
+	# for testing cronjobs: spits a crontab line with time one minute ahead in the future
+	#
+	date '-d +1 minutes' +'%M %k %d %m *'
+}
+
+function current_git_branch {
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+}
+
+
+col() {
+	# source: http://bashoneliners.com/main/oneliner/90/
+	# The function will execute awk, and it expects standard input (coming from a
+	# pipe or input redirection)
+
+	# The function arguments are processed with sed to use them with awk: replace all
+	# spaces with ,$ so that for example 1 2 3 becomes 1,$2,$3, which is inserted
+	# into the awk command to become the well formatted shell command: awk '{print
+	# $1,$2,$3}'
+
+	# Example: ls | col 2
+
+	awk '{print $'$(echo $* | sed -e 's/ /,$/g')'}';
+}
+
+
+gitexport() {
+	# copy a local checkout without the .git stuff
+	#
+	[[ -d $1 ]] && echo "Directory exists, remove it please." && exit
+	mkdir -p "$1"
+	git archive master | tar -x -C "$1"
+}
+
+mcd() {
+	# 2015.06.05
+	# I started keeping track of all projects and things started by prefixing
+	# directories with the date, but that made cd-ing into them cumbersome, so this
+	# is a cool alias which will grep the list of directories and get into the
+	# first one from the results
+
+	# Will clobber mtools mcd command if you have it installed
+	# But I never use mtools that anyway
+
+	cd `find -maxdepth 1 -type d | grep -v '^.$' | sort | grep -i $1 | head -n 1`
+}
+
+
+git-span() {
+	# 2015.06.20
+	# report time span for a project
+	#
+	git log | grep '^Date' | tail -n 1
+	git log | grep '^Date' | head -n 1
+}

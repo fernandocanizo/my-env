@@ -1,0 +1,47 @@
+
+# less options, -R is to allow ANSI escape sequences
+export LESS="-iCwqf -R"
+export PAGER='less'
+
+export MANPAGER="/bin/less -s"
+
+export EDITOR=/usr/bin/vim
+
+# for crontab
+export VISUAL=/usr/bin/vim
+
+# only ignore spaces, I want my full history log
+export HISTCONTROL='ignorespace:ignoredups'
+
+export HISTFILE="$HOME/.bash_history"
+
+# so bash doesn't truncate my history file
+unset HISTFILESIZE
+
+export HISTSIZE='10000'
+
+export HISTTIMEFORMAT='%F %T '
+
+# Don't remember trivial 1- and 2-letter commands.
+HISTIGNORE=?:??
+
+# Save each history entry immediately (protects against terminal crashes/
+# disconnections, and interleaves commands from multiple terminals in correct
+# chronological order).
+# write history on each command, not on shell exit
+export PROMPT_COMMAND='history -a'
+
+# differentiate root's prompt from users
+if [[ ${EUID} == 0 ]] ; then
+	export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+else
+	if [[ `whereis git | cut -f 2 -d':'` != '' ]]; then
+		# we got git
+		export PS1="\[\033[01;32m\]\h:\[\033[01;36m\]\W\[\033[0;33m\]\$(current_git_branch) \[\033[0m\]\$ "
+	else
+		export PS1='\[\033[01;32m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+	fi
+fi
+
+# better prompt for mysql
+export MYSQL_PS1="\u@\h:\d> "
