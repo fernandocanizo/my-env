@@ -1,0 +1,41 @@
+# Usually, when typing ls and pressing <up> key, your current input will
+# be replaced with the last command used. If you are using history
+# search, only past commands beginning with ls (the current input) will
+# be shown.
+
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+set bell-style none
+
+# expand history before executing the command
+# TODO: mysql and perl debugger can also use this, but I don't know how to tell them to
+# use it like this:
+# echo !:2 # recalls second argument from last command
+# there is also: ^ first, $ last, * whole line
+$if Bash
+	Space: magic-space
+$endif
+
+#
+# Completion
+#
+
+# do not match hidden files on tab
+set match-hidden-files off
+
+# Complete things that have been typed in the wrong case:
+set completion-ignore-case on
+
+# When listing possible file completions, put / after directory names and * after programs:
+set visible-stats on
+
+# List the possible completions when Tab is pressed:
+set show-all-if-ambiguous on
+
+# unused keys for future mappings:
+# Ctrl+\ and Ctrl+^
+# Meta+A, Meta+E, Meta+G, Meta+H, Meta+I, Meta+J, Meta+K, Meta+M, Meta+O, Meta+Q, Meta+S, Meta+V, Meta+W, Meta+X, and Meta+Z
+
+# 2013.05.14 highlight parenthesis on newlisp
+set blink-matching-paren on
