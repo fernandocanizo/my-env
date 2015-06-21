@@ -1,0 +1,86 @@
+#------------------------------------------------------------------------------
+# fun with alias
+#------------------------------------------------------------------------------
+
+#
+# convenience aliases
+#
+
+alias x='/usr/bin/startx; wait; rm -f ~/.serverauth.*'
+alias xtris='/usr/bin/xtris -n $LOGNAME'
+alias ya='yaourt'
+alias yup='yaourt -Syu --aur'
+
+#
+# functional aliases
+#
+
+alias perl-rename='perl-rename -i'
+
+alias vi='/usr/bin/vim'
+alias fastvim='/usr/bin/vim --noplugin +'
+
+# 2014.11.05 let's try NeoVim for a while
+# 2014.11.09 let's keep using vim by default until I get all broken stuff in nvim sorted out
+#alias vi='/usr/bin/nvim -p'
+alias oldvi='/usr/bin/vi'
+
+# let me on current pwd after exiting mc
+alias mc='. /usr/lib/mc/mc-wrapper.sh'
+
+# default dictionary to look up for words: wordnet
+alias dict='PAGER=cat dict -d wn'
+alias wikipedia-en="dict -h dict.aioe.org -d Wikipedia_EN"
+alias wikipedia-es="dict -h dict.aioe.org -d Wikipedia_ES"
+
+alias irc='screen -S irc weechat-curses'
+
+#
+# old common commands replaced by improved versions
+#
+alias info="pinfo"
+alias diff="colordiff"
+alias top="htop"
+
+# check image size
+alias imgsize='exiftool -ImageWidth -ImageHeight '
+
+alias mozilla='/usr/bin/firefox'
+
+#  change filename encoding to utf8 from iso8859-1
+alias filename2utf8='convmv --notest -f iso88591 -t utf8'
+
+# pretty printing for mount (but you can use it with anything that gives screwed input)
+alias mount='mount | column -t'
+
+# control keys for mpg123
+alias mpg123='mpg123 -C'
+
+# so I can run nm-applet with sudo powers from i3 menu
+alias nm-applet='sudo nm-applet'
+
+# automatically name downloaded videos from Youtube
+alias youtube-dl='youtube-dl --continue --no-overwrites --restrict-filenames --format mp4 --output "%(title)s-%(id)s.%(ext)s"'
+
+alias reboot="sudo systemctl reboot"
+alias halt="sudo systemctl poweroff"
+
+# secondary X selection cannot be copied with shift+insert, so I have this alias which uses xclip to print it out
+alias xclipboard='xclip -o -selection clipboard'
+
+# clone a git repository after having clicked the "Copy to clibboard" button
+alias clipclone='git clone `xclipboard`'
+
+alias mplayer='mplayer -cache 8192'
+
+# c programming
+alias compile='gcc -g -Wall -ansi -pedantic -std=c99'
+
+# use ES6 in node.js
+alias node='node --harmony'
+
+alias pingendo='/opt/pingendo/Pingendo'
+
+# 2015.06.01
+# Use angular-seed project to bootstrap applications
+alias angular-seed='git clone https://github.com/angular/angular-seed.git '

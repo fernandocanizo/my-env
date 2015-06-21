@@ -1,0 +1,94 @@
+#------------------------------------------------------------------------------
+# fun with alias
+#------------------------------------------------------------------------------
+
+# convenience aliases
+
+# less: ignore case unless search includes uppercase characters
+alias l='/usr/bin/env less -i'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -ia'
+alias m='mount'
+alias u='umount'
+alias du='du -h'
+
+# sorted output for du
+alias dusorted='for i in G M K; do du -hsx * | grep "[0-9]$i\b" | sort -nr; done 2>/dev/null'
+alias ducks='du -cks * 2>/dev/null | sort -rn | head -n 10'
+alias df='df -h'
+alias h='history'
+alias j="jobs -l"
+alias head='head -n 30'
+alias tail='tail -n 30'
+alias utgz='tar zxvf'
+alias tgz='tar zcvf'
+
+
+# functional aliases
+
+alias findpath="find `echo $PATH | tr :. ' ''' ` -iname "
+alias path="echo $PATH"
+alias psl='/bin/ps -aufx | /bin/less -i'
+
+alias rmtmp='echo Deleting all temporal files...
+
+	echo rm -f \#* *~ .*~ *.bak .*.bak  *.tmp .*.tmp core a.out;
+	rm -f \#* *~ .*~ *.bak .*.bak  *.tmp .*.tmp core a.out;
+	echo "Done.";'
+
+alias date.='date +%Y.%m.%d'
+alias date-='date +%Y-%m-%d'
+alias datehour='date +%Y.%m.%d-%H.%M.%S'
+alias hour='date +%H.%M.%S'
+alias seconds='date +%s'
+
+#
+# fun with ls
+#
+
+export LS_OPTIONS='--color=always --file-type --group-directories-first --time-style=long-iso -c'
+
+# 99.99% of the time ls, use \ls or /bin/ls for standard ls
+alias ls='ls $LS_OPTIONS  -l'
+
+# sl = Short Ls
+alias sl='\ls -1'
+alias sla='\ls -1a'
+
+# show hidden files
+alias la='ls -A $LS_OPTIONS'
+
+# sorted by modification time
+alias ltr='/bin/ls -ltr --color=auto'
+
+# comma separated values
+alias lcsv='/bin/ls -m'
+
+# list directory, not its contents
+alias lsd='ls -d'
+
+# quote name
+alias slq='\ls -1 --quote-name'
+
+# don't show shell pattern provided
+alias nls='\ls --ignore='
+
+# show only directories
+alias dir='\ls -l --color=always | grep "^d"'
+
+# not ls, but for ls-ing: see octal permissions on files
+alias lsmode='find . -printf "%m %p n\n"'
+
+
+# use perl regexp on grep
+alias grep='egrep --color=auto'
+
+# which process is eating my cpu?
+alias cpueaters='ps ax -o pcpu,pid,cmd | sort -nr | head -n 10'
+
+alias dmesg="dmesg -T | sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
+
+alias mem="ps -e -orss=,pid=,args= | sort -b -k1n | pr -TW$COLUMNS"
+
+alias cal="cal -3"
