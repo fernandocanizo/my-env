@@ -1,0 +1,6 @@
+.ignore
+.*.swp
+bower_components
+node_modules
+.ignore
+.zedstate

@@ -3,13 +3,24 @@
 # create symbolic links to point to git-maintained bash configuration files
 
 cd $HOME
+
 ln -sf .bash/bash_profile .bash_profile
 ln -sf .bash/bashrc .bashrc
 ln -sf .bash/bash_logout .bash_logout
 ln -sf .bash/dircolors .dircolors
 ln -sf .bash/inputrc .inputrc
 
-# I need to keep different versions of this file according to installed git
-# version, so better copy it instead of linking
+# Need to keep different versions of this file according to installed git version
+if [[ $(git --version | cut -f3 -d' ' | cut -f1 -d'.') -gt 1 ]]; then
+	# link for version >= 2.0
+	ln -sf .bash/gitconfig .gitconfig
+else
+	# copy for version < 2.0 to be able to modify the file without changing repository
+	cp -f .bash/gitconfig .gitconfig
+fi
 
-cp -f .bash/gitconfig .gitconfig
+if [[ ! -d .config ]]; then
+	mkdir .config
+fi
+
+ln -sf `pwd`/.bash/git .config/git
