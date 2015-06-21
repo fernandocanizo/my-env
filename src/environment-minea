@@ -15,6 +15,3 @@ export PYTHONDOCS="/usr/share/doc/python/html/"
 export SDL_AUDIODRIVER="alsa"
 
 export TERM=rxvt-unicode
-
-# set my own LS_COLORS, can't see those blue default directories
-eval `dircolors ~/.dircolors`
