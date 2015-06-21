@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+# create symbolic links to point to git-maintained bash configuration files
+
+cd $HOME
+ln -sf .bash/bash_profile .bash_profile
+ln -sf .bash/bashrc .bashrc
+ln -sf .bash/bash_logout .bash_logout
