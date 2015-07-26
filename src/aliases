@@ -51,6 +51,7 @@ export LS_OPTIONS='--color=always --file-type --group-directories-first --time-s
 
 # 99.99% of the time ls, use \ls or /bin/ls for standard ls
 alias ls='ls $LS_OPTIONS  -l'
+alias lh='ls -h'
 
 # sl = Short Ls
 alias sl='\ls -1'
