@@ -3,7 +3,7 @@
 export LANG=en_US.UTF-8
 
 # I want meteor to clover system meteor so put it before /usr/bin
-PATH=~/bin/private:~/bin/public:~/bin/alien:~/.gem/ruby/2.2.0/bin:/usr/lib/git-core/:~/.meteor:/usr/local/heroku/bin:/usr/local/bin:$PATH
+PATH=~/bin/private:~/bin/public:~/bin/alien:~/.gem/ruby/2.2.0/bin:/usr/lib/git-core/:~/.meteor:/usr/local/heroku/bin:/usr/local/bin:/home/conan/google-cloud-sdk/bin:$PATH
 
 export MOST_EDITOR=/usr/bin/vim
 
@@ -15,3 +15,6 @@ export PYTHONDOCS="/usr/share/doc/python/html/"
 export SDL_AUDIODRIVER="alsa"
 
 export TERM=rxvt-unicode
+
+# for Google Cloud SDK
+export CLOUDSDK_PYTHON='/usr/bin/python2.7'
