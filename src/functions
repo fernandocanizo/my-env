@@ -120,3 +120,36 @@ git-span() {
 	git log | grep '^Date' | tail -n 1
 	git log | grep '^Date' | head -n 1
 }
+
+find-biggest-dirs () {
+	# find biggest directories on provided path
+
+	if [[ -z $1 ]]; then
+		echo "Please provide a path to search"
+		return 0
+	fi
+
+	/usr/bin/env du --one-file-system --summarize $1/* | /usr/bin/env sort --numeric-sort --reverse
+}
+
+find-biggest-dirs-h () {
+	# find biggest directories on provided path, with human numbers
+
+	if [[ -z $1 ]]; then
+		echo "Please provide a path to search"
+		return 0
+	fi
+
+	du --human-readable --summarize --one-file-system $1/* | sort --human-numeric-sort --reverse
+}
+
+find-biggest-files () {
+	# find biggest files on provided path
+
+	if [[ -z $1 ]]; then
+		echo "Please provide a path to search"
+		return 0
+	fi
+
+	find $1 -type f -printf '%s %p\n' | sort --numeric --reverse
+}
