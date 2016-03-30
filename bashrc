@@ -4,6 +4,8 @@
 # all configuration in one place
 
 
+[[ -r /etc/profile ]] && source /etc/profile
+
 BASH_DIR="$HOME/.bash/src/"
 
 if [[ -d $BASH_DIR ]]; then
