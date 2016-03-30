@@ -21,3 +21,5 @@ export CLOUDSDK_PYTHON='/usr/bin/python2.7'
 
 # Always use IPython for shell_plus
 export SHELL_PLUS="bpython"
+
+export BROWSER='/usr/lib/chromium/chromium'
