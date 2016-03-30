@@ -48,3 +48,5 @@ export MYSQL_PS1="\u@\h:\d> "
 
 # set my own LS_COLORS, can't see those blue default directories
 eval `dircolors ~/.dircolors`
+
+export XDG_CONFIG_HOME="${HOME}/.config"
