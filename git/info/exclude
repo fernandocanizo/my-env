@@ -1,6 +1,8 @@
+# put here only stuff pertinent to your own development environment
+# leave things like `node_modules` or `bower_components` out, because those are
+# general and they'll need to be ignored elsewhere too
+
 .ignore
 .*.swp
-bower_components
-node_modules
-.ignore
 .zedstate
+.ropeproject
