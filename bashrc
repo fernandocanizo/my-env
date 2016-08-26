@@ -25,8 +25,4 @@ if [[ -d $BASH_DIR ]]; then
 	done
 fi
 
-# 2015.11.16
-# Don't know why mouse is getting settings reset each time, temporarily fix
-if [[ ! -z ${DISPLAY} ]]; then
-	xset m 1.1 2
 fi
