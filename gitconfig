@@ -16,7 +16,7 @@
 	excludesfile = /home/conan/.git/info/exclude
 
 [merge]
-	tool = vimdiff
+	tool = meld
 	conflictstyle = diff3
 
 [alias]
