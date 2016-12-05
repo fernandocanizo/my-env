@@ -2,12 +2,6 @@
 	name = Fernando L. Canizo
 	email = fernandocanizo@gmail.com
 
-#[sendemail]
-#	smtpserver =
-#	smtpserverport =
-#	smtpuser =
-#	smtppass =
-
 [format]
 	headers = "Content-Type: text/plain; charset=\"utf-8\""
 
@@ -40,9 +34,6 @@
 
 	# checks that your local copy of the ref that you’re overwriting is up-to-date before overwriting it
 	please = push --force-with-lease
-
-	# not so useful, just avoid entering editor, which I may want
-	commend = commit --amend --no-edit
 
 	# initializes a repo and starts the log, it needs a single word as a commit message, I don't know why
 	it = !git init && git commit -m "StartProject" --allow-empty
@@ -93,7 +84,7 @@
 [push]
 	# choose your poison
 	# Git versions < 2.0 : push every branch when no branch is specified
-#	default = matching
+	#default = matching
 
 	# Git 2.0 : push only current branch when on branch is specified
 	default = simple
@@ -103,6 +94,3 @@
 
 [credential]
 	helper = cache --timeout=86400
-
-[dropbox]
-	folder = /home/conan/Dropbox/git.repos
