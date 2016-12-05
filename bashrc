@@ -40,3 +40,8 @@ fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
 fi
+
+TNS_COMPLETION="${HOME}/.bash/completions/tnsrc"
+if [ -f $TNS_COMPLETION ]; then
+    source $TNS_COMPLETION
+fi
