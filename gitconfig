@@ -35,6 +35,30 @@
 	show-graph = log --graph --abbrev-commit --pretty=oneline
 	short = log --oneline
 
+	# remove stale branches
+	clean-branches = !git remote prune origin && git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -r git branch -d
+
+	# checks that your local copy of the ref that you’re overwriting is up-to-date before overwriting it
+	please = push --force-with-lease
+
+	# not so useful, just avoid entering editor, which I may want
+	commend = commit --amend --no-edit
+
+	# initializes a repo and starts the log, it needs a single word as a commit message, I don't know why
+	it = !git init && git commit -m "StartProject" --allow-empty
+
+	# git stsh      # stash only unstaged changes to tracked files
+	# git stash     # stash any changes to tracked files
+	# git staash    # stash untracked and tracked files
+	# git staaash   # stash ignored, untracked, and tracked files
+
+	stsh = stash --keep-index
+	staash = stash --include-untracked
+	staaash = stash --all
+
+	# don't loose branch history when merging to master
+	merc = merge --no-ff
+
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
