@@ -29,6 +29,10 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
 
+# add currently selected node environment to path
+NODE_BIN=`which node`
+export NODE_PATH=`dirname ${NODE_BIN}`
+
 # Start only one ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
 	ssh-agent > ~/.ssh-agent-thing
