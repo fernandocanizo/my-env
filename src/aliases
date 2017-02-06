@@ -83,7 +83,7 @@ alias lsmode='find . -printf "%m %p n\n"'
 
 
 # use perl regexp on grep
-alias grep='egrep --color=auto'
+alias grep='egrep'
 
 # which process is eating my cpu?
 alias cpueaters='ps ax -o pcpu,pid,cmd | sort -nr | head -n 10'
