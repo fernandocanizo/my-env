@@ -6,7 +6,8 @@
 
 [[ -r /etc/profile ]] && source /etc/profile
 
-BASH_DIR="$HOME/.bash/src/"
+BASH_DIR="${HOME}/.bash/src/"
+COMPLETIONS_DIR="${HOME}/.bash/completions"
 
 if [[ -d $BASH_DIR ]]; then
 	# first load files with no dash in their name
@@ -41,7 +42,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
 fi
 
-TNS_COMPLETION="${HOME}/.bash/completions/tnsrc"
-if [ -f $TNS_COMPLETION ]; then
-    source $TNS_COMPLETION
-fi
+# source completions
+for file in `env ls ${COMPLETIONS_DIR}`; do
+	source ${COMPLETIONS_DIR}/${file};
+done
