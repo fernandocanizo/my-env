@@ -51,6 +51,13 @@
 	merc = merge --no-ff
 
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	branches = !legit branches
+	publish = !legit publish
+	unpublish = !legit unpublish
+	sync = !legit sync
+	switch = !legit switch
+	resync = !legit resync
+	undo = !legit undo
 
 [giggle]
 	main-window-maximized = true
