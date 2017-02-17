@@ -94,4 +94,6 @@ alias mem="ps -e -orss=,pid=,args= | sort -b -k1n | pr -TW$COLUMNS"
 
 alias cal="cal -3wm"
 
-alias nodegrep="grep --exclude-dir node_modules "
+# 2016.07.21 grep recursively on node.js projects without fuss
+alias nodegrep='egrep --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads'
+
