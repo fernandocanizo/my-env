@@ -97,5 +97,5 @@ alias cal="cal -3wm"
 # 2016.07.21 grep recursively on node.js projects without fuss
 alias nodegrep='egrep --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads'
 
-alias pretend='cat /dev/urandom | hexdump | grep cafe'
+alias pretend='cat /dev/urandom | hexdump | grep --color=auto cafe'
 alias cafe=pretend
