@@ -51,3 +51,5 @@ export MYSQL_PS1="\u@\h:\d> "
 eval `dircolors ~/.dircolors`
 
 export XDG_CONFIG_HOME="${HOME}/.config"
+
+export GIT_TEMPLATE_DIR="${XDG_CONFIG_HOME}/git/template"

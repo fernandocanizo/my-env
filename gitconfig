@@ -99,7 +99,6 @@
 	default = simple
 
 [init]
-	templatedir = /home/conan/.config/git/template
 
 [credential]
 	helper = cache --timeout=86400
