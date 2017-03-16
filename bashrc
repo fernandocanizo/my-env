@@ -42,6 +42,10 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
 fi
 
+# Add daily used identities
+ssh-add -l | cut -f3 -d' ' | grep '/home/flc/.ssh/csw_rsa' > /dev/null || ssh-add ${HOME}/.ssh/csw_rsa > /dev/null
+ssh-add -l | cut -f3 -d' ' | grep bitbucket.csw_rsa > /dev/null || ssh-add ${HOME}/.ssh/bitbucket.csw_rsa > /dev/null
+
 # source completions
 for file in `env ls ${COMPLETIONS_DIR}`; do
 	source ${COMPLETIONS_DIR}/${file};
