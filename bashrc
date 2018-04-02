@@ -36,7 +36,7 @@ export NODE_PATH=`dirname ${NODE_BIN}`
 
 # Start only one ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
-	ssh-agent >| ~/.ssh-agent-thing
+	ssh-agent >| ~/.ssh-agent-thing > /dev/null
 fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
