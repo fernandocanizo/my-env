@@ -7,7 +7,7 @@
 
 [core]
 	editor = vim
-	excludesfile = /home/conan/.git/info/exclude
+	excludesfile = /home/flc/.git/info/exclude
 
 [merge]
 	tool = meld
