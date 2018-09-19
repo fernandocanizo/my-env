@@ -111,3 +111,8 @@ alias feh='feh --draw-filename --fullscreen --hide-pointer --sort "filename" '
 
 alias tb='nc termbin.com 9999'
 
+# 2018.09.19 make fim work under X
+# use Terminus font
+export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
+# or use the in-built font
+#export FBFONT=fim://
