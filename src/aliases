@@ -92,7 +92,8 @@ alias dmesg="dmesg -T | sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m
 
 alias mem="ps -e -orss=,pid=,args= | sort -b -k1n | pr -TW$COLUMNS"
 
-alias cal="cal -3wm"
+alias cal='cal -3wm'
+alias caly='\cal -wmy'
 
 # 2016.07.21 grep recursively on node.js projects without fuss
 alias nodegrep='egrep --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads'
