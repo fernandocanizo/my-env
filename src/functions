@@ -192,3 +192,11 @@ vi () {
     /usr/bin/vim $@
   fi
 }
+
+# Open URL of an Archlinux package
+function pkgpage () {
+    url=$(yaourt -Si $1 | egrep '^URL' | egrep -o 'https?://[^ ]+')
+    echo "Opening ${url} ..."
+    chromium ${url}
+}
+
