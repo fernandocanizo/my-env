@@ -109,3 +109,5 @@ alias edit-last-screenshot='gimp ~/screenshots/`sl -tr ~/screenshots | tail -n 1
 
 alias feh='feh --draw-filename --fullscreen --hide-pointer --sort "filename" '
 
+alias tb='nc termbin.com 9999'
+
