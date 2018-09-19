@@ -42,6 +42,10 @@
 	# remove stale branches
 	clean-branches = !git remote prune origin && git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -r git branch -d
 
+	# 2018.08.23 a Edward no le anda igual que a mi, entonces armó estos otros para limpiar branches:
+	# clean-local-branches = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
+	# clean-remote-branches = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git push --delete origin
+
 	# checks that your local copy of the ref that you’re overwriting is up-to-date before overwriting it
 	please = push --force-with-lease
 
