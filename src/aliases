@@ -100,3 +100,7 @@ alias nodegrep='egrep --exclude-dir node_modules --exclude-dir tmp --exclude-dir
 
 alias pretend='cat /dev/urandom | hexdump | grep --color=auto cafe'
 alias cafe=pretend
+
+# 2017.06.03 para las pelis que tienen bajo volumen
+alias mplayer='mplayer -cache 8192 -softvol -softvol-max 200 '
+
