@@ -104,3 +104,6 @@ alias cafe=pretend
 # 2017.06.03 para las pelis que tienen bajo volumen
 alias mplayer='mplayer -cache 8192 -softvol -softvol-max 200 '
 
+# 2017.07.20 edit last taken screenshot
+alias edit-last-screenshot='gimp ~/screenshots/`sl -tr ~/screenshots | tail -n 1`'
+
