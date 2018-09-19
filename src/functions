@@ -173,3 +173,22 @@ command_not_found_handle() {
   fi
   return $?
 }
+
+vi () {
+  # use automatic line number goto only when one parameter is given
+  if [[ $# -eq 1 ]]; then
+	echo -n $1 | grep -q ':'
+    hasColon=$?
+
+    if [[ hasColon -eq 0 ]]; then
+	  filename=`echo -n "${1}" | cut -f1 -d:`
+	  line=`echo -n "${1}" | cut -f2 -d:`
+
+	  /usr/bin/vim ${filename} +${line}
+    else
+      /usr/bin/vim $@
+    fi
+  else
+    /usr/bin/vim $@
+  fi
+}
