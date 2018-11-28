@@ -1,2 +1,28 @@
+\x auto
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+\set HISTFILE ~/.psql_history-:DBNAME
+
+\set VERBOSITY verbose
+
+-- \pset null '⦱'
+\pset null '¤'
+\pset linestyle 'unicode'
+
+\pset unicode_border_linestyle single
+\pset unicode_column_linestyle single
+\pset unicode_header_linestyle double
+
+set intervalstyle to 'postgres_verbose';
+
+\setenv LESS '-iMFXSx4R'
+
+\pset format wrapped
+\pset columns 158
+
 \set PROMPT1 '%[%033[1;33;40m%]%n@%m:%>%033[1;34;40m%]/%[%033[1;32;40m%]%/%R%[%033[0m%]%# '
 \set PROMPT2 '...%R%# '
+
+-- Trick to know what an internal command do:
+-- \set ECHO_HIDDEN true
+-- \l+

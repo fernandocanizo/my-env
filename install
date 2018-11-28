@@ -9,6 +9,7 @@ ln -sf .bash/bashrc .bashrc
 ln -sf .bash/bash_logout .bash_logout
 ln -sf .bash/dircolors .dircolors
 ln -sf .bash/inputrc .inputrc
+ln -sf .bash/psqlrc .psqlrc
 
 # Need to keep different versions of this file according to installed git version
 if [[ $(git --version | cut -f3 -d' ' | cut -f1 -d'.') -gt 1 ]]; then
