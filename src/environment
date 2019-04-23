@@ -6,10 +6,10 @@ GREP_COLORS='auto'
 
 export MANPAGER="/bin/less -s"
 
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 # for crontab
-export VISUAL=/usr/bin/vim
+export VISUAL=/usr/bin/nvim
 
 # only ignore spaces, I want my full history log
 export HISTCONTROL='ignorespace:ignoredups'
@@ -24,7 +24,9 @@ export HISTSIZE='10000'
 export HISTTIMEFORMAT='%F %T '
 
 # Don't remember trivial 1- and 2-letter commands.
-HISTIGNORE=?:??
+#HISTIGNORE=?:??
+# 2017.05.26 sometimes I want to repeat a 2-character command by using arrow
+# keys, and I always end up issuing another unwanted command
 
 # Save each history entry immediately (protects against terminal crashes/
 # disconnections, and interleaves commands from multiple terminals in correct
@@ -36,12 +38,13 @@ export PROMPT_COMMAND='history -a'
 if [[ ${EUID} == 0 ]] ; then
 	export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
 else
-	if [[ `whereis git | cut -f 2 -d':'` != '' ]]; then
-		# we got git
-		export PS1="\[\033[01;32m\]\h:\[\033[01;36m\]\W\[\033[0;33m\]\$(current_git_branch) \[\033[0m\]\$ "
-	else
-		export PS1='\[\033[01;32m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
-	fi
+	export PS1='$(gbt $?)'
+#	if [[ `whereis git | cut -f 2 -d':'` != '' ]]; then
+#		# we got git
+#		export PS1="\[\033[01;32m\]\h:\[\033[01;36m\]\W\[\033[0;33m\]\$(current_git_branch) \[\033[0m\]\$ "
+#	else
+#		export PS1='\[\033[01;32m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+#	fi
 fi
 
 # better prompt for mysql
@@ -53,3 +56,12 @@ eval `dircolors ~/.dircolors`
 export XDG_CONFIG_HOME="${HOME}/.config"
 
 export GIT_TEMPLATE_DIR="${XDG_CONFIG_HOME}/git/template"
+
+# man an info paths for brew
+export MANPATH="/home/flc/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/flc/.linuxbrew/share/info:$INFOPATH"
+
+# Virtual environments for Python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/soft
+#source /usr/bin/virtualenvwrapper.sh

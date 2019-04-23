@@ -1,0 +1,70 @@
+# Map Server
+alias cd.tiles="cd ${HOME}/soft/webgis/tile-server"
+alias cd.maps="cd ${HOME}/soft/webgis/map-server"
+alias cd.lvt="cd ${HOME}/soft/webgis/lvt"
+alias cd.visor="cd ${HOME}/soft/webgis/visor"
+alias cd.turlgen="cd ${HOME}/soft/webgis/turlgen"
+alias cd.tips="cd ${HOME}/soft/csw/tips-and-procedures"
+alias cd.wiki="cd ${HOME}/soft/webgis/wiki-map-server"
+
+# Liberador de Área
+alias cd.ldadmin=" cd ${HOME}/soft/liberador.de.areas/lda-admin"
+alias cd.newldadmin=" cd ${HOME}/soft/liberador.de.areas/new-lda-admin"
+alias cd.ldapp="cd ${HOME}/soft/liberador.de.areas/area-releaser"
+
+
+alias recreate.mapserver.db='pushd . && cd.maps && dropdb mapserver && createdb mapserver && npm run "db:migrate:latest" && popd'
+
+alias map_server.select.datasource="psql -d csw_map_server_test -c 'select * from public.datasource_info'"
+#alias map_server.datasources.schema="psql -d csw_map_server_test -c 'set search_path=datasources; \d"
+
+# el repo del Ministerio de Energía está muy relacionado con el crawler sel SEA
+alias cd.minenergia="cd ${HOME}/soft/webgis/ministerio-de-energia"
+
+# Colector
+alias cd.colector="cd ${HOME}/soft/colector/app"
+alias cd.coladmin="cd ${HOME}/soft/colector/coladmin"
+
+
+# Reporte Ambiental
+alias cd.icsara.forum="cd ${HOME}/soft/reporte.ambiental/icsara.forum"
+alias cd.prefactibilidad="cd ${HOME}/soft/reporte.ambiental/prefactibilidad"
+
+
+
+# Crawlers
+alias cd.sea.crawler="cd ${HOME}/soft/crawlers/sea-crawler"
+
+
+# CSW
+alias cd.template="cd ${HOME}/soft/csw/csw-template"
+alias cd.rules="cd ${HOME}/soft/csw/csw-rules"
+alias cd.kmlbuilder="cd ${HOME}/soft/csw/kml-builder"
+
+alias t="python ${HOME}/local/t/t.py --task-dir ~/ToDo --list tasks"
+
+alias cd.apps='cd /home/flc/soft/csw/csw-apps'
+
+# Biota DB
+alias pgcli.aws.biota='pgcli --host proyectobiota.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw proyectobiota'
+
+# Prefactibilidad DB
+alias pgcli.aws.pref='pgcli --host p.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw pref'
+# prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com
+
+alias cd.eecc="cd ${HOME}/soft/crawlers/eecc"
+
+# Learning
+alias cd.tcomb='cd /home/flc/soft/learning/2017.04.22,tcomb'
+
+alias cd.fdd='cd /home/flc/soft/fuentes.de.datos/fdd'
+
+
+alias cd.rugrats='cd /home/flc/soft/crawlers/rugrats'
+
+# 7F
+alias cd.biota-collector='cd /home/flc/soft/colector/biota-collector'
+alias cd.flora-collector='cd /home/flc/soft/colector/flora-collector'
+
+# fuzzy forms
+alias cd.fuzzy-forms-server='cd /home/flc/soft/fuzzy-forms/fuzzy-forms-server'

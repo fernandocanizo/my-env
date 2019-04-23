@@ -1,2 +1,5 @@
 
 [[ $BASH_COMPLETION = '' ]] && [[ -r /etc/bash_completion ]] && source /etc/bash_completion
+
+# restore alsamixer settings when logging in
+alsactl -f ~/.config/asoundrc restore 2>/dev/null

@@ -1,3 +1,0 @@
-
-# restore alsamixer settings when logging in
-alsactl -f ~/.config/asoundrc restore 2>/dev/null

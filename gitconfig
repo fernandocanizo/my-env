@@ -1,16 +1,17 @@
 [user]
-	name = Fernando L. Canizo
+	name = Fernando Lucio Canizo
 	email = fernandocanizo@gmail.com
 
 [format]
 	headers = "Content-Type: text/plain; charset=\"utf-8\""
 
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
 
 [merge]
-	tool = meld
+	#tool = meld
+	tool = bcompare
 	conflictstyle = diff3
 
 [alias]
@@ -114,4 +115,13 @@
 [init]
 
 [credential]
-	helper = cache --timeout=86400
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[log]
+	decorate = true
+	abbrevCommit = true

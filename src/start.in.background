@@ -23,11 +23,6 @@ function dropbox {
 	command dropbox &
 }
 
-# feh is not reading it's configuration file
-function feh {
-	command feh --draw-filename --fullscreen --hide-pointer --sort "filename" "$@" &
-}
-
 # change guake background before starting it
 function guake {
 	switch.guake.background

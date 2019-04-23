@@ -17,13 +17,12 @@ alias yup='yaourt -Syu --aur'
 
 alias perl-rename='perl-rename -i'
 
-alias vi='/usr/bin/vim'
-alias fastvim='/usr/bin/vim --noplugin +'
-
 # 2014.11.05 let's try NeoVim for a while
 # 2014.11.09 let's keep using vim by default until I get all broken stuff in nvim sorted out
-#alias vi='/usr/bin/nvim -p'
+# 2019.04.23 let's try again
+alias vi='/usr/bin/nvim -p'
 alias oldvi='/usr/bin/vi'
+alias fastvim='/usr/bin/nvim --noplugin +'
 
 # let me on current pwd after exiting mc
 alias mc='. /usr/lib/mc/mc-wrapper.sh'
@@ -60,7 +59,7 @@ alias mpg123='mpg123 -C'
 alias nm-applet='sudo nm-applet'
 
 # automatically name downloaded videos from Youtube
-alias youtube-dl='youtube-dl --continue --no-overwrites --restrict-filenames --format mp4 --output "%(title)s-%(id)s.%(ext)s"'
+alias youtube-dl='youtube-dl --ignore-errors --continue --no-overwrites --restrict-filenames --format mp4 --output "%(title)s-%(id)s.%(ext)s"'
 
 alias reboot="sudo systemctl reboot"
 alias halt="sudo systemctl poweroff"
@@ -70,8 +69,6 @@ alias xclipboard='xclip -o -selection clipboard'
 
 # clone a git repository after having clicked the "Copy to clibboard" button
 alias clipclone='git clone `xclipboard`'
-
-alias mplayer='mplayer -cache 8192'
 
 # c programming
 alias compile='gcc -g -Wall -ansi -pedantic -std=c99'
@@ -84,3 +81,28 @@ alias pingendo='/opt/pingendo/Pingendo'
 # 2015.06.01
 # Use angular-seed project to bootstrap applications
 alias angular-seed='git clone https://github.com/angular/angular-seed.git '
+
+# 2016.06.27
+alias node.electron='mancy'
+
+# 2016.09.21
+alias ifconfig='ip addr show'
+
+# 2017.03.07
+alias grive='grive -p /home/flc/gdrive/'
+
+# 2017.06.20
+alias oe='open-editor'
+
+# 2017.12.20
+alias dockstation='/opt/DockStation/dockstation'
+
+# 2018.12.11 fucking pgcli is always broken, and pip too, so I installed locally
+alias pgcli='source ~/myPython3/bin/activate 2&1> /dev/null && pgcli '
+
+# 2018.12.12 to mount toshiba 1tb portable disk in the proper place for other things to work
+alias mine='pmount /dev/sdb1 mine'
+alias umine='pumount /media/mine'
+
+# 2018.12.14 activate python virtual environment
+alias activate='source ~/myPython3/bin/activate'

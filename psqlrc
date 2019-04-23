@@ -17,11 +17,11 @@ set intervalstyle to 'postgres_verbose';
 
 \setenv LESS '-iMFXSx4R'
 
-\pset format wrapped
+--\pset format wrapped
 \pset columns 158
 
-\set PROMPT1 '%[%033[1;33;40m%]%n@%m:%>%033[1;34;40m%]/%[%033[1;32;40m%]%/%R%[%033[0m%]%# '
-\set PROMPT2 '...%R%# '
+--\set PROMPT1 '%[%033[1;33;40m%]%n@%m:%>%033[1;34;40m%]/%[%033[1;32;40m%]%/%R%[%033[0m%]%# '
+--\set PROMPT2 '...%R%# '
 
 -- Trick to know what an internal command do:
 -- \set ECHO_HIDDEN true

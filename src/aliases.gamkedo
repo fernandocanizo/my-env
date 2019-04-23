@@ -1,0 +1,15 @@
+
+alias grep='egrep --exclude-dir .git'
+
+
+# change directory aliases
+alias cd.gk='cd ~/soft/gamkedo'
+
+# learning projects
+
+alias cd.arkanoid='cd /home/flc/soft/learning/courses/2018.04.28,chris.de.leon.udemy.course/arkanoid'
+
+
+# club projects
+alias cd.ghosts='cd /home/flc/soft/gamkedo/Ghosts-in-Neo-Tokyo'
+alias cd.legends='cd /home/flc/soft/gamkedo/Playground-Legends'
