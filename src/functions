@@ -212,15 +212,6 @@ imageshack() {
 	done;
 }
 
-pretend() {
-	cat /dev/urandom | hexdump -C | grep "$*"
-}
-
-pretendCafe() {
-	# pretend you're working and send a subliminal message to get coffee
-	cat /dev/urandom | hexdump -C | grep "ca fe"
-}
-
 pretendInstall() {
 	for i in `seq 0 100`; do
 		timeout 1 dialog --gauge "Install..." 6 40 "$i"
