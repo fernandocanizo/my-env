@@ -8,6 +8,7 @@
 [core]
 	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [merge]
 	#tool = meld
