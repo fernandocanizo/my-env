@@ -106,3 +106,7 @@ alias umine='pumount /media/mine'
 
 # 2018.12.14 activate python virtual environment
 alias activate='source ~/myPython3/bin/activate'
+
+# 2019.05.01
+alias lexar='mount | grep -q lexar || pmount /dev/mmcblk0p1 lexar'
+alias ulexar='pumount /media/lexar'
