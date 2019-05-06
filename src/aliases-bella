@@ -110,3 +110,5 @@ alias activate='source ~/myPython3/bin/activate'
 # 2019.05.01
 alias lexar='mount | grep -q lexar || pmount /dev/mmcblk0p1 lexar'
 alias ulexar='pumount /media/lexar'
+# always mount lexar memory before starting dropbox
+alias dropbox='lexar; wait; dropbox &'
