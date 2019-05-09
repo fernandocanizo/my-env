@@ -119,3 +119,13 @@ export FBFONT=/usr/share/kbd/consolefonts/ter-216n.psf.gz
 
 # 2018.12.11 always activate mpg123 play controls
 alias mpg='mpg123 -C --buffer 10240 *.mp3'
+
+# 2019.05.09
+# now that I have two notebooks again I should start caring about when do
+# this aliases run, this one should be in both machines, but not here, on
+# general aliases since this doesn't belong to a server machine
+# So I need to devise a new way to load stuff
+# Also the loading based on hostname doesn't do when I want to
+# differentiate from work aliases and non-work aliases
+alias qbittorrent="mount | grep -q 'media/mine' && qbittorrent || echo 'Cannot start qbittorrent without /media/mine mounted!'"
+
