@@ -27,4 +27,13 @@ fi
 cd ${HOME}/.config
 ln -sf ${HOME}/.bash/git .config/git
 
-ln -sf `pwd`/.bash/git .config/git
+echo "Install i3 configuration? (y/N)"
+read answer
+if [[ 'y' = ${answer} ]]; then
+	i3Folder="${HOME}/.i3"
+	if [[ ! -d ${i3Folder} ]]; then
+		mkdir ${i3Folder}
+	fi
+	cd ${i3Folder}
+	ln -sf ${HOME}/.bash/i3/config ${i3Folder}/config
+fi
