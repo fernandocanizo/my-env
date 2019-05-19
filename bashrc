@@ -26,22 +26,6 @@ if [[ -d $BASH_DIR ]]; then
 	done
 fi
 
-export NVM_DIR="${HOME}/.nvm"
-[ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
-# 2017.06.02 nvm.sh sets NVM_NODEJS_ORG_MIRROR, node-gyp gives this warning:
-# gyp WARN download NVM_NODEJS_ORG_MIRROR is deprecated and will be removed in node-gyp v4, please use NODEJS_ORG_MIRROR
-# so this is a temporal fix for the warning until nvm fix it:
-export NODEJS_ORG_MIRROR="https://nodejs.org/dist"
-# maybe I'll need to
-# unset NVM_NODEJS_ORG_MIRROR
-# though this says it's not a problem to have both:
-# https://github.com/creationix/nvm/issues/1429
-# it seems this should be fixed on latest nvm, check and remove all this cruft
-
-
-# Load nvm bash_completion
-[ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
-
 # add currently selected node environment to path
 #NODE_BIN=`which node`
 #export NODE_PATH=`dirname ${NODE_BIN}`:$(dirname $(dirname $NODE_BIN))/lib/node_modules
