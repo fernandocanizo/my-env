@@ -24,5 +24,7 @@ fi
 if [[ ! -d .config ]]; then
 	mkdir .config
 fi
+cd ${HOME}/.config
+ln -sf ${HOME}/.bash/git .config/git
 
 ln -sf `pwd`/.bash/git .config/git
