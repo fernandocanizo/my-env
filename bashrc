@@ -26,40 +26,20 @@ if [[ -d $BASH_DIR ]]; then
 	done
 fi
 
-# add currently selected node environment to path
-#NODE_BIN=`which node`
-#export NODE_PATH=`dirname ${NODE_BIN}`:$(dirname $(dirname $NODE_BIN))/lib/node_modules
-
 # Start only one ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
 	ssh-agent >| ~/.ssh-agent-thing
 fi
+
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
 fi
-
-# Add daily used identities
-ssh-add -l | cut -f3 -d' ' | grep '/home/flc/.ssh/csw_rsa' > /dev/null || ssh-add ${HOME}/.ssh/csw_rsa > /dev/null
-ssh-add -l | cut -f3 -d' ' | grep geoportal > /dev/null || ssh-add ${HOME}/.ssh/geoportal > /dev/null
-ssh-add -l | cut -f3 -d' ' | grep bitbucket.csw_rsa > /dev/null || ssh-add ${HOME}/.ssh/bitbucket.csw_rsa > /dev/null
-ssh-add -l | cut -f3 -d' ' | grep github_bella > /dev/null || ssh-add ${HOME}/.ssh/github_bella > /dev/null
 
 # source completions
 for file in `env ls ${COMPLETIONS_DIR}`; do
 	source ${COMPLETIONS_DIR}/${file};
 done
 
-# Nativescript completion 
-###-tns-completion-start-###
-#if [ -f /home/flc/.tnsrc ]; then 
-#    source /home/flc/.tnsrc 
-#fi
-###-tns-completion-end-###
-
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /home/flc/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/flc/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /home/flc/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/flc/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+export NVM_DIR="$HOME/.config"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
