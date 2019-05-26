@@ -38,11 +38,16 @@ export PROMPT_COMMAND='history -a'
 if [[ ${EUID} -eq 0 ]] ; then
 	export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
 else
-	if [[ `whereis git | cut -f 2 -d':'` != '' ]]; then
-		# we got git
-		export PS1="\[\033[01;32m\]\h:\[\033[01;36m\]\W\[\033[0;33m\]\$(current_git_branch) \[\033[0m\]\$ "
+  if [[ -x /usr/bin/gbt ]]; then
+		# got gbt, use it!
+		export PS1='$(gbt $?)'
 	else
-		export PS1='\[\033[01;32m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+    if [[ `whereis git | cut -f 2 -d':'` != '' ]]; then
+			# we got git
+      export PS1="\[\033[01;32m\]\h:\[\033[01;36m\]\W\[\033[0;33m\]\$(current_git_branch) \[\033[0m\]\$ "
+		else
+			export PS1='\[\033[01;32m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+		fi
 	fi
 fi
 
