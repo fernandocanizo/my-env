@@ -11,18 +11,19 @@ ln -sf .bash/dircolors .dircolors
 ln -sf .bash/inputrc .inputrc
 ln -sf .bash/psqlrc .psqlrc
 ln -sf .bash/pgpass .pgpass
+ln -sf .bash/Xdefaults .Xdefaults
 
 # Need to keep different versions of this file according to installed git version
 if [[ $(git --version | cut -f3 -d' ' | cut -f1 -d'.') -gt 1 ]]; then
-	# link for version >= 2.0
-	ln -sf .bash/gitconfig .gitconfig
+  # link for version >= 2.0
+  ln -sf .bash/gitconfig .gitconfig
 else
-	# copy for version < 2.0 to be able to modify the file without changing repository
-	cp -f .bash/gitconfig .gitconfig
+  # copy for version < 2.0 to be able to modify the file without changing repository
+  cp -f .bash/gitconfig .gitconfig
 fi
 
 if [[ ! -d .config ]]; then
-	mkdir .config
+  mkdir .config
 fi
 cd ${HOME}/.config
 ln -sf ${HOME}/.bash/git .config/git
@@ -30,10 +31,10 @@ ln -sf ${HOME}/.bash/git .config/git
 echo "Install i3 configuration? (y/N)"
 read answer
 if [[ 'y' = ${answer} ]]; then
-	i3Folder="${HOME}/.i3"
-	if [[ ! -d ${i3Folder} ]]; then
-		mkdir ${i3Folder}
-	fi
-	cd ${i3Folder}
-	ln -sf ${HOME}/.bash/i3/config ${i3Folder}/config
+  i3Folder="${HOME}/.i3"
+  if [[ ! -d ${i3Folder} ]]; then
+    mkdir ${i3Folder}
+  fi
+  cd ${i3Folder}
+  ln -sf ${HOME}/.bash/i3/config ${i3Folder}/config
 fi
