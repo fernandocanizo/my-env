@@ -1,32 +1,30 @@
 #! /usr/bin/env bash
 
-# create symbolic links to point to git-maintained bash configuration files
+# create symbolic links to point to git-maintained configuration files
+
+baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+myLinker='ln -vsf -T '
 
 cd $HOME
 
-ln -sf .bash/bash_profile .bash_profile
-ln -sf .bash/bashrc .bashrc
-ln -sf .bash/bash_logout .bash_logout
-ln -sf .bash/dircolors .dircolors
-ln -sf .bash/inputrc .inputrc
-ln -sf .bash/psqlrc .psqlrc
-ln -sf .bash/pgpass .pgpass
-ln -sf .bash/Xdefaults .Xdefaults
-
-# Need to keep different versions of this file according to installed git version
-if [[ $(git --version | cut -f3 -d' ' | cut -f1 -d'.') -gt 1 ]]; then
-  # link for version >= 2.0
-  ln -sf .bash/gitconfig .gitconfig
-else
-  # copy for version < 2.0 to be able to modify the file without changing repository
-  cp -f .bash/gitconfig .gitconfig
-fi
+echo 'Linking configuration files under $HOME'
+${myLinker} ${baseFolder}/bash_profile .bash_profile
+${myLinker} ${baseFolder}/bashrc .bashrc
+${myLinker} ${baseFolder}/bash_logout .bash_logout
+${myLinker} ${baseFolder}/dircolors .dircolors
+${myLinker} ${baseFolder}/inputrc .inputrc
+${myLinker} ${baseFolder}/psqlrc .psqlrc
+${myLinker} ${baseFolder}/pgpass .pgpass
+${myLinker} ${baseFolder}/Xdefaults .Xdefaults
+${myLinker} ${baseFolder}/gitconfig .gitconfig
 
 if [[ ! -d .config ]]; then
   mkdir .config
 fi
-cd ${HOME}/.config
-ln -sf ${HOME}/.bash/git .config/git
+
+echo 'Linking configuration files under $HOME/.config'
+${myLinker} ${baseFolder}/git ${HOME}/.config/git
+${myLinker} ${baseFolder}/mc ${HOME}/.config/mc
 
 echo "Install i3 configuration? (y/N)"
 read answer
@@ -36,5 +34,10 @@ if [[ 'y' = ${answer} ]]; then
     mkdir ${i3Folder}
   fi
   cd ${i3Folder}
-  ln -sf ${HOME}/.bash/i3/config ${i3Folder}/config
+  ${myLinker} ${baseFolder}/i3/config ${i3Folder}/config
 fi
+
+# Finally, write down configuration folder path so it can be used by
+# ~/.bashrc
+
+echo ${baseFolder} >| ${HOME}/.envFolder
