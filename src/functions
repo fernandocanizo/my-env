@@ -168,25 +168,6 @@ command_not_found_handle() {
   return $?
 }
 
-vi () {
-  # use automatic line number goto only when one parameter is given
-  if [[ $# -eq 1 ]]; then
-	echo -n $1 | grep -q ':'
-    hasColon=$?
-
-    if [[ hasColon -eq 0 ]]; then
-	  filename=`echo -n "${1}" | cut -f1 -d:`
-	  line=`echo -n "${1}" | cut -f2 -d:`
-
-	  ${EDITOR} ${filename} +${line}
-    else
-      ${EDITOR} $@
-    fi
-  else
-    ${EDITOR} $@
-  fi
-}
-
 # Open URL of an Archlinux package
 function pkgpage () {
     url=$(yaourt -Si $1 | egrep '^URL' | egrep -o 'https?://[^ ]+')
