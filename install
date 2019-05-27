@@ -14,9 +14,13 @@ ${myLinker} ${baseFolder}/bash_logout .bash_logout
 ${myLinker} ${baseFolder}/dircolors .dircolors
 ${myLinker} ${baseFolder}/inputrc .inputrc
 ${myLinker} ${baseFolder}/psqlrc .psqlrc
-${myLinker} ${baseFolder}/pgpass .pgpass
 ${myLinker} ${baseFolder}/Xdefaults .Xdefaults
 ${myLinker} ${baseFolder}/gitconfig .gitconfig
+
+# Don't erase ~/.pgpass if there's one already
+if [[ ! -e .pgpass ]]; then
+  cp ${baseFolder}/pgpass ~/.pgpass
+fi
 
 if [[ ! -d .config ]]; then
   mkdir .config
