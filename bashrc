@@ -28,7 +28,7 @@ for file in `env ls ${completionsFolder}`; do
 	source ${completionsFolder}/${file};
 done
 
-export NVM_DIR="$HOME/.config"
+export NVM_DIR="$HOME/.config/nvm"
 # load nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # load nvm bash_completion
