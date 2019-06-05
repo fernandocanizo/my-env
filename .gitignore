@@ -3,3 +3,4 @@ TODO
 # mc file is added to have an initial configuration for mc to my liking
 # but since this file could change on each mc usage, I ignore it
 mc/panels.ini
+local/*
