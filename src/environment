@@ -19,7 +19,7 @@ export HISTFILE="$HOME/.bash_history"
 # so bash doesn't truncate my history file
 unset HISTFILESIZE
 
-export HISTSIZE='10000'
+export HISTSIZE='100000'
 
 export HISTTIMEFORMAT='%F %T '
 
