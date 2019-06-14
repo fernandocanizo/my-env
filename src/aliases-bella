@@ -8,8 +8,6 @@
 
 alias x='/usr/bin/startx; wait; rm -f ~/.serverauth.*'
 alias xtris='/usr/bin/xtris -n $LOGNAME'
-alias ya='yaourt'
-alias yup='yaourt -Syu --aur'
 
 #
 # functional aliases
