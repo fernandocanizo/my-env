@@ -30,7 +30,7 @@ alias dict='PAGER=cat dict -d wn'
 alias wikipedia-en="dict -h dict.aioe.org -d Wikipedia_EN"
 alias wikipedia-es="dict -h dict.aioe.org -d Wikipedia_ES"
 
-alias irc='screen -S irc weechat-curses'
+alias irc='screen -S irc weechat'
 
 #
 # old common commands replaced by improved versions
