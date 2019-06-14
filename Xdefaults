@@ -16,7 +16,7 @@ URxvt*transparent: true
 URxvt*tintColor: #3d1f3d
 URxvt*shading: 30
 URxvt*inheritPixmap: true
-URxvt*scrollBar: true
+URxvt*scrollBar: false
 # specify colors for italics and bold so they don't show in reverse video
 URxvt.colorIT:  green
 URxvt.colorBD:  white
