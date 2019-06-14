@@ -16,7 +16,6 @@ export GBT__HOME='/usr/share/gbt'
 source "${GBT__HOME}/sources/prompt_forwarding/local"
 alias docker='gbt_docker'
 alias mysql='gbt_mysql'
-alias screen='gbt_screen'
 alias ssh='gbt_ssh'
 alias su='gbt_su'
 alias sudo='gbt_sudo'
