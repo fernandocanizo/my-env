@@ -29,6 +29,7 @@ fi
 echo 'Linking configuration files under $HOME/.config'
 ${myLinker} ${baseFolder}/git ${HOME}/.config/git
 ${myLinker} ${baseFolder}/mc ${HOME}/.config/mc
+${myLinker} ${baseFolder}/kitty ${HOME}/.config/kitty
 
 echo "Install i3 configuration? (y/N)"
 read answer
