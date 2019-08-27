@@ -11,10 +11,3 @@ export GBT_CAR_TIME_DATE_FORMAT='2006.01.02'
 
 # Prompt forwarding
 export GBT__HOME='/usr/share/gbt'
-source "${GBT__HOME}/sources/prompt_forwarding/local"
-alias docker='gbt_docker'
-alias mysql='gbt_mysql'
-alias ssh='gbt_ssh'
-alias su='gbt_su'
-alias sudo='gbt_sudo'
-alias vagrant='gbt_vagrant'
