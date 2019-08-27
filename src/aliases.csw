@@ -8,9 +8,10 @@ alias cd.tips="cd ${HOME}/soft/csw/tips-and-procedures"
 alias cd.wiki="cd ${HOME}/soft/webgis/wiki-map-server"
 
 # Liberador de Área
-alias cd.ldadmin=" cd ${HOME}/soft/liberador.de.areas/lda-admin"
-alias cd.newldadmin=" cd ${HOME}/soft/liberador.de.areas/new-lda-admin"
-alias cd.ldapp="cd ${HOME}/soft/liberador.de.areas/area-releaser"
+# Deprecated stuff
+#alias cd.ldadmin=" cd ${HOME}/soft/liberador.de.areas/lda-admin"
+#alias cd.newldadmin=" cd ${HOME}/soft/liberador.de.areas/new-lda-admin"
+#alias cd.ldapp="cd ${HOME}/soft/liberador.de.areas/area-releaser"
 
 
 alias recreate.mapserver.db='pushd . && cd.maps && dropdb mapserver && createdb mapserver && npm run "db:migrate:latest" && popd'
@@ -21,9 +22,14 @@ alias map_server.select.datasource="psql -d csw_map_server_test -c 'select * fro
 # el repo del Ministerio de Energía está muy relacionado con el crawler sel SEA
 alias cd.minenergia="cd ${HOME}/soft/webgis/ministerio-de-energia"
 
+# Viejo colector
+alias cd.old-colector="cd ${HOME}/soft/colector/old-colector-server"
+
 # Colector
-alias cd.colector="cd ${HOME}/soft/colector/app"
-alias cd.coladmin="cd ${HOME}/soft/colector/coladmin"
+alias cd.bcback="cd ${HOME}/soft/colector/biota-collector-back"
+alias cd.bcfront="cd ${HOME}/soft/colector/biota-collector-front"
+alias cd.flora-collector="cd ${HOME}/soft/colector/flora-collector"
+alias cd.fauna-collector="cd ${HOME}/soft/colector/fauna-collector"
 
 
 # Reporte Ambiental
@@ -34,6 +40,8 @@ alias cd.prefactibilidad="cd ${HOME}/soft/reporte.ambiental/prefactibilidad"
 
 # Crawlers
 alias cd.sea.crawler="cd ${HOME}/soft/crawlers/sea-crawler"
+alias cd.specietor="cd ${HOME}/soft/crawlers/specietor"
+alias cd.rugrats='cd /home/flc/soft/crawlers/rugrats'
 
 
 # CSW
@@ -59,12 +67,8 @@ alias cd.tcomb='cd /home/flc/soft/learning/2017.04.22,tcomb'
 
 alias cd.fdd='cd /home/flc/soft/fuentes.de.datos/fdd'
 
-
-alias cd.rugrats='cd /home/flc/soft/crawlers/rugrats'
-
-# 7F
-alias cd.biota-collector='cd /home/flc/soft/colector/biota-collector'
-alias cd.flora-collector='cd /home/flc/soft/colector/flora-collector'
+# Otras aplicaciones
+alias cd.cswmailer='cd /home/flc/soft/csw/mailer'
 
 # fuzzy forms
 alias cd.fuzzy-forms-server='cd /home/flc/soft/fuzzy-forms/fuzzy-forms-server'
