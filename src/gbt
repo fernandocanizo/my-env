@@ -1,5 +1,3 @@
-source /usr/share/gbt/themes/local/square_brackets_multiline
-
 export GBT_CARS='Status, Time, Hostname, Dir, Git, Sign'
 
 # full pwd
