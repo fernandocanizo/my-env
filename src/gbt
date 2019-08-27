@@ -18,3 +18,5 @@ source /usr/share/gbt/sources/exectime/bash.sh
 
 # Prompt forwarding
 export GBT__HOME='/usr/share/gbt'
+source $GBT__HOME/sources/gbts/cmd/local.sh
+
