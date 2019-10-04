@@ -15,10 +15,6 @@ for file in `/usr/bin/env ls -1 ${srcFolder}`; do
   source ${srcFolder}/${file};
 done
 
-for file in `/usr/bin/env ls -1 ${localFolder}`; do
-  source ${localFolder}/${file};
-done
-
 # Start only one ssh-agent
 if ! pgrep -u $USER ssh-agent > /dev/null; then
 	ssh-agent >| ~/.ssh-agent-thing
@@ -27,6 +23,11 @@ fi
 if [[ "$SSH_AGENT_PID" == "" ]]; then
 	eval $(<~/.ssh-agent-thing)
 fi
+
+# source files after ssh agent is running and variables exported
+for file in `/usr/bin/env ls -1 ${localFolder}`; do
+  source ${localFolder}/${file};
+done
 
 # source completions
 for file in `env ls ${completionsFolder}`; do
