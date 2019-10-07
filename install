@@ -15,6 +15,8 @@ ${myLinker} ${baseFolder}/dircolors .dircolors
 ${myLinker} ${baseFolder}/inputrc .inputrc
 ${myLinker} ${baseFolder}/psqlrc .psqlrc
 ${myLinker} ${baseFolder}/Xdefaults .Xdefaults
+${myLinker} ${baseFolder}/Xresources .Xresources
+${myLinker} ${baseFolder}/xprofile .xprofile
 ${myLinker} ${baseFolder}/gitconfig .gitconfig
 
 # Don't erase ~/.pgpass if there's one already
