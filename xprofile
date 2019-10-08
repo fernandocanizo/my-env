@@ -1,9 +1,13 @@
 
 exec urxvtd &
 
+# load accents and stuff
 exec xmodmap $HOME/.Xmodmap &
 
 exec guake &
 
 # put external monitor above
 exec xrandr --output HDMI-2 --auto --above eDP-1 &
+
+# mount Dropbox container
+mount | grep -q lexar || pmount /dev/mmcblk0p1 lexar &
