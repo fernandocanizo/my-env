@@ -1,0 +1,48 @@
+# Package list to install on new Archlinux based machines
+
+- pmount
+- mc
+- brave
+- chromium
+- kitty
+- ripgrep
+- newovim
+- gbt
+- meld
+- diff-so-fancy
+- scrot
+- feh
+- qgis
+- convmv
+- dictd
+- docker
+- docker-compose
+- dos2unix
+- encfs
+- gedit
+- evince
+- dosfstools
+- file
+- gdal
+- gimp
+- git
+- gitg
+- guake
+- gobby (untested)
+- gopass (untested)
+- imv (untested)
+- jhead
+- jq
+- lftp
+- lsof
+- lshw
+- most
+- mpd
+- mplayer
+- nginx
+- nmap
+- ntop
+- opera
+- p7zip
+- pacman-contrib
+- pavucontrol
