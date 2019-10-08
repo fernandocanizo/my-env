@@ -95,9 +95,6 @@ alias oe='open-editor'
 # 2017.12.20
 alias dockstation='/opt/DockStation/dockstation'
 
-# 2018.12.11 fucking pgcli is always broken, and pip too, so I installed locally
-alias pgcli='source ~/myPython3/bin/activate 2&1> /dev/null && pgcli '
-
 # 2018.12.12 to mount toshiba 1tb portable disk in the proper place for other things to work
 alias mine='pmount /dev/sdb1 mine'
 alias umine='pumount /media/mine'
