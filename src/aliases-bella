@@ -110,3 +110,7 @@ alias dropbox='lexar; wait; dropbox &'
 
 # evitar cargar GBT, que me rompe el acceso al NAS
 alias nas='urxvt -e env -i bash --norc --noprofile'
+
+# para no tener que poner todos los parámetros cuando quiero usar psql
+# para extraer datos nomás
+alias psql-data='psql -t --no-psqlrc '
