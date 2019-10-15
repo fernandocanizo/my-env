@@ -46,3 +46,5 @@
 - p7zip
 - pacman-contrib
 - pavucontrol
+- pg_activity
+- xclip
