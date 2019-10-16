@@ -48,3 +48,5 @@
 - pavucontrol
 - pg_activity
 - xclip
+- ripgrep-all
+- zip
