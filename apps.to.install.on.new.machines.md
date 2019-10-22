@@ -50,3 +50,5 @@
 - xclip
 - ripgrep-all
 - zip
+- colordiff
+- youtube-dl
