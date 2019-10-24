@@ -52,3 +52,4 @@
 - zip
 - colordiff
 - youtube-dl
+- bind-tools (for `dig` and `host` among other tools)
