@@ -1,5 +1,4 @@
 
-[[ $BASH_COMPLETION = '' ]] && [[ -r /etc/bash_completion ]] && source /etc/bash_completion
 
 # restore alsamixer settings when logging in
 # to save them in the first place use:

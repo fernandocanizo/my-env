@@ -26,8 +26,8 @@ alias cd.minenergia="cd ${HOME}/soft/webgis/ministerio-de-energia"
 alias cd.old-colector="cd ${HOME}/soft/colector/old-colector-server"
 
 # Colector
-alias cd.bcback="cd ${HOME}/soft/colector/biota-collector-back"
-alias cd.bcfront="cd ${HOME}/soft/colector/biota-collector-front"
+alias cd.nviro-back="cd ${HOME}/soft/colector/nviro-back"
+alias cd.nviro-front="cd ${HOME}/soft/colector/nviro-front"
 alias cd.flora-collector="cd ${HOME}/soft/colector/flora-collector"
 alias cd.fauna-collector="cd ${HOME}/soft/colector/fauna-collector"
 
@@ -42,6 +42,7 @@ alias cd.prefactibilidad="cd ${HOME}/soft/reporte.ambiental/prefactibilidad"
 alias cd.sea.crawler="cd ${HOME}/soft/crawlers/sea-crawler"
 alias cd.specietor="cd ${HOME}/soft/crawlers/specietor"
 alias cd.rugrats='cd /home/flc/soft/crawlers/rugrats'
+alias cd.darwinion='cd /home/flc/soft/crawlers/crawler-darwinion'
 
 
 # CSW
@@ -54,11 +55,13 @@ alias t="python ${HOME}/local/t/t.py --task-dir ~/ToDo --list tasks"
 alias cd.apps='cd /home/flc/soft/csw/csw-apps'
 
 # Biota DB
-alias pgcli.aws.biota='pgcli --host proyectobiota.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw proyectobiota'
+#alias pgcli.aws.biota='pgcli --host proyectobiota.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw proyectobiota'
 
 # Prefactibilidad DB
-alias pgcli.aws.pref='pgcli --host p.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw pref'
-# prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com
+alias pgcli.aws.pref-test='pgcli --host prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw test'
+#alias pgcli.aws.pref-prod='pgcli --host prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com -U csw prod'
+
+alias aws-pref-activity='pg_activity -U csw -d test -h prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com --rds'
 
 alias cd.eecc="cd ${HOME}/soft/crawlers/eecc"
 
@@ -72,3 +75,5 @@ alias cd.cswmailer='cd /home/flc/soft/csw/mailer'
 
 # fuzzy forms
 alias cd.fuzzy-forms-server='cd /home/flc/soft/fuzzy-forms/fuzzy-forms-server'
+
+
