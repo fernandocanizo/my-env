@@ -46,3 +46,10 @@
 - p7zip
 - pacman-contrib
 - pavucontrol
+- pg_activity
+- xclip
+- ripgrep-all
+- zip
+- colordiff
+- youtube-dl
+- bind-tools (for `dig` and `host` among other tools)

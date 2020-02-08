@@ -63,7 +63,7 @@ alias reboot="sudo systemctl reboot"
 alias halt="sudo systemctl poweroff"
 
 # secondary X selection cannot be copied with shift+insert, so I have this alias which uses xclip to print it out
-alias xclipboard='xclip -o -selection clipboard'
+alias xclipboard='xclip -o -selection clipboard && echo'
 
 # clone a git repository after having clicked the "Copy to clibboard" button
 alias clipclone='git clone `xclipboard`'
@@ -114,3 +114,7 @@ alias nas='urxvt -e env -i bash --norc --noprofile'
 # para no tener que poner todos los parámetros cuando quiero usar psql
 # para extraer datos nomás
 alias psql-data='psql -t --no-psqlrc '
+
+alias pg.dump.help="pg_dump --help | egrep --color '(\-\-file|\-\-clean|\-\-no\-owner|\-\-no\-privileges)'"
+
+alias find.nas='nmap -sn 192.168.100.* | grep nas'
