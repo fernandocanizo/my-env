@@ -40,7 +40,7 @@ alias cd.prefactibilidad="cd ${HOME}/soft/reporte.ambiental/prefactibilidad"
 
 # Crawlers
 alias cd.sea.crawler="cd ${HOME}/soft/crawlers/sea-crawler"
-alias cd.specietor="cd ${HOME}/soft/crawlers/specietor"
+alias cd.specietor="cd ${HOME}/soft/colector/specietor"
 alias cd.rugrats='cd /home/flc/soft/crawlers/rugrats'
 alias cd.darwinion='cd /home/flc/soft/crawlers/crawler-darwinion'
 
