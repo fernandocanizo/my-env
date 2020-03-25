@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Create a new Svelte project on current folder. Or give it a folder and it
+# will create the project there.
+
+# ToDo: create a fork with my own tweakings to start projects from that
+# instead
+
+alias svelte-init='npx degit sveltejs/template '
