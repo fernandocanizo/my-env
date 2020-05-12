@@ -13,3 +13,5 @@ export GBT_CAR_TIME_DATE_FORMAT='2006.01.02'
 export GBT__HOME='/usr/share/gbt'
 source $GBT__HOME/sources/gbts/cmd/local.sh
 
+# Start commands on next line
+export GBT_CAR_SIGN_WRAP=1
