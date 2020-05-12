@@ -111,3 +111,6 @@ alias psql-data='psql -t --no-psqlrc '
 alias pg.dump.help="pg_dump --help | egrep --color '(\-\-file|\-\-clean|\-\-no\-owner|\-\-no\-privileges)'"
 
 alias find.nas='nmap -sn 192.168.100.* | grep nas'
+
+# human readable output, human readable timestamps and constant output for dmesg
+alias dmesg='sudo dmesg -HTw '
