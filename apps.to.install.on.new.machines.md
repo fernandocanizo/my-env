@@ -1,12 +1,17 @@
 # Package list to install on new Archlinux based machines
 
+- urxvt-tabbedex
+- urxvt-perls
+- rxvt-unicode-terminfo
+- community/rxvt-unicode
+- systemd-urxvt-daemon
 - pmount
 - mc
 - brave
 - chromium
 - kitty
 - ripgrep
-- newovim
+- neovim
 - gbt
 - meld
 - diff-so-fancy
