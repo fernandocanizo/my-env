@@ -18,6 +18,8 @@ read baseFolder < ~/.envFolder
 
 srcFolder="${baseFolder}/src/common"
 localFolder="${baseFolder}/src/$HOSTNAME"
+# ensure local folder exists on new machines
+test -d ${localFolder} || mkdir -p ${localFolder}
 completionsFolder="${baseFolder}/completions"
 
 # load all that's common to any shell, any machine
