@@ -1,49 +1,47 @@
 # Package list to install on new Archlinux based machines
 
-- urxvt-tabbedex
-- urxvt-perls
-- rxvt-unicode-terminfo
-- community/rxvt-unicode
-- systemd-urxvt-daemon
-- pmount
-- mc
+## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
+
+- bind-tools (for `dig` and `host` among other tools)
 - brave
 - chromium
-- kitty
-- ripgrep
-- neovim
-- gbt
-- meld
-- diff-so-fancy
-- scrot
-- feh
-- qgis
+- colordiff
+- community/rxvt-unicode
 - convmv
 - dictd
+- diff-so-fancy
 - docker
 - docker-compose
 - dos2unix
-- encfs
-- gedit
-- evince
 - dosfstools
+- dropbox
+- dropbox-cli
+- encfs
+- evince
+- feh
 - file
+- gbt
 - gdal
+- gedit
 - gimp
 - git
 - gitg
-- guake
 - gobby (untested)
 - gopass (untested)
+- guake
 - imv (untested)
 - jhead
 - jq
+- kitty
 - lftp
-- lsof
 - lshw
+- lsof
+- mc
+- meld
 - most
 - mpd
 - mplayer
+- neovim
 - nginx
 - nmap
 - ntop
@@ -52,9 +50,17 @@
 - pacman-contrib
 - pavucontrol
 - pg_activity
-- xclip
+- pmount
+- postgis
+- postgres
+- qgis
+- ripgrep
 - ripgrep-all
-- zip
-- colordiff
+- rxvt-unicode-terminfo
+- scrot
+- systemd-urxvt-daemon
+- urxvt-perls
+- urxvt-tabbedex
+- xclip
 - youtube-dl
-- bind-tools (for `dig` and `host` among other tools)
+- zip
