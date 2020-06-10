@@ -2,6 +2,7 @@
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
 
+- pgcli
 - bind-tools (for `dig` and `host` among other tools)
 - brave
 - chromium
