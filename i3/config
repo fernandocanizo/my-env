@@ -28,6 +28,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvtc
+# also have a fallbck on Alt+Enter, cause I'm accustomed to that mapping
+bindsym Mod1+Return exec urxvtc
 bindsym $mod+x exec kitty
 
 # kill focused window
