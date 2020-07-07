@@ -2,6 +2,9 @@
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
 
+- pip install legit
+El paquete legit-git está abandonado
+- mcfly
 - dog
 - bat
 - shutter
