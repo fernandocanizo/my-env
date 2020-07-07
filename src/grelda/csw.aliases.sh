@@ -1,6 +1,8 @@
 alias cd.maps='cd /my/soft/csw/webgis/maps'
 
 alias cd.fdd='cd /my/soft/csw/fuentes.de.datos/fdd'
+alias cd.eecc='cd /my/soft/csw/crawlers/eecc'
+alias cd.sea-crawler='cd /my/soft/csw/crawlers/sea-crawler'
 
 
 # Prefactibilidad DB
