@@ -38,6 +38,7 @@ El paquete legit-git está abandonado
 - gedit
 - gimp
 - git
+- tk (para que ande gitk, que viene con git)
 - gitg
 - gobby (untested)
 - gopass (untested)
