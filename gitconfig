@@ -126,3 +126,5 @@
 	abbrevCommit = true
 [rebase]
 	autostash = true
+[pull]
+	rebase = true
