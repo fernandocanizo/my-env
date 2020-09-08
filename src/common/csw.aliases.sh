@@ -11,3 +11,7 @@ alias pref-psql='psql --host prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaw
 alias pref-activity='pg_activity -U csw -d test -h prefactibilidad.cy3tepzkndt3.us-west-2.rds.amazonaws.com --rds'
 
 alias cd.pref='cd /my/soft/csw/reporte.ambiental/prefactibilidad'
+
+# SEA
+alias cd.sea-enslaver-back='cd /my/soft/csw/sea-enslaver/sea-digitizers-back'
+alias cd.sea-enslaver-front='cd /my/soft/csw/sea-enslaver/sea-digitizers-front'
