@@ -43,7 +43,7 @@
 
 	# remove stale branches
   clean-local-branches = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
-  clean-remote-branches = !git branch -r | grep origin | egrep -v '(master|dev|develop)' | sed 's/.*origin\\///' | xargs git push --delete origin
+  clean-remote-branches = !git branch -r | grep origin | egrep -v '(master|dev)' | xargs git push --delete origin
   clean-branches = !git clean-remote-branches && git clean-local-branches
 
 	# checks that your local copy of the ref that you’re overwriting is up-to-date before overwriting it
