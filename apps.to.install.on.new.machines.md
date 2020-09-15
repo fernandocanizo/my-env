@@ -2,6 +2,8 @@
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
 
+- telegram-desktop
+- slack-desktop
 - racket
 - wine
 - pgadmin4
@@ -13,7 +15,6 @@ El paquete legit-git está abandonado
 - shutter
 - perl-goo-canvas
 - flameshot
-- deeping-screenshot
 - perl-rename
 - unrar
 - pgcli
