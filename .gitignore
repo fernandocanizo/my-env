@@ -9,3 +9,5 @@ mc/panels.ini
 mc/ini
 
 local/*
+
+git/gitk
