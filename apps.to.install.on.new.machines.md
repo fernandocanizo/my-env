@@ -69,7 +69,7 @@ El paquete legit-git está abandonado
 - pg_activity
 - pmount
 - postgis
-- postgres
+- postgresql
 - qgis
 - ripgrep
 - ripgrep-all
