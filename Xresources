@@ -1,15 +1,15 @@
-##################################################################
-# Mouse cursor fun
-##################################################################
+!#################################################################
+! Mouse cursor fun
+!#################################################################
 
-# Cyclone: +1 very fancy, but inside applications goes back to default cursor
+! Cyclone: +1 very fancy, but inside applications goes back to default cursor
 Xcursor.theme: Cyclone
 Xcursor.size: 32
 
 
-##################################################################
-# Xft
-##################################################################
+!#################################################################
+! Xft
+!#################################################################
 Xft.dpi:       96
 Xft.antialias: true
 Xft.hinting:   true
@@ -18,9 +18,9 @@ Xft.autohint:  false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-##################################################################
-# Xterm
-##################################################################
+!#################################################################
+! Xterm
+!#################################################################
 XTerm*font: -misc-fixed-medium-r-normal--18-120-100-100-c-*-*
 XTerm*background:        #222D31
 XTerm*foreground:        #d8d8d8
@@ -71,21 +71,19 @@ XTerm*selectToClipboard: true
 *color15:                         #f8f8f8
 
 
-##################################################################
-# URxvt
-##################################################################
+!#################################################################
+! URxvt
+!#################################################################
 ! la l y la I se confunden con TerminessTTFNerdFontMono
 URxvt.font: xft:TerminessTTFNerdFontMono:pixelsize=26
 !URxvt*font: xft:FuraCode Nerd Font Mono:pixelsize=20
-
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 ! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
-!! terminus names see end of file!
 
 URxvt*background: #ffffff
 URxvt*borderColor: #ff1900
-# specify colors for italics and bold so they don't show in reverse video
+! specify colors for italics and bold so they dont show in reverse video
 URxvt.colorBD:  white
 URxvt.colorIT:  green
 URxvt*cursorBlink: true
@@ -143,14 +141,14 @@ URxvt.keysym.M-s:       perl:keyboard-select:search
 ! URxvt.keysym.M-C-v:               perl:clipboard:paste_escaped
 
 
-##################################################################
-# xautolock settings
-##################################################################
+!#################################################################
+! xautolock settings
+!#################################################################
 
 Xautolock.corners: +000
 Xautolock.cornersize: 20
-# seconds
+! seconds
 Xautolock.cornerdelay: 0
-# minutes
+! minutes
 Xautolock.time: 5
 Xautolock.locker: i3lock -i ~/hobby/wallpapers/1920x1200/1486827-backtrack-5-r3.jpg
