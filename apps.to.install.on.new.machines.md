@@ -2,6 +2,7 @@
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
 
+- qbittorrent
 - bash-language-server
 - telegram-desktop
 - slack-desktop
