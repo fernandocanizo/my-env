@@ -4,6 +4,7 @@ alias cd.fdd='cd /my/soft/csw/fuentes.de.datos/fdd'
 alias cd.eecc='cd /my/soft/csw/crawlers/eecc'
 alias cd.sea-crawler='cd /my/soft/csw/crawlers/sea-crawler'
 alias cd.specietor='cd /my/soft/csw/nviro/specietor'
+alias cd.mailer='cd /my/soft/csw/mailer'
 
 
 # Prefactibilidad DB
