@@ -1,24 +1,24 @@
 extract () {
 	# uncompress any known compressed file
 	#
-	if [ -f $1 ] ; then
-		case $1 in
-			*.tar.bz2) tar xvjf $1 ;;
-			*.tar.gz) tar xvzf $1 ;;
-			*.bz2) bunzip2 $1 ;;
-			*.rar) unrar x $1 ;;
-			*.gz) gunzip $1 ;;
-			*.tar) tar xvf $1 ;;
-			*.tbz2) tar xvjf $1 ;;
-			*.tgz) tar xvzf $1 ;;
-			*.zip) unzip $1 ;;
-			*.Z) uncompress $1 ;;
-			*.7z) 7z x $1 ;;
-			*) echo "don't know how to extract '$1'..." ;;
-		esac
-	else
-		echo "'$1' is not a valid file!"
-	fi
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2) tar xvjf $1 ;;
+      *.tar.gz) tar xvzf $1 ;;
+      *.bz2) bunzip2 $1 ;;
+      *.rar) unrar x $1 ;;
+      *.gz) gunzip $1 ;;
+      *.tar) tar xvf $1 ;;
+      *.tbz2) tar xvjf $1 ;;
+      *.tgz) tar xvzf $1 ;;
+      *.zip) unzip $1 ;;
+      *.Z) uncompress $1 ;;
+      *.7z) 7z x $1 ;;
+      *) echo "don't know how to extract '$1'..." ;;
+    esac
+  else
+    echo "'$1' is not a valid file!"
+  fi
 }
 
 bashDebug() {
@@ -48,7 +48,7 @@ repeat () {
 	shift;
 	for i in $(seq 1 "$count");
 	do
-		eval "$@";
+    eval "$@";
 	done
 }
 
@@ -119,8 +119,8 @@ find-biggest-dirs () {
 	# find biggest directories on provided path
 
 	if [[ -z $1 ]]; then
-		echo "Please provide a path to search"
-		return 0
+    echo "Please provide a path to search"
+    return 0
 	fi
 
 	/usr/bin/env du --one-file-system --summarize $1/* | /usr/bin/env sort --numeric-sort --reverse
@@ -130,8 +130,8 @@ find-biggest-dirs-h () {
 	# find biggest directories on provided path, with human numbers
 
 	if [[ -z $1 ]]; then
-		echo "Please provide a path to search"
-		return 0
+    echo "Please provide a path to search"
+    return 0
 	fi
 
 	du --human-readable --summarize --one-file-system $1/* | sort --human-numeric-sort --reverse
@@ -141,8 +141,8 @@ find-biggest-files () {
 	# find biggest files on provided path
 
 	if [[ -z $1 ]]; then
-		echo "Please provide a path to search"
-		return 0
+    echo "Please provide a path to search"
+    return 0
 	fi
 
 	find $1 -type f -printf '%s %p\n' | sort --numeric --reverse
@@ -186,31 +186,31 @@ whatelse () {
 	pacman -Ql $package | grep 'bin'
 }
 
-imageshack() { 
+imageshack() {
 	# upload images to imageshack.us
 	for files in *; do
-		curl -H Expect: -F fileupload="@$files" -F xml=yes -# "http://www.imageshack.us/index.php" | grep image_link | sed -e 's/<image_link>/[IMG]/g' -e 's/<\/image_link>/[\/IMG]/g';
+    curl -H Expect: -F fileupload="@$files" -F xml=yes -# "http://www.imageshack.us/index.php" | grep image_link | sed -e 's/<image_link>/[IMG]/g' -e 's/<\/image_link>/[\/IMG]/g';
 	done;
 }
 
 pretendInstall() {
 	for i in `seq 0 100`; do
-		timeout 1 dialog --gauge "Install..." 6 40 "$i"
+    timeout 1 dialog --gauge "Install..." 6 40 "$i"
 	done
 	reset
 }
 
 pretendGarbage() {
 	while (true) ; do
-		pwgen -ny 72
-		sleep 1
+    pwgen -ny 72
+    sleep 1
 	done
 }
 
 getMovieLength () {
 	# get movie length
-	mplayer -vo null -ao null -frames 0 -identify $1 2> /dev/null | 
-		gawk '{FS="="}; /ID_LENGTH/{ H=int($2/3600); M=int(($2-H*3600)/60); S=int($2%60); printf("%02d:%02d:%02d\n", H, M, S)}'
+	mplayer -vo null -ao null -frames 0 -identify $1 2> /dev/null |
+    gawk '{FS="="}; /ID_LENGTH/{ H=int($2/3600); M=int(($2-H*3600)/60); S=int($2%60); printf("%02d:%02d:%02d\n", H, M, S)}'
 }
 
 
@@ -234,9 +234,9 @@ calc() {
 function cue() {
 	# remind you of something to do later
 	if [[ $# -eq 0 ]]; then
-		echo "Usage: $0 <time> <text string>"
+    echo "Usage: $0 <time> <text string>"
 	else
-		sleep $1 && shift && zenity --title 'Remind that...' --info --text "$*" &
+    sleep $1 && shift && zenity --title 'Remind that...' --info --text "$*" &
 	fi
 }
 
