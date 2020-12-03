@@ -16,15 +16,15 @@ fi
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
 
-srcFolder="${baseFolder}/src/common"
+commonFolder="${baseFolder}/src/common"
 localFolder="${baseFolder}/src/$HOSTNAME"
 # ensure local folder exists on new machines
 test -d ${localFolder} || mkdir -p ${localFolder}
 completionsFolder="${baseFolder}/completions"
 
 # load all that's common to any shell, any machine
-for file in `/usr/bin/env ls -1 ${srcFolder}`; do
-  source ${srcFolder}/${file};
+for file in `/usr/bin/env ls -1 ${commonFolder}`; do
+  source ${commonFolder}/${file};
 done
 
 # after ssh agent is running and variables exported...
