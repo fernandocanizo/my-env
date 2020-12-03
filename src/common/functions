@@ -244,3 +244,7 @@ function cue() {
 function gocurcona() {
 	gocurcon $2 ars $1;
 }
+
+function path() {
+  echo ${PATH}
+}

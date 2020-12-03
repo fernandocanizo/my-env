@@ -28,7 +28,6 @@ alias tgz='tar zcvf'
 # functional aliases
 
 alias findpath="find `echo $PATH | tr :. ' ''' ` -iname "
-alias path="echo $PATH"
 alias psl='/bin/ps -aufx | /bin/less -i'
 
 alias rmtmp='echo Deleting all temporal files...
