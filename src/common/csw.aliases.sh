@@ -18,3 +18,8 @@ alias cd.presences='cd /my/soft/csw/fuentes.de.datos/presences/'
 # SEA
 alias cd.sea-enslaver-back='cd /my/soft/csw/sea-enslaver/sea-digitizers-back'
 alias cd.sea-enslaver-front='cd /my/soft/csw/sea-enslaver/sea-digitizers-front'
+
+# Schiave
+alias cd.schiave-back='cd /my/soft/csw/schiave/schiave-back'
+alias cd.schiave-front='cd /my/soft/csw/schiave/schiave-front'
+
