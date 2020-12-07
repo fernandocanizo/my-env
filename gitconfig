@@ -20,7 +20,7 @@
 	mool = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%aD - %ar - %Cred%an%Creset), %s%n'
 	mooll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	# open project url in browser
-	gh = "!open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`"
+	gh = "!xdg-open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`"
 	recent = for-each-ref --sort=committerdate refs/heads/ --format=' %(color:blue) %(authorname) %(color:yellow)%(refname:short)%(color:reset)'
 
 	ci = commit
