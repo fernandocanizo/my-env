@@ -84,3 +84,4 @@ El paquete legit-git está abandonado
 - xclip
 - youtube-dl
 - zip
+- bash-eternal-history
