@@ -42,6 +42,7 @@ if [[ 'y' = ${answer} ]]; then
   fi
   cd ${i3Folder}
   ${myLinker} ${baseFolder}/i3/config ${i3Folder}/config
+  ${myLinker} ${baseFolder}/i3/status.conf ${i3Folder}/status.conf
 fi
 
 # Finally, write down configuration folder path so it can be used by
