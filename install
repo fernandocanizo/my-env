@@ -29,9 +29,10 @@ if [[ ! -d .config ]]; then
 fi
 
 echo 'Linking configuration files under $HOME/.config'
-${myLinker} ${baseFolder}/git ${HOME}/.config/git
-${myLinker} ${baseFolder}/mc ${HOME}/.config/mc
-${myLinker} ${baseFolder}/kitty ${HOME}/.config/kitty
+${myLinker} ${baseFolder}/git ${XDG_CONFIG_HOME}/git
+${myLinker} ${baseFolder}/mc ${XDG_CONFIG_HOME}/mc
+${myLinker} ${baseFolder}/kitty ${XDG_CONFIG_HOME}/kitty
+${myLinker} ${baseFolder}/yay ${XDG_CONFIG_HOME}/yay
 
 echo "Install i3 configuration? (y/N)"
 read answer
