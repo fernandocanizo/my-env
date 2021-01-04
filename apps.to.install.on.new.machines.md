@@ -2,6 +2,7 @@
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
 
+- mcfly
 - agave
 - qbittorrent
 - bash-language-server
