@@ -21,7 +21,7 @@ El paquete legit-git está abandonado
 - perl-rename
 - unrar
 - pgcli
-- bind-tools (for `dig` and `host` among other tools)
+- bind (for `dig` and `host` among other tools)
 - brave-bin (the non-bin clones a git repo and is too big)
 - chromium
 - colordiff
