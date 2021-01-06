@@ -17,7 +17,6 @@ El paquete legit-git está abandonado
 - dog
 - bat
 - shutter
-- perl-goo-canvas
 - flameshot
 - perl-rename
 - unrar
