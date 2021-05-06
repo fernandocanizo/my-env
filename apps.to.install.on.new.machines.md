@@ -30,7 +30,6 @@ El paquete legit-git está abandonado
 - community/rxvt-unicode
 - convmv
 - dictd
-- diff-so-fancy
 - docker
 - docker-compose
 - dos2unix
