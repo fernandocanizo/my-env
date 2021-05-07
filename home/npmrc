@@ -5,3 +5,4 @@ save-prefix=^
 save-exact=false
 init.license=MIT
 init.version=1.0.0
+fund=false
