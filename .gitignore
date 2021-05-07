@@ -1,5 +1,4 @@
 *.ignore
-TODO
 # mc file is added to have an initial configuration for mc to my liking
 # but since this file could change on each mc usage, I ignore it
 mc/panels.ini
@@ -7,7 +6,5 @@ mc/panels.ini
 # Have an initial configuration for Midnight Commander, but ignore changes
 # afterwards since `mc` makes changes as you use it
 mc/ini
-
-local/*
 
 git/gitk
