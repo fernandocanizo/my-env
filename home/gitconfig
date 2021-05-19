@@ -9,13 +9,13 @@
 	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
   # diff-so-fancy: requires `npm i -g diff-so-fancy`
-  pager = diff-so-fancy | less --tabs=4 -RX
+#  pager = diff-so-fancy | less --tabs=4 -RX
 
   # Better than diff-so-fancy, but breaks my terminal
   # Re-activate when https://github.com/banga/git-split-diffs/issues/16
   # gets solved
   # git-split-diffs: requires `npm i -g git-split-diffs`
-	#pager = git-split-diffs --color | less -RFX
+	pager = git-split-diffs --color | less -RFX
 
 [merge]
 	#tool = meld
