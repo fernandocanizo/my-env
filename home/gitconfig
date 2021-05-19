@@ -124,6 +124,7 @@
 	default = simple
 
 [init]
+	defaultBranch = main
 
 #[credential]
 #	helper = !aws codecommit credential-helper $@
