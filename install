@@ -18,6 +18,8 @@ ${myLinker} ${baseFolder}/Xresources .Xresources
 ${myLinker} ${baseFolder}/xprofile .xprofile
 ${myLinker} ${baseFolder}/gitconfig .gitconfig
 ${myLinker} ${baseFolder}/npmrc .npmrc
+# gpg data
+${myLinker} ${HOME}/Dropbox/.gnupg .gnupg
 
 # Don't erase ~/.pgpass if there's one already
 if [[ ! -e .pgpass ]]; then
