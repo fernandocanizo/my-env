@@ -1,10 +1,16 @@
-
-exec urxvtd &
-
 # load accents and stuff
 exec xmodmap $HOME/.Xmodmap &
 
+# start usual utilities
+exec urxvtd &
+exec flameshot &
+exec dropbox &
 exec guake &
+
+
+###########################################################################
+# Old stuff I prefer not to remove in case I needed it again in the future
+###########################################################################
 
 # put external monitor above
 #exec xrandr --output HDMI-2 --auto --above eDP-1 &
