@@ -158,8 +158,8 @@ URxvt.keysym.Meta-0: tabbedex:goto_tab_10
 ! xautolock settings
 !#################################################################
 
-Xautolock.corners: +000
-Xautolock.cornersize: 20
+Xautolock.corners: 0000
+Xautolock.cornersize: 10
 ! seconds
 Xautolock.cornerdelay: 0
 ! minutes
