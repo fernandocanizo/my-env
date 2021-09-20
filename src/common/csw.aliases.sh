@@ -1,4 +1,4 @@
-alias cd.maps='cd /my/soft/csw/webgis/maps'
+alias cd.maps='cd /my/soft/0.work/2016.07,csw/webgis/maps'
 
 alias cd.fdd='cd /my/soft/csw/fuentes.de.datos/fdd'
 alias cd.eecc='cd /my/soft/csw/crawlers/eecc'
@@ -18,7 +18,7 @@ alias schiave-psql='psql --host schiave.cy3tepzkndt3.us-west-2.rds.amazonaws.com
 alias schiave-activity='pg_activity -U postgres -d schiave -h schiave.cy3tepzkndt3.us-west-2.rds.amazonaws.com --rds'
 
 
-alias cd.pref='cd /my/soft/csw/reporte.ambiental/prefactibilidad'
+alias cd.pref='cd /my/soft/0.work/2016.07,csw/reporte.ambiental/prefactibilidad'
 alias cd.presences='cd /my/soft/csw/fuentes.de.datos/presences/'
 
 # SEA
