@@ -1,8 +1,11 @@
 # Add daily needed ssh keys
 # conditionally load daily used keys
 
-# github
+# personal github account: fernandocanizo
 $(ssh-add -l | grep -q 'SHA256:CE5a3EGQk6a0hdUFkfUEuMsdHWgkoThPbPm9uV9fJts') || ssh-add ~/.ssh/github_bella
+
+# work github account: flc-globant
+$(ssh-add -l | grep -q 'SHA256:BRQlayg5hwAf6znrb09Tst7f6Cj31fKxa3vgK11oarw') || ssh-add ~/.ssh/bytor-globant-github-id-rsa
 
 # Esta key se está agregando sola no sé cómo
 # aws
