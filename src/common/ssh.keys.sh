@@ -2,7 +2,7 @@
 # conditionally load daily used keys
 
 # personal github account: fernandocanizo
-$(ssh-add -l | grep -q 'SHA256:oTfHnTKEpShyYxdpZdhFf844Vzx+c3otp8rn0Y/WM7k') || ssh-add ~/.ssh/bytor-github-id-rsa
+$(ssh-add -l | grep -q 'SHA256:oTfHnTKEpShyYxdpZdhFf844Vzx\+c3otp8rn0Y\/WM7k') || ssh-add ~/.ssh/bytor-github-id-rsa
 
 # work github account: flc-globant
 $(ssh-add -l | grep -q 'SHA256:BRQlayg5hwAf6znrb09Tst7f6Cj31fKxa3vgK11oarw') || ssh-add ~/.ssh/bytor-globant-github-id-rsa
