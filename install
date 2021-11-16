@@ -3,38 +3,48 @@
 # create symbolic links to point to git-maintained configuration files
 
 baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+homeFolder="${baseFolder}/home/"
 myLinker='ln -vsf -T '
 
 cd $HOME
 
 echo 'Linking configuration files under $HOME'
-${myLinker} ${baseFolder}/bash_profile .bash_profile
-${myLinker} ${baseFolder}/bashrc .bashrc
-${myLinker} ${baseFolder}/bash_logout .bash_logout
-${myLinker} ${baseFolder}/dircolors .dircolors
-${myLinker} ${baseFolder}/inputrc .inputrc
-${myLinker} ${baseFolder}/psqlrc .psqlrc
-${myLinker} ${baseFolder}/Xresources .Xresources
-${myLinker} ${baseFolder}/xprofile .xprofile
-${myLinker} ${baseFolder}/gitconfig .gitconfig
-${myLinker} ${baseFolder}/npmrc .npmrc
-# gpg data
-${myLinker} ${HOME}/Dropbox/.gnupg .gnupg
+${myLinker} ${homeFolder}bash_profile .bash_profile
+${myLinker} ${homeFolder}bashrc .bashrc
+${myLinker} ${homeFolder}bash_logout .bash_logout
+${myLinker} ${homeFolder}dircolors .dircolors
+${myLinker} ${homeFolder}inputrc .inputrc
+${myLinker} ${homeFolder}psqlrc .psqlrc
+${myLinker} ${homeFolder}Xresources .Xresources
+${myLinker} ${homeFolder}xprofile .xprofile
+${myLinker} ${homeFolder}gitconfig .gitconfig
+${myLinker} ${homeFolder}npmrc .npmrc
+
+echo "Install personal stuff? (y/N)"
+read answer
+if [[ 'y' = ${answer} ]]; then
+  # gpg data
+  ${myLinker} ${HOME}/Dropbox/.gnupg .gnupg
+fi
 
 # Don't erase ~/.pgpass if there's one already
 if [[ ! -e .pgpass ]]; then
-  cp ${baseFolder}/pgpass ~/.pgpass
+  cp ${homeFolder}pgpass ~/.pgpass
 fi
 
 if [[ ! -d .config ]]; then
   mkdir .config
 fi
 
-echo 'Linking configuration files under $HOME/.config'
-${myLinker} ${baseFolder}/git ${XDG_CONFIG_HOME}/git
-${myLinker} ${baseFolder}/mc ${XDG_CONFIG_HOME}/mc
-${myLinker} ${baseFolder}/kitty ${XDG_CONFIG_HOME}/kitty
-${myLinker} ${baseFolder}/yay ${XDG_CONFIG_HOME}/yay
+echo "Install apps configuration? (y/N)"
+read answer
+if [[ 'y' = ${answer} ]]; then
+  echo 'Linking configuration files under $HOME/.config'
+  ${myLinker} ${baseFolder}/git ${XDG_CONFIG_HOME}/git
+  ${myLinker} ${baseFolder}/mc ${XDG_CONFIG_HOME}/mc
+  ${myLinker} ${baseFolder}/kitty ${XDG_CONFIG_HOME}/kitty
+  ${myLinker} ${baseFolder}/yay ${XDG_CONFIG_HOME}/yay
+fi
 
 echo "Install i3 configuration? (y/N)"
 read answer
