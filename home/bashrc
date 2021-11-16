@@ -3,11 +3,6 @@
 # ~/.bash_profile to keep all configuration in one place
 [[ -r /etc/profile ]] && source /etc/profile
 
-
-# Get running ssh-agent data to be able to add keys
-export SSH_AUTH_SOCK=$(ps axu | grep ssh-agent | grep -v grep | head -n 1 | awk  '{print $NF}')
-export SSH_AGENT_PID=$(pgrep -u $USER ssh-agent)
-
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
 
@@ -16,6 +11,9 @@ localFolder="${baseFolder}/src/$HOSTNAME"
 # ensure local folder exists on new machines
 test -d ${localFolder} || mkdir -p ${localFolder}
 completionsFolder="${baseFolder}/completions"
+
+# Start only one ssh-agent or use the one already started by the system
+source ${commonFolder}/ssh.agent.sh;
 
 # load all that's common to any shell, any machine
 for file in `/usr/bin/env ls -1 ${commonFolder}`; do
