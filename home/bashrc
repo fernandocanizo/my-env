@@ -4,14 +4,9 @@
 [[ -r /etc/profile ]] && source /etc/profile
 
 
-# Start ssh-agent, only one
-if ! pgrep -u $USER ssh-agent > /dev/null; then
-	ssh-agent >| ~/.ssh-agent-thing
-fi
-
-if [[ "$SSH_AGENT_PID" == "" ]]; then
-	eval $(<~/.ssh-agent-thing)
-fi
+# Get running ssh-agent data to be able to add keys
+export SSH_AUTH_SOCK=$(ps axu | grep ssh-agent | grep -v grep | head -n 1 | awk  '{print $NF}')
+export SSH_AGENT_PID=$(pgrep -u $USER ssh-agent)
 
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
