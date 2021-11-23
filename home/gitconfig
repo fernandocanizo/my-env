@@ -76,6 +76,9 @@
 	merc = merge --no-ff
 
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+  # legit needs to be installed before:
+  # pip install legit
 	branches = !legit branches
 	publish = !legit publish
 	unpublish = !legit unpublish
