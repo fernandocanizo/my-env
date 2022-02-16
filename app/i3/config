@@ -63,16 +63,14 @@ bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
+#bindsym $mod+F5 exec terminal -e 'mocp'
 #
 # 2019.09.20 esto venía, no sé para qué usaría compton
-bindsym $mod+p exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+p exec --no-startup-id picom -b
+#bindsym $mod+p exec --no-startup-id pkill picom
+#bindsym $mod+Ctrl+p exec --no-startup-id picom -b
 
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -83,12 +81,6 @@ bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 bindsym Mod4+Tab focus right
 bindsym Mod4+Shift+Tab focus left
-
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -297,7 +289,7 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+#exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
