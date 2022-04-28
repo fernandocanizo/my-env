@@ -63,8 +63,9 @@
 
 	# remove stale branches
   # Note: inside gitconfig we need to add an extra espace backslash to the '*'
-  clean-local-branches = !git co dev -q && git branch --merged | egrep -v '(\\*|master)' | xargs git branch -d
-  clean-remote-branches = !git branch -r | grep origin | egrep -v '(master|dev)' | cut -f2 -d'/' | xargs git push --delete origin
+  clean-local-branches = !git checkout master --quiet && git branch --merged | egrep --invert-match '(\\*|master)' | xargs git branch -d
+	clean-remote-branches = !git branch --remotes --merged | egrep --invert-match '(master|HEAD)' | cut -f2 -d'/' | xargs -n 1 git push --delete origin
+
   # Sometimes you remove by hand branches on the website (github or
   # another) and locally there still exist a reference to a remote that
   # doesn't exist anymore. git remote prune origin gets ride of them
@@ -100,6 +101,7 @@
 	switch = !legit switch
 	resync = !legit resync
 	undo = !legit undo
+
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 0x0+0+0
