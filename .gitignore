@@ -7,4 +7,4 @@ app/mc/panels.ini
 # afterwards since `mc` makes changes as you use it
 app/mc/ini
 
-git/gitk
+app/git/gitk
