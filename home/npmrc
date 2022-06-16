@@ -1,8 +1,8 @@
-init.author.name=Fernando L. Canizo
-init.author.email=fernandocanizo@gmail.com
-init.author.url=https://github.com/fernandocanizo/
+init-author-name=Fernando L. Canizo
+init-author-email=fernandocanizo@gmail.com
+init-author-url=https://github.com/fernandocanizo/
+init-license=MIT
+init-version=1.0.0
 save-prefix=^
 save-exact=false
-init.license=MIT
-init.version=1.0.0
 fund=false
