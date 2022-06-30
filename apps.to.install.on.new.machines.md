@@ -87,3 +87,12 @@ El paquete legit-git está abandonado
 - youtube-dl
 - zip
 - bash-eternal-history
+
+## Database management
+Not thoroughly tested, but seems cool:
+
+- [sqltabs](https://www.sqltabs.com/)
+- [litecli](https://github.com/dbcli/litecli)
+- [peeq](https://github.com/dbhowell/peeq)
+- [pgbrowse](https://github.com/Geballin/PgBrowse)
+- [pgadmin4](https://www.pgadmin.org/)
