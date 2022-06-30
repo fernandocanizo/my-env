@@ -13,3 +13,6 @@
 
 - `npm install -g serve`
   Static file serving and directory listing.
+
+- `npm install -g jsinspect`
+  Analyzes code and reports duplicated code and other stuff
