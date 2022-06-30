@@ -1,11 +1,17 @@
+# defaults when not working inside ~/g or ~/my : personal account
 [user]
-	name = Fernando Lucio Canizo
-	email = fernandocanizo@gmail.com
+  name = Fernando Lucio Canizo
+  email = fernandocanizo@gmail.com
+
+[github]
+  user = fernandocanizo
 
 [format]
 	headers = "Content-Type: text/plain; charset=\"utf-8\""
 
 [core]
+  sshCommand = "ssh -i ~/.ssh/bytor-github-personal-rsa"
+
 	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
   # diff-so-fancy: requires `npm i -g diff-so-fancy`
@@ -147,15 +153,28 @@
 #[credential]
 #	helper = !aws codecommit credential-helper $@
 #	UseHttpPath = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [log]
 	decorate = true
 	abbrevCommit = true
+
 [rebase]
 	autostash = true
+
 [pull]
 	rebase = true
+
+# Multiaccount configuration at the end so it overwrites previous
+# stuff
+[includeIf "gitdir:~/g/"]
+  path = ~/g/gitconfig
+
+[includeIf "gitdir:~/my/"]
+  path = ~/my/gitconfig
+
