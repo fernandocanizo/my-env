@@ -1,0 +1,7 @@
+# pnpm
+export PNPM_HOME="/home/flc/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# also alias it to `npm`
+alias npm=pnpm
+# pnpm end
