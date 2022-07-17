@@ -1,0 +1,9 @@
+[user]
+	email = fernando.canizo@globant.com
+
+[github]
+  user = "flc-globant"
+
+[core]
+  sshCommand = "ssh -i ~/.ssh/bytor-github-globant-ed25519-no-pass"
+

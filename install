@@ -18,6 +18,7 @@ ${myLinker} ${homeFolder}psqlrc .psqlrc
 ${myLinker} ${homeFolder}Xresources .Xresources
 ${myLinker} ${homeFolder}xprofile .xprofile
 ${myLinker} ${homeFolder}gitconfig .gitconfig
+${myLinker} ${homeFolder}gitconfig-work gitconfig-work
 ${myLinker} ${homeFolder}npmrc .npmrc
 
 echo "Install personal stuff? (y/N)"

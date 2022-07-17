@@ -1,4 +1,4 @@
-# defaults when not working inside ~/g or ~/my : personal account
+# defaults when not working inside ~/g (work folder) are for my personal account
 [user]
   name = Fernando Lucio Canizo
   email = fernandocanizo@gmail.com
@@ -170,11 +170,6 @@
 [pull]
 	rebase = true
 
-# Multiaccount configuration at the end so it overwrites previous
-# stuff
+# Multiaccount configuration at the end so it overwrites previous stuff
 [includeIf "gitdir:~/g/"]
-  path = ~/g/gitconfig
-
-[includeIf "gitdir:~/my/"]
-  path = ~/my/gitconfig
-
+  path = ~/gitconfig-work
