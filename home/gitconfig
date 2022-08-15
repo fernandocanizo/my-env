@@ -15,16 +15,20 @@
 	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
   # diff-so-fancy: requires `npm i -g diff-so-fancy`
-#  pager = diff-so-fancy | less --tabs=4 -RX
+  # pager = diff-so-fancy | less --tabs=4 -RX
 
   # Better than diff-so-fancy, but breaks my terminal
   # Re-activate when https://github.com/banga/git-split-diffs/issues/16
   # gets solved
   # git-split-diffs: requires `npm i -g git-split-diffs`
-#	pager = git-split-diffs --color | less -RFX
+  # 2022-08-06 also broken, trying plain pager, maybe it wasn't a delta
+  # issue
+  # pager = git-split-diffs --color | less -RFX
+
   # delta requires `yay -S git-delta` (the non git delta package is
   # something completely unrelated)
-  pager = delta
+  # 2022-08-06 delta broken: no output, so go back to git-split-diffs
+   pager = delta
 
 [interactive]
   diffFilter = delta --color-only
