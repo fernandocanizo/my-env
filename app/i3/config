@@ -30,7 +30,7 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvtc
 # also have a fallbck on Alt+Enter, cause I'm accustomed to that mapping
 bindsym Mod1+Return exec urxvtc
-bindsym $mod+x exec kitty
+bindsym $mod+x exec kitty --single-instance /usr/bin/xonsh
 
 # kill focused window
 bindsym $mod+Shift+q kill
