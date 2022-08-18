@@ -8,12 +8,12 @@ $FLC_INIT = os.path.realpath(__file__)
 $FLC_ENV = os.path.dirname(os.path.dirname($FLC_INIT))
 $FLC_LIB = os.path.join($FLC_ENV, 'xonsh-scripts')
 
-
-$PROMPT = '{env_name}{BOLD_GREEN}{user}@{hostname}{BOLD_BLUE} {cwd}{branch_color}{gitstatus: {}}{RESET} {BOLD_BLUE}{prompt_end}{RESET} '
-
-$XONSH_HISTORY_BACKEND = 'sqlite'
-
-$XDG_CONFIG_HOME = '~/.config/'
+environmentPath = os.path.join($FLC_LIB, 'environment.xsh')
+source @(environmentPath)
 
 aliasesPath = os.path.join($FLC_LIB, 'aliases.xsh')
 source @(aliasesPath)
+
+cdAliasesPath = os.path.join($FLC_LIB, 'cd.aliases.xsh')
+source @(cdAliasesPath)
+
