@@ -2,7 +2,7 @@
 # less options, -R is to allow ANSI escape sequences
 export LESS="-iCwqf -R"
 export PAGER='less'
-GREP_COLORS='auto'
+export GREP_COLORS='auto'
 
 export MANPAGER="/bin/less -s"
 
