@@ -17,3 +17,18 @@ source @(aliasesPath)
 cdAliasesPath = os.path.join($FLC_LIB, 'cd.aliases.xsh')
 source @(cdAliasesPath)
 
+# pretty print numbers when doing calculations on the shell
+# by @maxwellfire:matrix.org on Gitter
+import xonsh.pretty
+
+def _format_int(int, printer, cycle):
+        printer.text(f'{int:,}')
+
+def _format_float(float, printer, cycle):
+        printer.text(f'{float:0,.9}')
+
+xonsh.pretty.for_type(type(1), _format_int)
+xonsh.pretty.for_type(type(1.0), _format_float)
+
+del _format_float, _format_int
+
