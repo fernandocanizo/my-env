@@ -44,6 +44,7 @@
 
 [diff]
   colorMoved = default
+  external = difft
 
 [alias]
 	# aliases from mool
