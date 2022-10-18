@@ -101,7 +101,7 @@ mcd() {
 	# first one from the results
 
 	# Will clobber mtools mcd command if you have it installed
-	# But I never use mtools that anyway
+	# But I never use mtools anyway
 
 	cd `find -maxdepth 1 -type d | grep -v '^.$' | sort | grep -i $1 | head -n 1`
 }
@@ -170,7 +170,7 @@ command_not_found_handle() {
 
 # Open URL of an Archlinux package
 function pkgpage () {
-    url=$(yaourt -Si $1 | egrep '^URL' | egrep -o 'https?://[^ ]+')
+    url=$(yaourt -Si $1 | grep -E '^URL' | grep -E -o 'https?://[^ ]+')
     echo "Opening ${url} ..."
     chromium ${url}
 }

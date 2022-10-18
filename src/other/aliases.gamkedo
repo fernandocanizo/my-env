@@ -1,5 +1,5 @@
 
-alias grep='egrep --exclude-dir .git'
+alias grep='grep -E --exclude-dir .git'
 
 
 # change directory aliases

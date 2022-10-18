@@ -2,7 +2,12 @@
 # fun with alias
 #------------------------------------------------------------------------------
 
+#
 # convenience aliases
+#
+
+# use perl regexp on grep
+alias grep='grep -E'
 
 # less: ignore case unless search includes uppercase characters
 alias l='/usr/bin/env less -i'
@@ -14,7 +19,7 @@ alias u='umount'
 alias du='du -h'
 
 # sorted output for du
-alias dusorted='for i in G M K; do du -hsx * | grep "[0-9]$i\b" | sort -nr; done 2>/dev/null'
+alias dusorted='for i in G M K; do du -hsx * | grep -E "[0-9]$i\b" | sort -nr; done 2>/dev/null'
 alias ducks='du -cks * 2>/dev/null | sort -rn | head -n 10'
 alias df='df -h'
 alias h='history'
@@ -75,14 +80,10 @@ alias slq='\ls -1 --quote-name'
 alias nls='\ls --ignore='
 
 # show only directories
-alias dir='\ls -l --color=always | grep "^d"'
+alias dir='\ls -l --color=always | grep -E "^d"'
 
 # not ls, but for ls-ing: see octal permissions on files
 alias lsmode='find . -printf "%m %p n\n"'
-
-
-# use perl regexp on grep
-alias grep='egrep'
 
 # which process is eating my cpu?
 alias cpueaters='ps ax -o pcpu,pid,cmd | sort -nr | head -n 10'
@@ -95,7 +96,8 @@ alias cal='cal -3wm'
 alias caly='\cal -wmy'
 
 # 2016.07.21 grep recursively on node.js projects without fuss
-alias nodegrep='egrep --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads --exclude package-lock.json'
+# 2022-10-18 this has been superseded by ripgrep
+alias nodegrep='grep -E --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads --exclude package-lock.json'
 
 alias pretend='cat /dev/urandom | hexdump | grep --color=auto cafe'
 alias cafe=pretend

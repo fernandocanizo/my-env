@@ -18,7 +18,7 @@ aliases |= {
 
   # fun with du
   'du': 'du -h',
-  'dusorted': 'for i in G M K; do du -hsx * | grep "[0-9]$i\b" | sort -nr; done 2>/dev/null',
+  'dusorted': 'for i in G M K; do du -hsx * | grep -E "[0-9]$i\b" | sort -nr; done 2>/dev/null',
   'ducks': 'du -cks * 2>/dev/null | sort -rn | head -n 10',
 
   'df': 'df -h',
@@ -59,13 +59,14 @@ aliases |= {
   # don't show shell pattern provided
   'nls': '/usr/bin/env ls --ignore=',
   # show only directories
-  'folders': '/usr/bin/env ls -l --color=always | grep "^d"',
+  'folders': '/usr/bin/env ls -l --color=always | grep -E "^d"',
 
   # not ls, but for ls-ing: see octal permissions on files
   'lsmode': r'find . -printf "%m %p\n"',
 
-  # always use `egrep`, which provides perl regexps
-  'grep': 'egrep',
+  # always use `grep -E`, which provides perl regexps, the "egrep" alias is
+  # deprecated
+  'grep': 'grep -E',
 
   # which process is eating my cpu?
   'cpueaters': 'ps ax -o pcpu,pid,cmd | sort -nr | head -n 10',
