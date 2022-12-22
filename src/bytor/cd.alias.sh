@@ -8,3 +8,7 @@ alias cd.flc.dev='cd /my/soft/0.my.websites/fernandocanizo.dev'
 alias cd.snake='cd /my/soft/0.games/2017.05.16,coding.snake.in.4.minutes.30.seconds.with.gamkedo'
 
 alias cd.javascript.allonge='cd /my/soft/0.learning/0.books/2022.01.01,javascript.allonge/'
+
+# I never recall where does Tor Browser save downloads
+alias cd.torbrowser='cd /home/flc/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/Downloads'
+
