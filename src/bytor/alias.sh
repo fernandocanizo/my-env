@@ -7,3 +7,7 @@ alias pgp='pass git push'
 
 # please alias that long and awful name
 alias tomato='/usr/bin/com.github.tomatoers.tomato'
+
+# secondary X selection cannot be copied with shift+insert, so I have this
+# alias which uses xclip to print it out
+alias xclipboard='xclip -selection clipboard'
