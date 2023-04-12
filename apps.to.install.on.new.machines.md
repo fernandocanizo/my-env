@@ -5,7 +5,6 @@
 - devbook-bin
 - fractus-atlas
 - discord
-- mcfly
 - agave
 - qbittorrent
 - bash-language-server
@@ -19,8 +18,8 @@ El paquete legit-git está abandonado
 - mcfly
 - dog
 - bat
-- shutter
-- flameshot
+- shutter (I don't recall why I'm not using it)
+- flameshot (using it, loving it!)
 - perl-rename
 - unrar
 - pgcli
