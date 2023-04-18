@@ -6,3 +6,4 @@ init-version=1.0.0
 save-prefix=^
 save-exact=false
 fund=false
+global-dir=/home/flc/.local/bin
