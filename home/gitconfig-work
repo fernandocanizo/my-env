@@ -5,5 +5,6 @@
   user = "flc-globant"
 
 [core]
-  sshCommand = "ssh -i ~/.ssh/bytor-github-globant-ed25519-no-pass"
+# Unused now, but I leave it as usage example (key's gone so this will give an error)
+#  sshCommand = "ssh -i ~/.ssh/bytor-github-globant-ed25519-no-pass"
 
