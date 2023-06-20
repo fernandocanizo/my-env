@@ -1,9 +1,17 @@
+! This file usually is autoloaded by display manager, but if you are making changes
+! you may load new changes with:
+! `xrdb ~/.Xresources`
+! or to merge with already loaded configuration:
+! `xrdb -merge ~/.Xresources`
+! I am loading it from `.xinitrc`
+
 !#################################################################
 ! Mouse cursor fun
 !#################################################################
 
 ! Cyclone: +1 very fancy, but inside applications goes back to default cursor
 Xcursor.theme: Cyclone
+!Xcursor.theme: Chameleon-Pearl-Large-0.5
 Xcursor.size: 32
 
 
@@ -158,10 +166,11 @@ URxvt.keysym.Meta-0: tabbedex:goto_tab_10
 ! xautolock settings
 !#################################################################
 
+! 2023-06-20 this is not working. Works from the CLI. Maybe this file is not being loaded?
 Xautolock.corners: 0000
 Xautolock.cornersize: 10
 ! seconds
 Xautolock.cornerdelay: 0
 ! minutes
 Xautolock.time: 5
-Xautolock.locker: i3lock -i ~/hobby/wallpapers/1920x1200/1486827-backtrack-5-r3.jpg
+Xautolock.locker: i3lock -i ~/Dropbox/hobby/wallpapers/png/demonic.sign-1920x1080.png
