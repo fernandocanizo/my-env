@@ -82,8 +82,9 @@ XTerm*selectToClipboard: true
 !#################################################################
 ! URxvt
 !#################################################################
+! To find font names use `fc-list`
 ! la l y la I se confunden con TerminessTTFNerdFontMono
-URxvt.font: xft:TerminessTTFNerdFontMono:pixelsize=26
+URxvt.font: xft:Terminess Nerd Font Mono:style=Regular:pixelsize=26
 ! Horrible FuraCode: faltan más caracteres que en TerminessTTFNerdFontMono
 ! y además el espaciado entre letras es gigante
 !URxvt*font: xft:FuraCode Nerd Font Mono:pixelsize=20
