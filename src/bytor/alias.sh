@@ -14,3 +14,5 @@ alias xclipboard='xclip -selection clipboard'
 
 # I always forget which one is the app to render Markdown on the CLI
 alias md='glow -p '
+# I forgot previous alias, so I'll make one more obvious
+alias markdown='glow -p '
