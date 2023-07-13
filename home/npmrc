@@ -7,3 +7,5 @@ save-prefix=^
 save-exact=false
 fund=false
 global-dir=/home/flc/.local/bin
+scripts-prepend-node-path=true
+node_gyp=
