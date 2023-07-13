@@ -4,7 +4,7 @@
 
 baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 homeFolder="${baseFolder}/home/"
-myLinker='ln -vsf -T '
+myLinker='ln -vf -T '
 
 cd $HOME
 
@@ -20,6 +20,7 @@ ${myLinker} ${homeFolder}xprofile .xprofile
 ${myLinker} ${homeFolder}gitconfig .gitconfig
 ${myLinker} ${homeFolder}gitconfig-work gitconfig-work
 ${myLinker} ${homeFolder}npmrc .npmrc
+${myLinker} ${homeFolder}iex.exs .iex.exs
 
 echo "Install personal stuff? (y/N)"
 read answer
