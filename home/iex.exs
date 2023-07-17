@@ -44,8 +44,7 @@ fellowship = %{
   humans: ["Aragorn", "Boromir"],
   dwarves: ["Gimli"],
   elves: ["Legolas"],
-  wizards: ["Gandolf"]
+  wizards: ["Gandalf"]
 }
 
-
-IO.puts("FLC configuration loaded")
+IO.puts("#{IO.ANSI.magenta}===> FLC configuration loaded#{IO.ANSI.reset}")
