@@ -47,4 +47,30 @@ fellowship = %{
   wizards: ["Gandalf"]
 }
 
+# utility functions
+
+# Doesn't work for functions inside modules. Haven't verified all of them
+defmodule Util do
+  def whatis?(term) when is_atom(term), do: "Type: Atom"
+  def whatis?(term) when is_binary(term), do: "Type: Binary"
+  def whatis?(term) when is_boolean(term), do: "Type: Boolean"
+  def whatis?(term) when is_bitstring(term), do: "Type: Bitstring"
+  def whatis?(term) when is_boolean(term), do: "Type: Boolean"
+  def whatis?(term) when is_exception(term), do: "Type: Exception"
+  def whatis?(term) when is_function(term), do: "Type: Function"
+  def whatis?(term) when is_list(term), do: "Type: List"
+  def whatis?(term) when is_map(term), do: "Type: Map"
+  def whatis?(term) when is_nil(term), do: "Type: Nil"
+  def whatis?(term) when is_pid(term), do: "Type: Pid"
+  def whatis?(term) when is_port(term), do: "Type: Port"
+  def whatis?(term) when is_reference(term), do: "Type: Reference"
+  def whatis?(term) when is_struct(term), do: "Type: Struct"
+  def whatis?(term) when is_tuple(term), do: "Type: Tuple"
+  def whatis?(term) when is_integer(term), do: "Type: Number, Integer"
+  def whatis?(term) when is_float(term), do: "Type: Number, Float"
+
+  def whatis?(_term), do: "Type: Unknown"
+end
+
+
 IO.puts("#{IO.ANSI.magenta}===> FLC configuration loaded#{IO.ANSI.reset}")
