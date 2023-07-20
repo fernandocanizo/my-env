@@ -27,7 +27,8 @@ font xft:Terminess Nerd Font Mono:style=Regular 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+# bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec wezterm
 bindsym $mod+x exec kitty --single-instance /usr/bin/xonsh
 
 # kill focused window
