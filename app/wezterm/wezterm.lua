@@ -14,7 +14,12 @@ end
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'Batman'
-config.color_scheme = 'Solarized Darcula'
+
+-- numbers and strings appear in black, which is hard to see with the dark gray background
+-- config.color_scheme = 'Solarized Darcula'
+
+config.color_scheme = '3024 (dark) (terminal.sexy)'
+
 
 -- Spawn a xonsh shell in login mode
 -- config.default_prog = { '/usr/bin/env', 'xonsh' }
