@@ -105,7 +105,10 @@ mcd() {
 	# Will clobber mtools mcd command if you have it installed
 	# But I never use mtools anyway
 
-	cd `find -maxdepth 1 -type d | grep -v '^.$' | sort | grep -i $1 | head -n 1`
+	found_dir=$(find -maxdepth 1 -type d | grep -v '^.$' | sort | grep -i $1 | head -n 1)
+	if [[ -n $found_dir ]]; then
+		cd $found_dir
+	fi
 }
 
 
