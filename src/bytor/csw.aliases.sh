@@ -1,1 +1,0 @@
-../common/csw.aliases.sh
