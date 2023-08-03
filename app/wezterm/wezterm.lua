@@ -23,7 +23,10 @@ wezterm.log_error('Home ' .. wezterm.home_dir)
 -- numbers and strings appear in black, which is hard to see with the dark gray background
 -- config.color_scheme = 'Solarized Darcula'
 
-config.color_scheme = '3024 (dark) (terminal.sexy)'
+-- pretty sane, but had a hard time reading the path information from my prompt
+-- config.color_scheme = '3024 (dark) (terminal.sexy)'
+
+config.color_scheme = 'Adventure'
 
 
 -- Spawn a xonsh shell in login mode
