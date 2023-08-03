@@ -91,7 +91,7 @@ shadows=true
 [Layout]
 output_lines=0
 left_panel_size=73
-top_panel_size=16
+top_panel_size=15
 message_visible=true
 keybar_visible=true
 xterm_title=true
