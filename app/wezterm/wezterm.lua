@@ -10,7 +10,12 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
+-- Always start on at $HOME
+-- it would be nice to set it up via environment variable
+config.default_cwd = "/home/flc/"
+wezterm.log_error('Home ' .. wezterm.home_dir)
+-- didn't work, I'm gonna leave it here to check if I need to relaunch wezterm
+-- from scratch
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'Batman'
