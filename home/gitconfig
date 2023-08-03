@@ -1,4 +1,6 @@
-# defaults when not working inside ~/g (work folder) are for my personal account
+; vim: noexpandtab:tabstop=4:shiftwidth=4:softtabstop=4
+
+; defaults when not working inside ~/g (work folder) are for my personal account
 [user]
 	name = Fernando Lucio Canizo
 	email = fernandocanizo@gmail.com
@@ -14,97 +16,85 @@
 
 	editor = nvim
 	excludesfile = /home/flc/.git/info/exclude
-	# diff-so-fancy: requires `npm i -g diff-so-fancy`
-	# pager = diff-so-fancy | less --tabs=4 -RX
+	; diff-so-fancy: requires `npm i -g diff-so-fancy`
+	; No longer used as it just prettifies a normal single-page diff output 
+	; I prefer side-by-side tools
+	; pager = diff-so-fancy | less --tabs=4 -RX
 
-	# Better than diff-so-fancy, but breaks my terminal
-	# Re-activate when https://github.com/banga/git-split-diffs/issues/16
-	# gets solved
-	# git-split-diffs: requires `npm i -g git-split-diffs`
-	# 2022-08-06 also broken, trying plain pager, maybe it wasn't a delta
-	# issue
-	# pager = git-split-diffs --color | less -RFX
+	; Nicer than diff-so-fancy, but breaks my terminal see:
+	; https://github.com/banga/git-split-diffs/issues/16
+	; git-split-diffs: requires `npm i -g git-split-diffs`
+	; No longer used, also a single-page diff
+	; pager = git-split-diffs --color | less -RFX
 
-	# delta requires `yay -S git-delta` (the non git delta package is
-	# something completely unrelated)
-	# 2022-08-06 delta broken: no output, so go back to git-split-diffs
+	; delta requires `yay -S git-delta`
+	; (the non git delta package is something completely unrelated)
 	pager = delta
+
+[delta]
+	navigate = true  ; use n and N to move between diff sections
+	side-by-side = true
+	line-numbers = true
 
 [interactive]
 	diffFilter = delta --color-only
-
-[delta]
-	navigate = true  # use n and N to move between diff sections
-	side-by-side = true
-	line-numbers = true
 
 [merge]
 	tool = meld
 	conflictstyle = diff3
 
 [diff]
-	colorMoved = default
-	external = difft
+	; `colorMoved` colorizes differently lines that moved around with unchanged
+	; contents. However is not working with plain `diff` nor with `delta`
+	colorMoved = zebra
+
+	; Note: this overrides `pager` setting on the `core` section. Difftastic
+	; (aka difft) cannot be used in the pager section, needs to be specified
+	; here. Anyway, I prefer `delta`
+	; external = difft
 
 [alias]
-	# aliases from mool
-	mool = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%aD - %ar - %Cred%an%Creset), %s%n'
-	mooll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	# open project url in browser
+	; open project origin url in browser
 	gh = "!xdg-open `git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@'`"
+
 	recent = for-each-ref --sort=committerdate refs/heads/ --format=' %(color:blue) %(authorname) %(color:yellow)%(refname:short)%(color:reset)'
 
 	ci = commit
 	co = checkout
 	st = status
 	stat = status
-	# sometimes I misspell "status"
-	stauts = status
-	df = diff
-	br = branch
-	lp = log -p
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	ls = ls-files
-	show-graph = log --graph --abbrev-commit --pretty=oneline
-	short = log --oneline
-	# these two do the same
-	tip = !git short | head -n 1
-	head = !git log --oneline | head -n 1
 
-	# remove stale branches
-  # Note: inside gitconfig we need to add an extra espace backslash to the '*'
+	short = log --oneline
+	; like `short` but with dates
+	shortdate = log --pretty=format:'%C(magenta)%h%Creset -  %Cblue%ad%Creset %C(bold red)%d%Creset %s' --date=short
+	; like `short` but with author
+	shortwho = log --pretty=format:'%C(magenta)%h%Creset - %C(cyan)<%an>%Creset %C(bold red)%d%Creset %s '
+
+	; remove stale branches
+	; Note: inside gitconfig we need to add an extra espace backslash to the '*'
 	clean-local-branches = !git checkout main --quiet && git branch --merged | grep -E --invert-match '(\\*|main)' | xargs git branch -d
 	clean-remote-branches = !git branch --remotes --merged | grep -E --invert-match '(main|HEAD)' | cut -f2 -d'/' | xargs -n 1 git push --delete origin
 
-	# Sometimes you remove by hand branches on the website (github or
-	# another) and locally there still exist a reference to a remote that
-	# doesn't exist anymore. git remote prune origin gets ride of them
+	; Sometimes you remove by hand branches on the website (github or
+	; another) and locally there still exist a reference to a remote that
+	; doesn't exist anymore. `git remote prune origin` gets ride of them
 	clean-stale-remote-branches = !git remote prune origin
 	clean-branches = !git clean-local-branches && git clean-remote-branches && clean-stale-remote-branches
 
-	# checks that your local copy of the ref that you’re overwriting is up-to-date before overwriting it
+	; Safety first: checks that your local copy of the ref that you’re
+	; overwriting is up-to-date before overwriting it
 	please = push --force-with-lease
 
-	# initializes a repo and starts the log, it needs a single word as a commit message, I don't know why
+	; initializes a repo and starts the log, it needs a single word as a commit
+	; message, I don't know why
 	it = !git init && git commit -m "StartProject" --allow-empty
 
-	# git stsh	# stash only unstaged changes to tracked files
-	# git stash	# stash any changes to tracked files
-	# git staash	# stash untracked and tracked files
-	# git staaash	# stash ignored, untracked, and tracked files
-
-	stsh = stash --keep-index
-	staash = stash --include-untracked
-	staaash = stash --all
-
-	# don't loose branch history when merging to master
+	; don't loose branch history when merging to master
 	merc = merge --no-ff
 
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-
-	# legit needs to be installed before:
-	# pip install legit
+	; legit needs to be installed before for these to work
+	; `pip install legit`
 	branches = !legit branches
 	publish = !legit publish
 	unpublish = !legit unpublish
@@ -112,13 +102,6 @@
 	switch = !legit switch
 	resync = !legit resync
 	undo = !legit undo
-
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 0x0+0+0
-	main-window-view = HistoryView
-	history-view-vpane-position = 386
-	file-view-vpane-position = 539
 
 [color]
 	diff = auto
@@ -145,20 +128,22 @@
 	untracked = cyan
 
 [push]
-	# choose your poison
-	# Git versions < 2.0 : push every branch when no branch is specified
-	#default = matching
+	; choose your poison
+	; Git versions < 2.0 : push every branch when no branch is specified
+	; default = matching
 
-	# Git 2.0 : push only current branch when no branch is specified
+	; Git 2.0 : push only current branch when no branch is specified
 	default = simple
 
 [init]
 	defaultBranch = main
 
-#[credential]
-#	helper = !aws codecommit credential-helper $@
-#	UseHttpPath = true
+; [credential]
+	; helper = !aws codecommit credential-helper $@
+	; UseHttpPath = true
 
+; git extension to index large files
+; https://git-lfs.github.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -175,6 +160,6 @@
 [pull]
 	rebase = true
 
-# Multiaccount configuration at the end so it overwrites previous stuff
+; Multiaccount configuration at the end so it overwrites previous stuff
 [includeIf "gitdir:~/g/"]
   path = ~/gitconfig-work
