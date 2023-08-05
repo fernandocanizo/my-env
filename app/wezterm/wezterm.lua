@@ -37,6 +37,21 @@ config.font_size = 16.0
 
 local wa = wezterm.action -- just a convenience alias
 config.keys = {
+  -- Disable <CMD-m> hide action, is working like a fullscreen toggle
+  -- under i3 and I don't need it
+  {
+    mods = 'CMD',
+    key = 'm',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  -- Disable <c-s-t>, I want to use it under Neovim and I already got a mapping
+  -- for creating new tabs
+  {
+    mods = 'CTRL|SHIFT',
+    key = 't',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+
   {
     mods = 'CTRL',
     key = 'LeftArrow',
