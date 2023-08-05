@@ -10,7 +10,7 @@ if [[ ${distro} = 'ManjaroLinux' ]]; then
 
   if [[ "$SSH_AGENT_PID" == "" ]]; then
     # get running agent
-    eval $(<~/.ssh-agent-thing)
+    eval $(<~/.ssh-agent-thing) > /dev/null
   fi
 
 elif [[ ${distro} = 'Ubuntu' ]]; then
