@@ -12,9 +12,6 @@ localFolder="${baseFolder}/src/$HOSTNAME"
 test -d ${localFolder} || mkdir -p ${localFolder}
 completionsFolder="${baseFolder}/completions"
 
-# Start only one ssh-agent or use the one already started by the system
-source ${commonFolder}/ssh.agent.sh;
-
 # load all that's common to any shell, any machine
 for file in `/usr/bin/env ls -1 ${commonFolder}`; do
   source ${commonFolder}/${file};
