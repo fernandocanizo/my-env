@@ -38,38 +38,38 @@ config.font_size = 16.0
 local wa = wezterm.action -- just a convenience alias
 config.keys = {
   {
-    key = 'LeftArrow',
     mods = 'CTRL',
+    key = 'LeftArrow',
     action = wa.MoveTabRelative(-1)
   },
   {
-    key = 'RightArrow',
     mods = 'CTRL',
+    key = 'RightArrow',
     action = wa.MoveTabRelative(1)
   },
   {
-    key = 'DownArrow',
     mods = 'SHIFT',
+    key = 'DownArrow',
     action = wa.SpawnTab("CurrentPaneDomain")
   },
   {
-    key = 'LeftArrow',
     mods = 'SHIFT',
+    key = 'LeftArrow',
     action = wa.ActivateTabRelative(-1)
   },
   {
-    key = 'RightArrow',
     mods = 'SHIFT',
+    key = 'RightArrow',
     action = wa.ActivateTabRelative(1)
   },
   {
-    key = 'v',
     mods = 'CTRL|SHIFT|ALT',
+    key = 'v',
     action = wa.SplitVertical({domain="CurrentPaneDomain"})
   },
   {
-    key = 'h',
     mods = 'CTRL|SHIFT|ALT',
+    key = 'h',
     action = wa.SplitHorizontal({domain="CurrentPaneDomain"})
   }
 }
@@ -77,8 +77,8 @@ config.keys = {
 -- ALT + number tab switching
 for i = 1, 9 do
   table.insert(config.keys, {
-    key = tostring(i),
     mods = 'ALT',
+    key = tostring(i),
     action = wa.ActivateTab(i - 1),
   })
 end
