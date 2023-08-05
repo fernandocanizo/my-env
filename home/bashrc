@@ -6,21 +6,22 @@
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
 
-commonFolder="${baseFolder}/src/common"
-localFolder="${baseFolder}/src/$HOSTNAME"
-# ensure local folder exists on new machines
-test -d ${localFolder} || mkdir -p ${localFolder}
-completionsFolder="${baseFolder}/completions"
+common="${baseFolder}/src/common/*.sh"
+thisHostScriptsFolder="${baseFolder}/src/$HOSTNAME"
+thisHost="${thisHostScriptsFolder}/*.sh"
+# ensure thisHost folder exists on new machines
+test -d ${thisHostScriptsFolder} || mkdir -p ${thisHostScriptsFolder}
+completions="${baseFolder}/completions"
 
 # load all that's common to any shell, any machine
-for file in `/usr/bin/env ls -1 ${commonFolder}`; do
-  source ${commonFolder}/${file};
+for file in `/usr/bin/env ls -1 ${common}`; do
+  source ${file};
 done
 
 # after ssh agent is running and variables exported...
-# source local configurations
-for file in `/usr/bin/env ls -1 ${localFolder}`; do
-  source ${localFolder}/${file};
+# source thisHost configurations
+for file in `/usr/bin/env ls -1 ${thisHost}`; do
+  source ${file};
 done
 
 # source completions
@@ -29,7 +30,7 @@ done
   && [[ -r /etc/bash_completion ]]\
   && source /etc/bash_completion
 
-# local
-for file in `env ls ${completionsFolder}`; do
-	source ${completionsFolder}/${file};
+# thisHost
+for file in `/usr/bin/env ls -1 ${completions}`; do
+  source ${completions}/${file};
 done
