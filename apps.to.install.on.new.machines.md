@@ -11,14 +11,9 @@
 - telegram-desktop
 - slack-desktop
 - racket
-- wine
 - pgadmin4
-- pip install legit
-El paquete legit-git está abandonado
-- mcfly
-- dog
-- bat
-- shutter (I don't recall why I'm not using it)
+- legit (El paquete legit-git está abandonado)
+- shutter (I don't recall why I'm not using it, I'm using flameshot now)
 - flameshot (using it, loving it!)
 - perl-rename
 - unrar
@@ -41,7 +36,6 @@ El paquete legit-git está abandonado
 - feh
 - file
 - gbt
-- gdal
 - gedit
 - gimp
 - git
@@ -74,7 +68,6 @@ El paquete legit-git está abandonado
 - pmount
 - postgis
 - postgresql
-- qgis
 - ripgrep
 - ripgrep-all
 - rxvt-unicode-terminfo
@@ -82,6 +75,7 @@ El paquete legit-git está abandonado
 - systemd-urxvt-daemon
 - urxvt-perls
 - urxvt-tabbedex
+- wezterm
 - xclip
 - youtube-dl
 - zip
