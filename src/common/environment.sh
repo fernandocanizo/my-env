@@ -42,11 +42,6 @@ export GIT_TEMPLATE_DIR="${XDG_CONFIG_HOME}/git/template"
 export MANPATH="/home/flc/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/flc/.linuxbrew/share/info:$INFOPATH"
 
-# Virtual environments for Python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/soft
-#source /usr/bin/virtualenvwrapper.sh
-
 # from Manjaro
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
