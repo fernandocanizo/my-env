@@ -11,29 +11,6 @@ export EDITOR=/usr/bin/nvim
 # for crontab
 export VISUAL=/usr/bin/nvim
 
-# only ignore spaces, I want my full history log
-export HISTCONTROL='ignorespace:ignoredups'
-
-export HISTFILE="$HOME/.bash_history"
-
-# so bash doesn't truncate my history file
-unset HISTFILESIZE
-
-export HISTSIZE='100000'
-
-export HISTTIMEFORMAT='%F %T '
-
-# Don't remember trivial 1- and 2-letter commands.
-#HISTIGNORE=?:??
-# 2017.05.26 sometimes I want to repeat a 2-character command by using arrow
-# keys, and I always end up issuing another unwanted command
-
-# Save each history entry immediately (protects against terminal crashes/
-# disconnections, and interleaves commands from multiple terminals in correct
-# chronological order).
-# write history on each command, not on shell exit
-export PROMPT_COMMAND='history -a'
-
 # differentiate root's prompt from users
 if [[ ${EUID} -eq 0 ]] ; then
 	export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
