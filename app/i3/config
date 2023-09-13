@@ -27,10 +27,10 @@ font xft:Terminess Nerd Font Mono:style=Regular 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec urxvtc
 # tried `wezterm` for a week and I miss the titles on `urxvt`, they help me
 # order stuff
-bindsym $mod+x exec urxvtc
+bindsym $mod+x exec wezterm
 # I'm not really using `xonsh` nor `kitty`. Probably will uninstall `kitty` as
 # `wezterm` looks pretty awesome with less resource consumption. And regarding
 # `xonsh`, I still have much work regarding conversion from `bash` of my usual
