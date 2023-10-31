@@ -16,3 +16,5 @@ alias xclipboard='xclip -selection clipboard'
 alias md='glow -p '
 # I forgot previous alias, so I'll make one more obvious
 alias markdown='glow -p '
+
+alias epub='epub-reader '
