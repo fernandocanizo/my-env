@@ -71,7 +71,7 @@
 	; like `short` but with author
 	shortwho = log --pretty=format:'%C(magenta)%h%Creset - %C(cyan)<%an>%Creset %C(bold red)%d%Creset %s '
 
-	; remove stale branches
+	; remove local and remote merged branches
 	; Note: inside gitconfig we need to add an extra espace backslash to the '*'
 	clean-local-branches = !git checkout main --quiet && git branch --merged | grep -E --invert-match '(\\*|main)' | xargs git branch -d
 	clean-remote-branches = !git branch --remotes --merged | grep -E --invert-match '(main|HEAD)' | cut -f2 -d'/' | xargs -n 1 git push --delete origin
@@ -80,7 +80,7 @@
 	; another) and locally there still exist a reference to a remote that
 	; doesn't exist anymore. `git remote prune origin` gets ride of them
 	clean-stale-remote-branches = !git remote prune origin
-	clean-branches = !git clean-local-branches && git clean-remote-branches && clean-stale-remote-branches
+	clean-branches = !git clean-local-branches && git clean-remote-branches && git clean-stale-remote-branches
 
 	; Safety first: checks that your local copy of the ref that you’re
 	; overwriting is up-to-date before overwriting it
