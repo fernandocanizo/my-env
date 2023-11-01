@@ -82,6 +82,8 @@
 - xclip
 - youtube-dl
 - zip
+- pgmodeler (https://pgmodeler.io)
+  Me salva las papas cuando necesito generar el diagrama entidad-relación de una base de datos
 
 ## Database management
 Not thoroughly tested, but seems cool:
