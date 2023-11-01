@@ -13,6 +13,9 @@
 - racket
 - pgadmin4
 - legit (El paquete legit-git está abandonado)
+  Ambos paquetes abandonados, el repo tampoco ha tenido movimiento desde 2019, aunque no sé si lo necesitará.
+  Lo he instalado vía `pnpm`: `npm i -g @captainsafia/legit`
+
 - shutter (I don't recall why I'm not using it, I'm using flameshot now)
 - flameshot (using it, loving it!)
 - perl-rename
