@@ -27,10 +27,14 @@ font xft:Terminess Nerd Font Mono:style=Regular 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
-# tried `wezterm` for a week and I miss the titles on `urxvt`, they help me
-# order stuff
-bindsym $mod+x exec wezterm
+# Long time user of urxvt, however found several problems lately:
+# - cool fonts don't work, I don't get cool glyphs
+# - Elixir REPL looses a functionality under urxvt
+# So I switched officially to wezterm on 2023-12-01
+# Primary
+bindsym $mod+Return exec wezterm
+# Secondary
+bindsym $mod+x exec urxvtc
 # I'm not really using `xonsh` nor `kitty`. Probably will uninstall `kitty` as
 # `wezterm` looks pretty awesome with less resource consumption. And regarding
 # `xonsh`, I still have much work regarding conversion from `bash` of my usual
