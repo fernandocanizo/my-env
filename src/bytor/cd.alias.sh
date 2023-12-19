@@ -14,3 +14,8 @@ alias cd.torbrowser='cd /home/flc/.local/share/torbrowser/tbb/x86_64/tor-browser
 
 alias cd.dgb='cd /home/flc/my/diaz-garage-back'
 alias cd.dgf='cd /home/flc/my/diaz-garage-front'
+
+# SMC
+alias cd.third.nexus='cd /home/flc/my/smc/nexus2/third-nexus-client'
+alias cd.first.nexus='cd /home/flc/my/smc/nexus2/first.client-working-git.only'
+alias cd.nexus.server='cd /home/flc/my/smc/nexus2/server'
