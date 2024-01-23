@@ -94,14 +94,16 @@
 	merc = merge --no-ff
 
 	; legit needs to be installed before for these to work
-	; `pip install legit`
-	branches = !legit branches
-	publish = !legit publish
-	unpublish = !legit unpublish
-	sync = !legit sync
-	switch = !legit switch
-	resync = !legit resync
-	undo = !legit undo
+	; `pipx install legit`
+	branches = !/home/flc/.local/bin/legit branches
+	publish = !/home/flc/.local/bin/legit publish
+	unpublish = !/home/flc/.local/bin/legit unpublish
+	switch = !/home/flc/.local/bin/legit switch
+	sync = !/home/flc/.local/bin/legit sync
+	; `legit --install` put `resync`, however it's not in the help nor the site
+	; docs, so I'm omitting it as I don't know what it does
+	; resync = !/home/flc/.local/bin/legit resync
+	undo = !/home/flc/.local/bin/legit undo
 
 [color]
 	diff = auto
