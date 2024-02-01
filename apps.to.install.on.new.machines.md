@@ -86,6 +86,7 @@
   Me salva las papas cuando necesito generar el diagrama entidad-relación de una base de datos
 - [shellcheck](https://www.shellcheck.net)
   Verifies your shell scripts and provides tips on how to improve them.
+- [dotenv-linter](https://dotenv-linter.github.io/)
 
 ## Database management
 Not thoroughly tested, but seems cool:
