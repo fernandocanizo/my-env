@@ -168,3 +168,6 @@
 
 [maintenance]
 	repo = /home/flc/my/smc/nexus2/third-nexus-client
+
+[rerere]
+	enabled = true
