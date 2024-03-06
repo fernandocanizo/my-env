@@ -165,3 +165,6 @@
 ; Multiaccount configuration at the end so it overwrites previous stuff
 [includeIf "gitdir:~/g/"]
   path = ~/gitconfig-work
+
+[maintenance]
+	repo = /home/flc/my/smc/nexus2/third-nexus-client
