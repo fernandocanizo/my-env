@@ -1,5 +1,0 @@
-export PATH=${PATH}:$(ruby -e 'puts Gem.user_dir')/bin:${HOME}/.racket/7.4/bin
-
-export CSW_FOLDER="${HOME}/csw"
-
-

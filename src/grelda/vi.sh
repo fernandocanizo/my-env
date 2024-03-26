@@ -1,1 +1,0 @@
-../other/vi.sh
