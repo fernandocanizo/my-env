@@ -13,9 +13,10 @@ end
 -- Always start on at $HOME
 -- it would be nice to set it up via environment variable
 config.default_cwd = "/home/flc/"
-wezterm.log_error('Home ' .. wezterm.home_dir)
--- didn't work, I'm gonna leave it here to check if I need to relaunch wezterm
--- from scratch
+
+--
+-- Tried color schemes:
+--
 
 -- numbers and strings appear in black, which is hard to see with the dark gray background
 -- config.color_scheme = 'Solarized Darcula'
@@ -23,10 +24,11 @@ wezterm.log_error('Home ' .. wezterm.home_dir)
 -- pretty sane, but had a hard time reading the path information from my prompt
 -- config.color_scheme = '3024 (dark) (terminal.sexy)'
 
--- used this for a while and wanted to try 'Batman' again, cause I don't know why
--- I dropped it. But 'Adventure' is fine
--- config.color_scheme = 'Adventure'
-config.color_scheme = 'Batman'
+-- pretty cool yellow cursor, however sometimes background colors selected for
+-- some highlights are hard to read. Not enough contrast.
+-- config.color_scheme = 'Batman'
+
+config.color_scheme = 'Adventure'
 
 -- Note (from documentation): the color_scheme option takes precedence over the colors section, and
 -- is mutually exclusive with it. Choose one or use
