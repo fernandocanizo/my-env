@@ -1,3 +1,7 @@
+# Ensure you put here variables that don't depend on a too customized
+# installation, meaning: if you have to install a non-common application for
+# this variable to be useful, then it pertains to an specific installation, not
+# autoload
 
 # less options, -R is to allow ANSI escape sequences
 export LESS="-iCwqf -R"
@@ -13,7 +17,7 @@ export VISUAL=/usr/bin/nvim
 
 # differentiate root's prompt from users
 if [[ ${EUID} -eq 0 ]] ; then
-	export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
+  export PS1='\[\033[01;31m\]\h\[\033[01;36m\] \W \$\[\033[00m\] '
 else
   if [[ -x /usr/bin/gbt ]]; then
     # got gbt, use it!
@@ -35,18 +39,3 @@ export MYSQL_PS1="\u@\h:\d> "
 eval `dircolors ~/.dircolors`
 
 export XDG_CONFIG_HOME="${HOME}/.config"
-
-export GIT_TEMPLATE_DIR="${XDG_CONFIG_HOME}/git/template"
-
-# man an info paths for brew
-export MANPATH="/home/flc/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/flc/.linuxbrew/share/info:$INFOPATH"
-
-# from Manjaro
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-
-# default browser
-export BROWSER=/usr/bin/brave
-
-export PATH=~/bin:${PATH}
