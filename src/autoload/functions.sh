@@ -153,32 +153,6 @@ find-biggest-files () {
 	find $1 -type f -printf '%s %p\n' | sort --numeric --reverse
 }
 
-# 2023-07-23 I'm gonna deprecate this function cause I'm tired of launching an
-# npx search on every typo I make on the CLI. Better to have the good old
-# "command not found" error and be done with it. I'm not deleting it rigth away
-# because maybe there was a good reason in the past to use this, but I don't
-# recall what was.
-
-# npx fallback when command is not found in $PATH
-# command_not_found_handle() {
-  # Do not run within a pipe
-  # if test ! -t 1; then
-    # >&2 echo "command not found: $1"
-    # return 127
-  # fi
-  # if which npx > /dev/null; then
-    # echo "$1 not found. Trying with npx..." >&2
-  # else
-    # return 127
-  # fi
-  # if ! [[ $1 =~ @ ]]; then
-    # npx --no-install "$@"
-  # else
-    # npx "$@"
-  # fi
-  # return $?
-# }
-
 # Open URL of an Archlinux package
 function pkgpage () {
     url=$(yaourt -Si $1 | grep -E '^URL' | grep -E -o 'https?://[^ ]+')
