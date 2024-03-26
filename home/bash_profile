@@ -1,6 +1,7 @@
+# this file is called when bash is invoked as a login shell
+# also this is called by:
+# - wezterm
+# - login shells (bash -l, ssh)
 
-# this file is called when bash is invoked as a login shell, but make it source
-# ~/.bashrc , which is only invoked for interactive shells, to keep all
-# configuration in one place
-
-[[ -r $HOME/.bashrc ]] && source $HOME/.bashrc
+[[ -r "$HOME/.profile" ]] && source "$HOME/.profile"
+[[ -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"

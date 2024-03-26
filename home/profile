@@ -1,2 +1,12 @@
-# I don't use ~/.profile, but some applications created it and added stuff, so
-# I'm creating it here empty so I can find out promptly when some app adds stuff
+# ~/.profile should have the stuff NOT specifically related to bash, such as
+# environment variables (PATH and friends), however for simplicity I'm keeping
+# it mostly empty, except for the stuff that needs to loaded from here, like:
+# anything that should be available to graphical applications OR to sh (or bash
+# invoked as sh), MUST be in ~/.profile
+
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+#
+# fix "xdg-open fork-bomb" export your preferred browser from here
+export BROWSER=/usr/bin/brave
+

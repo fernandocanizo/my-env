@@ -1,7 +1,10 @@
 # This file is called when bash is invoked as an interactive non login
-# shell and from remote logins. But it's being sourced from
-# ~/.bash_profile to keep all configuration in one place
-[[ -r /etc/profile ]] && source /etc/profile
+# shell. Ensure it doesn't output anything
+
+# Note: urxvt loads this file instead of ~/.bash_profile
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
