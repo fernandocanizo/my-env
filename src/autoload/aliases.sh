@@ -95,10 +95,6 @@ alias mem="ps -e -orss=,pid=,args= | sort -b -k1n | pr -TW$COLUMNS"
 alias cal='cal -3wm'
 alias caly='\cal -wmy'
 
-# 2016.07.21 grep recursively on node.js projects without fuss
-# 2022-10-18 this has been superseded by ripgrep
-alias nodegrep='grep -E --exclude-dir node_modules --exclude-dir tmp --exclude-dir build --exclude-dir .git --exclude-dir uploads --exclude package-lock.json'
-
 alias pretend='cat /dev/urandom | hexdump | grep --color=auto cafe'
 alias cafe=pretend
 
