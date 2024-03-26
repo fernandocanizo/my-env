@@ -16,6 +16,6 @@ alias cd.dgb='cd /home/flc/my/diaz-garage-back'
 alias cd.dgf='cd /home/flc/my/diaz-garage-front'
 
 # SMC
-alias cd.third.nexus='cd /home/flc/my/smc/nexus2/third-nexus-client'
-alias cd.first.nexus='cd /home/flc/my/smc/nexus2/first.client-working-git.only'
-alias cd.nexus.server='cd /home/flc/my/smc/nexus2/server'
+alias cd.rocky='cd /home/flc/my/smc/nexus2/rocky'
+alias cd.pachuli='cd /home/flc/my/smc/nexus2/pachuli'
+alias cd.nexus='cd /home/flc/my/smc/nexus2/server'
