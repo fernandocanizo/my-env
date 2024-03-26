@@ -9,6 +9,7 @@ myLinker='ln -vf -T '
 cd $HOME
 
 echo 'Linking configuration files under $HOME'
+${myLinker} ${homeFolder}profile .profile
 ${myLinker} ${homeFolder}bash_profile .bash_profile
 ${myLinker} ${homeFolder}bashrc .bashrc
 ${myLinker} ${homeFolder}bash_logout .bash_logout
