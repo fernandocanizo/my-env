@@ -6,15 +6,15 @@
 # ~/.envFolder is generated on installation
 read baseFolder < ~/.envFolder
 
-common="${baseFolder}/src/common/*.sh"
+autoload="${baseFolder}/src/autoload/*.sh"
 thisHostScriptsFolder="${baseFolder}/src/$HOSTNAME"
 thisHost="${thisHostScriptsFolder}/*.sh"
 # ensure thisHost folder exists on new machines
 test -d ${thisHostScriptsFolder} || mkdir -p ${thisHostScriptsFolder}
 completions="${baseFolder}/completions"
 
-# load all that's common to any shell, any machine
-for file in `/usr/bin/env ls -1 ${common}`; do
+# automatically load what's in 'autoload'
+for file in `/usr/bin/env ls -1 ${autoload}`; do
   source ${file};
 done
 
