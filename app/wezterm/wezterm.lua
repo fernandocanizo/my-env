@@ -64,8 +64,11 @@ config.colors = {
 -- Spawn a xonsh shell in login mode
 -- config.default_prog = { '/usr/bin/env', 'xonsh' }
 
-config.font = wezterm.font 'Terminess Nerd Font Mono'
 config.font_size = 20.0
+config.font = wezterm.font_with_fallback {
+  'Terminess Nerd Font Mono',
+  'Fira Code',
+}
 
 local wa = wezterm.action -- just a convenience alias
 config.keys = {
