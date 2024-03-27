@@ -1,7 +1,7 @@
 # This file is called when bash is invoked as an interactive non login
 # shell. Ensure it doesn't output anything
 
-# Note: urxvt loads this file instead of ~/.bash_profile
+# Note: urxvt and guake load this file instead of ~/.bash_profile
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
