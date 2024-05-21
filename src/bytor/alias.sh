@@ -18,3 +18,7 @@ alias md='glow -p '
 alias markdown='glow -p '
 
 alias epub='epub-reader '
+
+# I seldom use an hex editor, so I never recall what's the one I like and have
+# to search, this alias hopefully would help me in the future
+alias hexeditor='bless '
