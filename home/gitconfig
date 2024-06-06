@@ -91,19 +91,21 @@
 	it = !git init && git commit -m "StartProject" --allow-empty
 
 	; don't loose branch history when merging to master
-	merc = merge --no-ff
+	merge-with-history = merge --no-ff
 
+	; 2024-06-06: legit doesn't install anymore in my system, something related
+	; to virtual envs or "python still doesn't know how to deal with installs"
 	; legit needs to be installed before for these to work
 	; `pipx install legit`
-	branches = !/home/flc/.local/bin/legit branches
-	publish = !/home/flc/.local/bin/legit publish
-	unpublish = !/home/flc/.local/bin/legit unpublish
-	switch = !/home/flc/.local/bin/legit switch
-	sync = !/home/flc/.local/bin/legit sync
+	; branches = !/home/flc/.local/bin/legit branches
+	; publish = !/home/flc/.local/bin/legit publish
+	; unpublish = !/home/flc/.local/bin/legit unpublish
+	; switch = !/home/flc/.local/bin/legit switch
+	; sync = !/home/flc/.local/bin/legit sync
 	; `legit --install` put `resync`, however it's not in the help nor the site
 	; docs, so I'm omitting it as I don't know what it does
 	; resync = !/home/flc/.local/bin/legit resync
-	undo = !/home/flc/.local/bin/legit undo
+	; undo = !/home/flc/.local/bin/legit undo
 
 [color]
 	diff = auto
