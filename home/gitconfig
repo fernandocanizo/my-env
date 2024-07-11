@@ -173,3 +173,22 @@
 
 [rerere]
 	enabled = true
+
+; friendly hints from git, but the ones you know by hart can be disable to have
+; a less crowded output from some commands
+[advice]
+	skippedCherryPicks = false
+	; pushUpdateRejected
+	; pushNonFFCurrent
+	; pushNonFFMatching
+	; pushAlreadyExists
+	; pushFetchFirst
+	; pushNeedsForce
+	; statusHints
+	; statusUoption
+	; commitBeforeMerge
+	; resolveConflict
+	; implicitIdentity
+	; detachedHead
+	; amWorkDir
+	; rmHints
