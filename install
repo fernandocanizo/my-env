@@ -6,33 +6,32 @@ baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 homeFolder="${baseFolder}/home/"
 myLinker='ln -vf -T '
 
-cd $HOME
+cd "$HOME" || exit
 
-echo 'Linking configuration files under $HOME'
-${myLinker} ${homeFolder}profile .profile
-${myLinker} ${homeFolder}bash_profile .bash_profile
-${myLinker} ${homeFolder}bashrc .bashrc
-${myLinker} ${homeFolder}bash_logout .bash_logout
-${myLinker} ${homeFolder}dircolors .dircolors
-${myLinker} ${homeFolder}inputrc .inputrc
-${myLinker} ${homeFolder}psqlrc .psqlrc
-${myLinker} ${homeFolder}Xresources .Xresources
-${myLinker} ${homeFolder}xprofile .xprofile
-${myLinker} ${homeFolder}gitconfig .gitconfig
-${myLinker} ${homeFolder}gitconfig-work gitconfig-work
-${myLinker} ${homeFolder}npmrc .npmrc
-${myLinker} ${homeFolder}iex.exs .iex.exs
+echo 'Linking configuration files under your home'
+"${myLinker}" "${homeFolder}profile" .profile
+"${myLinker}" "${homeFolder}bash_profile" .bash_profile
+"${myLinker}" "${homeFolder}bashrc" .bashrc
+"${myLinker}" "${homeFolder}bash_logout" .bash_logout
+"${myLinker}" "${homeFolder}dircolors" .dircolors
+"${myLinker}" "${homeFolder}inputrc" .inputrc
+"${myLinker}" "${homeFolder}psqlrc" .psqlrc
+"${myLinker}" "${homeFolder}Xresources" .Xresources
+"${myLinker}" "${homeFolder}xprofile" .xprofile
+"${myLinker}" "${homeFolder}gitconfig" .gitconfig
+"${myLinker}" "${homeFolder}npmrc" .npmrc
+"${myLinker}" "${homeFolder}iex.exs" .iex.exs
 
 echo "Install personal stuff? (y/N)"
-read answer
-if [[ 'y' = ${answer} ]]; then
+read -r answer
+if [[ 'y' = "${answer}" ]]; then
   # gpg data
-  ${myLinker} ${HOME}/Dropbox/.gnupg .gnupg
+  "${myLinker}" "${HOME}/Dropbox/.gnupg" .gnupg
 fi
 
 # Don't erase ~/.pgpass if there's one already
 if [[ ! -e .pgpass ]]; then
-  cp ${homeFolder}pgpass ~/.pgpass
+  cp "${homeFolder}pgpass" ~/.pgpass
 fi
 
 if [[ ! -d .config ]]; then
@@ -40,28 +39,28 @@ if [[ ! -d .config ]]; then
 fi
 
 echo "Install apps configuration? (y/N)"
-read answer
-if [[ 'y' = ${answer} ]]; then
-  echo 'Linking configuration files under $HOME/.config'
-  ${myLinker} ${baseFolder}/git ${XDG_CONFIG_HOME}/git
-  ${myLinker} ${baseFolder}/mc ${XDG_CONFIG_HOME}/mc
-  ${myLinker} ${baseFolder}/kitty ${XDG_CONFIG_HOME}/kitty
-  ${myLinker} ${baseFolder}/yay ${XDG_CONFIG_HOME}/yay
+read -r answer
+if [[ 'y' = "${answer}" ]]; then
+  echo 'Linking configuration files under ~/.config'
+  "${myLinker}" "${baseFolder}/git" "${XDG_CONFIG_HOME}/git"
+  "${myLinker}" "${baseFolder}/mc" "${XDG_CONFIG_HOME}/mc"
+  "${myLinker}" "${baseFolder}/kitty" "${XDG_CONFIG_HOME}/kitty"
+  "${myLinker}" "${baseFolder}/yay" "${XDG_CONFIG_HOME}/yay"
 fi
 
 echo "Install i3 configuration? (y/N)"
-read answer
-if [[ 'y' = ${answer} ]]; then
+read -r answer
+if [[ 'y' = "${answer}" ]]; then
   i3Folder="${HOME}/.i3"
-  if [[ ! -d ${i3Folder} ]]; then
-    mkdir ${i3Folder}
+  if [[ ! -d "${i3Folder}" ]]; then
+    mkdir "${i3Folder}"
   fi
-  cd ${i3Folder}
-  ${myLinker} ${baseFolder}/i3/config ${i3Folder}/config
-  ${myLinker} ${baseFolder}/i3/status.conf ${i3Folder}/status.conf
+  cd "${i3Folder}" || exit
+  "${myLinker}" "${baseFolder}/i3/config" "${i3Folder}/config"
+  "${myLinker}" "${baseFolder}/i3/status.conf" "${i3Folder}/status.conf"
 fi
 
 # Finally, write down configuration folder path so it can be used by
 # ~/.bashrc
 
-echo ${baseFolder} >| ${HOME}/.envFolder
+echo "${baseFolder}" >| "${HOME}/.envFolder"
