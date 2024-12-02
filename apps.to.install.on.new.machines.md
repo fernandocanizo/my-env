@@ -6,6 +6,7 @@
 - fractus-atlas
 - discord
 - agave
+  Fails to install, project completely abandoned.
 - qbittorrent
 - bash-language-server
 - telegram-desktop
