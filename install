@@ -2,6 +2,8 @@
 
 # create symbolic links to point to git-maintained configuration files
 
+source install-required-apps.sh
+
 baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 homeFolder="${baseFolder}/home/"
 myLinker='ln -vf -T '
