@@ -1,1 +1,0 @@
-/usr/bin/aws_bash_completer
