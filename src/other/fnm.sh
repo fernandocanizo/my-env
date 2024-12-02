@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-eval "$(fnm env --use-on-cd)"
+FNM_PATH="/home/flc/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --use-on-cd)"
+fi
