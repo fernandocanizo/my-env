@@ -68,7 +68,14 @@
 - p7zip
 - pacman-contrib
 - pavucontrol
+
 - pg_activity
+  2024-12-03
+  aur/pg_activity 3.5.1-1 (+10 0.00)
+  Don't install this for the time being, it causes Sway to explode and sends me to the login screen. Also, the Sway process doesn't start immediately, can see 1-2 attempts at reload it when trying to login and failing.
+
+  I don't know if it's the package itself, or one of its dependencies or make dependencies.
+
 - pmount
 - postgis
 - postgresql
