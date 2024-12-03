@@ -6,7 +6,7 @@
 echo "Install required applications? (y/N)"
 read -r answer
 if [[ 'y' = "${answer}" ]]; then
-  yay -S wezterm git-delta dropbox pass
+  yay -S wezterm git-delta dropbox pass neovim atuin ttf-terminus-nerd guake
   # required for Neovim
   yay -S tree-sitter-cli
   # fnm
