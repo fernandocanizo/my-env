@@ -247,3 +247,8 @@ include $XDG_CONFIG_HOME/sway/modes/*
 include $XDG_CONFIG_HOME/sway/config.d/*
 
 workspace_layout tabbed
+
+# Define Alt+Tab and Super+Tab to switch between windows in the current workspace
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+grave workspace back_and_forth
