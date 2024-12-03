@@ -10,6 +10,6 @@ if [[ 'y' = "${answer}" ]]; then
   # required for Neovim
   yay -S tree-sitter-cli
   # fnm
-  curl -fsSL https://fnm.vercel.app/install | bash
+  yay -S fnm
 fi
 
