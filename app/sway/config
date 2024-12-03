@@ -9,24 +9,19 @@ include $theme/theme.conf
 # user theme variable can override the global theme
 include $HOME/.config/sway/definitions.d/theme.conf
 
-# global variables
-include /etc/sway/definitions
-
+include $XDG_CONFIG_HOME/sway/definitions.d/etc-definitions.conf
 # user variables can override global definitions
 include $HOME/.config/sway/definitions.d/*.conf
 
-include /etc/sway/inputs/*
+include $XDG_CONFIG_HOME/sway/inputs/*
 
 # enable modes
-include /etc/sway/modes/*
+include $XDG_CONFIG_HOME/sway/modes/*
 
 # only enable this if every app you use is compatible with wayland
 # xwayland disable
 
 # include additional configs e.g. to autostart applications
-include /etc/sway/config.d/*
-
-# user config
-include $HOME/.config/sway/config.d/*.conf
+include $XDG_CONFIG_HOME/sway/config.d/*
 
 workspace_layout tabbed
