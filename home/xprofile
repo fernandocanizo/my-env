@@ -2,7 +2,7 @@
 exec xmodmap $HOME/.Xmodmap &
 
 # start usual utilities
-exec urxvtd &
+# exec urxvtd &
 exec guake &
 exec flameshot &
 exec dropbox &
