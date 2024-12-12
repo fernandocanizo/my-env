@@ -138,6 +138,7 @@
 
 	; Git 2.0 : push only current branch when no branch is specified
 	default = simple
+	autoSetupRemote = true
 
 [init]
 	defaultBranch = main
