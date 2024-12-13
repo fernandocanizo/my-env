@@ -10,8 +10,8 @@
 !#################################################################
 
 ! Cyclone: +1 very fancy, but inside applications goes back to default cursor
-Xcursor.theme: Cyclone
-!Xcursor.theme: Chameleon-Pearl-Large-0.5
+Xcursor.theme: xcursor-breeze xcursor-breeze
+!Xcursor.theme: xcursor-breeze xcursor-breeze
 Xcursor.size: 32
 
 
