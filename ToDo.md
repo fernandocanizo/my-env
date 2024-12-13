@@ -1,5 +1,12 @@
 # ToDo
 
+## 2024-12-13
+
+- remove old machines specifics
+- review install script, started failing after I used `shellcheck` linter. Maybe it's I'm not using Bash but `sh`?
+- devise a structure to separate installations for different shells
+- devise a structure to separate installations for servers and my local machine
+
 ## 2021.05.06
 
 - create `host`, `server` and `base`
