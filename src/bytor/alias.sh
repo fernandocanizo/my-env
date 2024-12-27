@@ -23,5 +23,6 @@ alias epub='epub-reader '
 # to search, this alias hopefully would help me in the future
 alias hexeditor='bless '
 
+# 2024-12-27 disabled cause Wayland isn't stable on my machine
 # to run Brave on Wayland
-alias brave='brave --enable-features=UseOzonePlatform --ozone-platform=wayland &'
+#alias brave='brave --enable-features=UseOzonePlatform --ozone-platform=wayland &'
