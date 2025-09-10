@@ -17,7 +17,7 @@ alias md='glow -p '
 # I forgot previous alias, so I'll make one more obvious
 alias markdown='glow -p '
 
-alias epub='epub-reader '
+alias epub='mupdf '
 
 # I seldom use an hex editor, so I never recall what's the one I like and have
 # to search, this alias hopefully would help me in the future
