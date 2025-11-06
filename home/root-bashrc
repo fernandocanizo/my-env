@@ -1,0 +1,60 @@
+#
+# Root ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#
+# Some ANSI colors to play with prompt below
+#
+# ───── RESET ─────
+reset='\[\e[0m\]'
+# ───── FOREGROUNDS (fg) ─────
+whitefg='\[\e[38;5;255m\]'
+redfg='\[\e[38;5;160m\]'
+bluefg='\[\e[38;5;68m\]'
+grayfg='\[\e[38;5;236m\]'
+blackfg='\[\e[30m\]'
+yellowfg='\[\e[38;5;226m\]'
+# ───── BACKGROUNDS (bg) ─────
+whitebg='\[\e[48;5;255m\]'
+redbg='\[\e[48;5;160m\]'
+bluebg='\[\e[48;5;68m\]'
+graybg='\[\e[48;5;236m\]'
+yellowbg='\[\e[48;5;226m\]'
+blackbg='\[\e[40m\]'
+
+
+export EDITOR="/use/bin/nvim"
+
+# root-specific GBT config
+export GBT_CAR_HOSTNAME_BG='red'
+export GBT_CAR_HOSTNAME_FG='white'
+
+# Some fancy options for root emoji
+export GBT_CAR_OS_SYMBOL_TEXT='💀'
+#export GBT_CAR_OS_SYMBOL_TEXT='⚡'
+#export GBT_CAR_OS_SYMBOL_TEXT='🔥'
+
+if [[ -x /usr/bin/gbt ]]; then
+  export PS1='$(gbt $?)'
+else
+  # Fallback prompt when GBT is missing
+
+  emoji="${graybg}${whitefg} 💀 ${reset}"
+  arrow1="${redbg}${grayfg}${reset}"
+  userHost="${redbg}${whitefg} root@\h ${reset}"
+  arrow2="${bluebg}${redfg}${reset}"
+  directory="${bluebg}${whitefg} \W ${reset}"
+  arrow3="${blackbg}${bluefg}${reset}"
+  end=" ${redfg}#${reset} "
+
+  export PS1="${emoji}${arrow1}${userHost}${arrow2}${directory}${arrow3}${end}"
+
+fi
+
+alias vi="nvim"
+alias vim="nvim"
+alias ls="ls -la --color=auto"
+alias grep="grep --color=auto"
