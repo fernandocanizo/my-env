@@ -3,6 +3,23 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $alt Mod1
+
+################################
+### Commonly Used Variables: ###
+################################
+
+# - Some common variables that you may customise (all starting with "$")
+# - Ensure absolute paths are used to set the variables
+
+### Wallpaper: ###
+# - You need to specify homescreen wallpaper using azote
+# TODO not working, I don't understand how azote works
+#set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Dr460nized\ Honeycomb.png
+
+###########################################
+### Commonly Used Application Keybinds: ###
+###########################################
 
 # set default desktop layout (default is tiling)
 workspace_layout tabbed
@@ -32,23 +49,15 @@ floating_modifier $mod
 # - Elixir REPL looses a functionality under urxvt
 # So I switched officially to wezterm on 2023-12-01
 # Primary
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec kitty
 # Secondary
-bindsym $mod+x exec urxvtc
-# I'm not really using `xonsh` nor `kitty`. Probably will uninstall `kitty` as
-# `wezterm` looks pretty awesome with less resource consumption. And regarding
-# `xonsh`, I still have much work regarding conversion from `bash` of my usual
-# environment. So I won't be using this for the time being.
-# bindsym $mod+x exec kitty --single-instance /usr/bin/xonsh
+bindsym $mod+x exec wezterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start program launcher
-bindsym $mod+r exec --no-startup-id dmenu_recency
-
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
+# start rofi program launcher
+bindsym $mod+r exec rofi -show run
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
