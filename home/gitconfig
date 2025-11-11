@@ -196,3 +196,7 @@
 	; detachedHead
 	; amWorkDir
 	; rmHints
+
+[fetch]
+	; auto prune old branches on fetch
+	prune = true
