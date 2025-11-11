@@ -246,6 +246,14 @@ for_window [class="Xfburn"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# Don't open in floating mode these apss
+for_window [class="^Opera$"] floating disable
+for_window [class="^Opera$"] fullscreen enable
+
+# make Guake stay always on position 0, 0, or
+# avoid Guake walking the screen on each apparition
+for_window [class="Guake"] move position 0 px 0 px floating disable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
