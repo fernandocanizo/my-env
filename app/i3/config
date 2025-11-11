@@ -150,9 +150,10 @@ bindsym $mod+a focus parent
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
-# Show the next scratchpad window or hide the focused scratchpad window.
+# Show the next scratchpad window, bring it back to tiled mode.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+# Don't show floating windows brought back from the scratchpad
+bindsym $mod+minus scratchpad show; floating disable
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -245,10 +246,6 @@ for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
-
-# Don't open in floating mode these apss
-for_window [class="^Opera$"] floating disable
-for_window [class="^Opera$"] fullscreen enable
 
 # make Guake stay always on position 0, 0, or
 # avoid Guake walking the screen on each apparition
