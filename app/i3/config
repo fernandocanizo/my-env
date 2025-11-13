@@ -246,6 +246,11 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# Lock screen
+# bindsym $mod+F12 exec --no-startup-id i3exit lock, mode "default"
+# Lock screen
+bindsym $mod+F12 exec --no-startup-id blurlock
+
 # Set shut down, restart and locking features
 bindsym $mod+Shift+F12 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
