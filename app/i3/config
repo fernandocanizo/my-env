@@ -12,14 +12,12 @@ set $alt Mod1
 # - Some common variables that you may customise (all starting with "$")
 # - Ensure absolute paths are used to set the variables
 
+set $terminal /usr/bin/kitty
+
 ### Wallpaper: ###
 # - You need to specify homescreen wallpaper using azote
 # TODO not working, I don't understand how azote works
 #set $lockScreenWallpaper /usr/share/wallpapers/garuda-wallpapers/Dr460nized\ Honeycomb.png
-
-###########################################
-### Commonly Used Application Keybinds: ###
-###########################################
 
 # set default desktop layout (default is tiling)
 workspace_layout tabbed
@@ -75,21 +73,9 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
-# Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-#bindsym $mod+F5 exec terminal -e 'mocp'
-#
-# 2019.09.20 esto venía, no sé para qué usaría compton
-#bindsym $mod+p exec --no-startup-id pkill picom
-#bindsym $mod+Ctrl+p exec --no-startup-id picom -b
+#bindsym $mod+F3 exec $terminal -e joshuto
 
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
 
@@ -301,25 +287,6 @@ mode "resize" {
   bindsym Escape mode "default"
 }
 
-# Lock screen
-bindsym $mod+F12 exec --no-startup-id blurlock
-
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-#exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-#exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 120 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -412,3 +379,32 @@ smart_gaps on
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
+
+##############################
+# Applications hotkey bindings
+##############################
+
+##############################
+### Autostart applications ###
+##############################
+# volume control: pavucontrol
+# but can be launched from: pasystray, which sits on the lower bar
+
+# Run only once: for background apps and daemons you don’t want duplicated
+# (e.g., compositor, notification daemon, network applet, wallpaper setter)
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# network manager applet (extra/network-manager-applet)
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+# exec --no-startup-id blueman-applet
+exec --no-startup-id xautolock -time 120 -locker blurlock
+# Flameshot needs to be configured to "Launch in background at start up"
+# for this exec to work
+exec --no-startup-id flameshot
+
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id guake
+
