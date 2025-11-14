@@ -1,5 +1,5 @@
 # load accents and stuff
-exec xmodmap $HOME/.Xmodmap &
+exec xmodmap $HOME/.myenv/app/xmodmap/borrow/custom &
 
 # So i3 doesn't use xfce4 terminal to show errors
 export TERMINAL=/usr/bin/kitty
