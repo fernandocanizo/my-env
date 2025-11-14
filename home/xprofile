@@ -1,6 +1,10 @@
 # load accents and stuff
 exec xmodmap $HOME/.Xmodmap &
 
+# So i3 doesn't use xfce4 terminal to show errors
+export TERMINAL=/usr/bin/kitty
+
+
 # start usual utilities
 # exec urxvtd &
 exec guake &
