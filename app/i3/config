@@ -246,10 +246,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Lock screen
-# bindsym $mod+F12 exec --no-startup-id i3exit lock, mode "default"
-# Lock screen
-bindsym $mod+F12 exec --no-startup-id blurlock
+# Manual screen lock
+bindsym $mod+F12 exec --no-startup-id $HOME/bin/public/wallpaper-rotator.sh
 
 # Set shut down, restart and locking features
 bindsym $mod+Shift+F12 mode "$mode_system"
@@ -404,10 +402,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 # exec --no-startup-id blueman-applet
-exec --no-startup-id xautolock -time 120 -locker blurlock
 # Flameshot needs to be configured to "Launch in background at start up"
 # for this exec to work
 exec --no-startup-id flameshot
+# Auto-lock using xidlehook-withdrawnwin + i3lock-color
+exec --no-startup-id xidlehook-withdrawnwin \
+  --detect-sleep \
+  --not-when-fullscreen \
+  --timer 300 "$HOME/bin/public/wallpaper-rotator.sh" "" \
+  --timer 240 "xset dpms force off" "xset dpms force on"
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
