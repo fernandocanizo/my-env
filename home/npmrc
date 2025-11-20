@@ -1,11 +1,8 @@
 fund=false
-global-dir=/home/flc/.local/bin
 init-author-email=fernandocanizo@gmail.com
 init-author-name=Fernando L. Canizo
 init-author-url=https://github.com/fernandocanizo/
 init-license=MIT
 init-version=1.0.0
-node_gyp=
 save-exact=false
 save-prefix=^
-scripts-prepend-node-path=true
