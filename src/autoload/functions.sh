@@ -54,22 +54,10 @@ repeat () {
 	done
 }
 
-prep () {
-	# grepping with perl
-	#
-	# $1 is regexp as in /some regexp/
-	# $2 is a file and is optional
-	perl -nle 'print if '"$1"';' $2
-}
-
 crontest () {
 	# for testing cronjobs: spits a crontab line with time one minute ahead in the future
 	#
 	date '-d +1 minutes' +'%M %k %d %m *'
-}
-
-function current_git_branch {
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 
 col() {
@@ -171,13 +159,6 @@ whatelse () {
 	pacman -Ql $package | grep 'bin'
 }
 
-imageshack() {
-	# upload images to imageshack.us
-	for files in *; do
-    curl -H Expect: -F fileupload="@$files" -F xml=yes -# "http://www.imageshack.us/index.php" | grep image_link | sed -e 's/<image_link>/[IMG]/g' -e 's/<\/image_link>/[\/IMG]/g';
-	done;
-}
-
 pretendInstall() {
 	for i in `seq 0 100`; do
     timeout 1 dialog --gauge "Install..." 6 40 "$i"
@@ -198,13 +179,6 @@ getMovieLength () {
     gawk '{FS="="}; /ID_LENGTH/{ H=int($2/3600); M=int(($2-H*3600)/60); S=int($2%60); printf("%02d:%02d:%02d\n", H, M, S)}'
 }
 
-
-viewAllProcessesAndCommands() {
-	# Grabs the cmdline used to execute the process, and the environment that the process is being run under
-	#
-	cd /proc && command ps a -opid=|xargs -I'{}' sh -c 'test $PPID -ne {}&&test -r {}/cmdline&&echo -e "\n[{}]"&&tr -s "\000" " "<{}/cmdline&&echo&&tr -s "\000\033" "\nE"<{}/environ|sort'
-}
-
 removePdfPassword() {
 	# Remove password from any pdf in current or sub directories
 	# doesnt require knowing the password to pdf
@@ -223,11 +197,6 @@ function cue() {
 	else
     sleep $1 && shift && zenity --title 'Remind that...' --info --text "$*" &
 	fi
-}
-
-# an alias for gocurcon that always gives currency conversions in ARS
-function gocurcona() {
-	gocurcon $2 ars $1;
 }
 
 function path() {
