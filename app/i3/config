@@ -387,11 +387,17 @@ smart_borders on
 # Applications hotkey bindings
 ##############################
 
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+
+# Microphone mute toggle (optional)
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
 ##############################
 ### Autostart applications ###
 ##############################
-# volume control: pavucontrol
-# but can be launched from: pasystray, which sits on the lower bar
 
 # Run only once: for background apps and daemons you don’t want duplicated
 # (e.g., compositor, notification daemon, network applet, wallpaper setter)
@@ -412,6 +418,7 @@ exec --no-startup-id xidlehook-withdrawnwin \
   --timer 300 "$HOME/bin/public/wallpaper-rotator.sh" "" \
   --timer 240 "xset dpms force off" "xset dpms force on"
 
+# Run on every i3 restart
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id guake
