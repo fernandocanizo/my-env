@@ -1,6 +1,7 @@
 # Package list to install on new Archlinux based machines
 
 ## TODO convertir en una lista que este lista para ser instalada, algo ejecutable
+# TODO ya hay un par de scripts, revisar y eliminar esto
 
 - devbook-bin
 - fractus-atlas
