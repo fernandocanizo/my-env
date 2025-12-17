@@ -45,11 +45,22 @@ read -r answer
 if [[ 'y' = "${answer}" ]]; then
   echo 'Linking configuration files under ~/.config'
   "${myLinker}" "${baseFolder}/git" "${XDG_CONFIG_HOME}/git"
-  "${myLinker}" "${baseFolder}/mc" "${XDG_CONFIG_HOME}/mc"
-  "${myLinker}" "${baseFolder}/kitty" "${XDG_CONFIG_HOME}/kitty"
+  # Parece que esto no va mas, no encontre el directorio
+  # Revisar git log
+  # "${myLinker}" "${baseFolder}/mc" "${XDG_CONFIG_HOME}/mc"
+
+  # esta mejor mi nueva configuracion de Kitty, revisar y comparar
+  # "${myLinker}" "${baseFolder}/kitty" "${XDG_CONFIG_HOME}/kitty"
+
   "${myLinker}" "${baseFolder}/yay" "${XDG_CONFIG_HOME}/yay"
 fi
 
+###
+### LLEGUE HASTA AQUI
+###
+
+# TODO La configuracion de i3 la quiero comparar con lo que trae Garuda y hacer un
+# mix
 echo "Install i3 configuration? (y/N)"
 read -r answer
 if [[ 'y' = "${answer}" ]]; then
