@@ -1,3 +1,6 @@
+# TODO separar las que son binarios de las que requieren compilacion,
+# asi se puede hacer en dos pasos: una rapido y otro para cuando uno tenga
+# tiempo
 yay -S bash-language-server
 yay -S bat
 yay -S brave-bin
@@ -32,7 +35,8 @@ yay -S p7zip
 yay -S pacman-contrib
 yay -S perl-rename
 yay -S pgcli
-yay -S pmount
+# yay -S pmount
+yay -S pmount-safe-removal
 yay -S postgresql
 yay -S qbittorrent
 yay -S ripgrep
@@ -43,3 +47,8 @@ yay -S unrar
 yay -S xclip
 yay -S zip
 yay -S mongosh mongodb-tools-bin
+yay -S mupdf
+
+# Candidates for a different script:
+# requires compilation and also installs maby dependencies
+yay -S bless # hex editor
