@@ -79,7 +79,7 @@ find-biggest-dirs () {
 		return 0
 	fi
 
-	/usr/bin/env du --one-file-system --summarize $1/* | /usr/bin/env sort --numeric-sort --reverse
+	sudo du --one-file-system --summarize "$1/*" | /usr/bin/env sort --numeric-sort --reverse
 }
 
 find-biggest-dirs-h () {
@@ -90,7 +90,7 @@ find-biggest-dirs-h () {
 		return 0
 	fi
 
-	du --human-readable --summarize --one-file-system $1/* | sort --human-numeric-sort --reverse
+	sudo du --human-readable --summarize --one-file-system "$1/*" | sort --human-numeric-sort --reverse
 }
 
 find-biggest-files () {
