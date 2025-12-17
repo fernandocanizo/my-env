@@ -11,3 +11,6 @@ alias cd.nexus='cd /home/flc/my/smc/nexus/server'
 
 # Blog
 alias cd.tblog='cd /home/flc/my/tblog'
+
+# Tor downloads
+alias cd.tor='cd /home/flc/.local/share/torbrowser/tbb/x86_64/tor-browser/Browser/bajado'
