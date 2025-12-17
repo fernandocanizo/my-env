@@ -1,5 +1,13 @@
 # load accents and stuff
-exec xmodmap $HOME/.myenv/app/xmodmap/borrow/custom &
+#exec xmodmap $HOME/.myenv/app/xmodmap/borrow/custom &
+# 2025-12-14: I couldn't make `xmodmap` work on Garuda, for a month I've been
+# (intermitently) trying to configure it, but it doesn't respond, even when I
+# disabled `localectl` and `setxkbmap`. In the end I decided to go with the
+# later. I don't know yet if it will give me options to configure single keys
+# like I did with `xmodmap`, but at least I'll have Spanish characters.
+
+setxkbmap us -variant altgr-intl -option ""
+
 
 # So i3 doesn't use xfce4 terminal to show errors
 export TERMINAL=/usr/bin/kitty
