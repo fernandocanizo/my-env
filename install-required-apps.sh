@@ -13,3 +13,6 @@ if [[ 'y' = "${answer}" ]]; then
   yay -S fnm
 fi
 
+# TODO
+# xcursor-breeze is required by Xresources. Also a comment there talks about
+# Cyclone, but I'm not using that cursor theme anymore.
