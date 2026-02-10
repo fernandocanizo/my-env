@@ -137,3 +137,15 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# --- VANGUARD PROTECTION START ---
+# Universal Interceptor for Bash/Zsh
+git() {
+  if [ "$1" = "clone" ] && [ -z "$VANGUARD_INTERNAL" ]; then
+    export VANGUARD_INTERNAL=1
+    vanguard clone "${@:2}"
+    unset VANGUARD_INTERNAL
+  else
+    command git "$@"
+  fi
+}
+# --- VANGUARD PROTECTION END ---
