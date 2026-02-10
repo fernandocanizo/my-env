@@ -99,6 +99,8 @@
 	; 2025-09-08 v2.51.0 deprecated "whatchanged", so I'm making an alias
 	list-changes = !git log --raw --no-merges
 
+	real-blame = !git blame -w -C -C -C -M
+
 	; 2024-06-06: legit doesn't install anymore in my system, something related
 	; to virtual envs or "python still doesn't know how to deal with installs"
 	; legit needs to be installed before for these to work
