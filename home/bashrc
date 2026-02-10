@@ -149,3 +149,6 @@ git() {
   fi
 }
 # --- VANGUARD PROTECTION END ---
+
+# Ensure we have Nodejs and pnpm globally available
+fnm use 24
