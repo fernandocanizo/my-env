@@ -1,1 +1,0 @@
-../other/spacetimedb.sh

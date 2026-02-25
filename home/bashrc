@@ -129,14 +129,6 @@ alias jctl="journalctl -p 3 -xb"
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 fastfetch -l garuda
 
-# pnpm
-export PNPM_HOME="/home/flc/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # --- VANGUARD PROTECTION START ---
 # Universal Interceptor for Bash/Zsh
 git() {
