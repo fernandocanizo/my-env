@@ -18,3 +18,4 @@ alias cd.tor='cd /home/flc/.local/share/torbrowser/tbb/x86_64/tor-browser/Browse
 # Side projects
 alias cd.fast='cd /home/flc/my/fasting-log'
 alias cd.ducati='cd /home/flc/my/games/ducati'
+alias cd.kaplay='cd /home/flc/my/alien/kaplay'
