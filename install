@@ -87,7 +87,7 @@ cd "$HOME" || exit 1
 
 # 1. Universal dotfiles
 echo "Linking universal dotfiles..."
-for f in dircolors gitconfig iex.exs npmrc pgpass plan profile project psqlrc pylintrc root-bashrc user-dirs.dirs; do
+for f in dircolors gitconfig iex.exs npmrc pgpass plan profile project psqlrc pylintrc user-dirs.dirs; do
   [[ -f "${baseFolder}/home/$f" ]] && myLink "${baseFolder}/home/$f" ".$f"
 done
 
