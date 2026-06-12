@@ -53,13 +53,20 @@ fi
 
 host="$HOSTNAME"
 
-# --- Helper: idempotent symlink ---
+# --- Helper: idempotent link (hard for files, symlink for dirs) ---
 myLink() {
   local src="$1" dst="$2"
+
   if $dryRun; then
-    echo "[DRY-RUN] ln -sfT $src $dst"
+    if [[ -d "$src" ]]; then
+      echo "[DRY-RUN] ln -sfT $src $dst"
+    else
+      echo "[DRY-RUN] ln -f $src $dst"
+    fi
     return 0
   fi
+
+  # Remove stale symlinks or wrong-type entries
   if [[ -L "$dst" ]]; then
     local current
     current=$(readlink "$dst") || true
@@ -67,10 +74,25 @@ myLink() {
       rm -f "$dst"
     fi
   elif [[ -e "$dst" && ! -L "$dst" ]]; then
-    echo "WARNING: $dst exists and is not a symlink, skipping"
-    return 0
+    if [[ -d "$src" && ! -d "$dst" ]]; then
+      echo "WARNING: $dst exists as file, but source is a directory. Skipping."
+      return 0
+    fi
+    if [[ ! -d "$src" && -d "$dst" ]]; then
+      echo "WARNING: $dst exists as directory, but source is a file. Skipping."
+      return 0
+    fi
+    # Same type but different content — overwrite
+    rm -rf "$dst"
   fi
-  ln -sfT "$src" "$dst"
+
+  if [[ -d "$src" ]]; then
+    # Symbolic link for directories
+    ln -sfT "$src" "$dst"
+  else
+    # Hard link for files
+    ln -f "$src" "$dst"
+  fi
 }
 
 # --- Ensure host folder exists (for new machines) ---
