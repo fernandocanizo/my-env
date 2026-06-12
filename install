@@ -2,7 +2,8 @@
 set -euo pipefail
 
 baseFolder=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-dryRun=false
+dryRun=true
+forceOverwrite=false
 shellOverride=""
 displayOverride=""
 
@@ -10,15 +11,17 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --shell=*) shellOverride="${1#*=}"; shift ;;
     --display=*) displayOverride="${1#*=}"; shift ;;
-    --dry-run) dryRun=true; shift ;;
+    --write) dryRun=false; shift ;;
+    --force) forceOverwrite=true; shift ;;
     --help|-h)
       cat <<'HELP'
-Usage: ./install [--shell=SHELL] [--display=DISPLAY] [--dry-run]
+Usage: ./install [--write] [--force] [--shell=SHELL] [--display=DISPLAY]
 
 Options:
+  --write                        Actually perform linking (default is dry-run)
+  --force                        Overwrite existing files/directories
   --shell=bash|fish|xonsh|zsh    Override auto-detected shell
   --display=x11|wayland|cli      Override auto-detected display server
-  --dry-run                      Show what would be done, change nothing
   --help, -h                     Show this help
 
 Auto-detection:
@@ -27,6 +30,8 @@ Auto-detection:
            x11 if $DISPLAY is set,
            cli otherwise
   Host:   always $HOSTNAME (not overridable)
+
+Without --write, the script only prints what it would do.
 HELP
       exit 0
       ;;
@@ -53,6 +58,10 @@ fi
 
 host="$HOSTNAME"
 
+_warn() {
+  printf '\033[33mWARNING: %s\033[0m\n' "$1"
+}
+
 # --- Helper: idempotent link (hard for files, symlink for dirs) ---
 myLink() {
   local src="$1" dst="$2"
@@ -66,31 +75,53 @@ myLink() {
     return 0
   fi
 
-  # Remove stale symlinks or wrong-type entries
+  # Stale symlink pointing elsewhere → remove
   if [[ -L "$dst" ]]; then
     local current
     current=$(readlink "$dst") || true
     if [[ "$current" != "$src" ]]; then
       rm -f "$dst"
+    else
+      # Already correct symlink
+      return 0
     fi
-  elif [[ -e "$dst" && ! -L "$dst" ]]; then
+  fi
+
+  # Destination exists and is NOT a symlink
+  if [[ -e "$dst" && ! -L "$dst" ]]; then
+    # Type mismatch
     if [[ -d "$src" && ! -d "$dst" ]]; then
-      echo "WARNING: $dst exists as file, but source is a directory. Skipping."
+      _warn "$dst exists as file, but source is a directory. Skipping."
       return 0
     fi
     if [[ ! -d "$src" && -d "$dst" ]]; then
-      echo "WARNING: $dst exists as directory, but source is a file. Skipping."
+      _warn "$dst exists as directory, but source is a file. Skipping."
       return 0
     fi
-    # Same type but different content — overwrite
-    rm -rf "$dst"
+
+    # Same type — check if already hard-linked (same inode)
+    if [[ ! -d "$src" ]]; then
+      local srcInode dstInode
+      srcInode=$(stat -c %i "$src" 2>/dev/null) || srcInode=""
+      dstInode=$(stat -c %i "$dst" 2>/dev/null) || dstInode=""
+      if [[ -n "$srcInode" && "$srcInode" == "$dstInode" ]]; then
+        # Already hard-linked, nothing to do
+        return 0
+      fi
+    fi
+
+    # Same type, different content
+    if $forceOverwrite; then
+      rm -rf "$dst"
+    else
+      _warn "$dst already exists with different content. Use --force to overwrite."
+      return 0
+    fi
   fi
 
   if [[ -d "$src" ]]; then
-    # Symbolic link for directories
     ln -sfT "$src" "$dst"
   else
-    # Hard link for files
     ln -f "$src" "$dst"
   fi
 }
