@@ -1,79 +1,163 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# create symbolic links to point to git-maintained configuration files
+baseFolder=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+dryRun=false
+shellOverride=""
+displayOverride=""
 
-source install-required-apps.sh
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --shell=*) shellOverride="${1#*=}"; shift ;;
+    --display=*) displayOverride="${1#*=}"; shift ;;
+    --dry-run) dryRun=true; shift ;;
+    --help|-h)
+      cat <<'HELP'
+Usage: ./install [--shell=SHELL] [--display=DISPLAY] [--dry-run]
 
-baseFolder=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-homeFolder="${baseFolder}/home/"
-myLinker='ln -vf -T '
+Options:
+  --shell=bash|fish|xonsh|zsh    Override auto-detected shell
+  --display=x11|wayland|cli      Override auto-detected display server
+  --dry-run                      Show what would be done, change nothing
+  --help, -h                     Show this help
 
-cd "$HOME" || exit
+Auto-detection:
+  Shell:  derived from $SHELL
+  Display: wayland if $WAYLAND_DISPLAY is set,
+           x11 if $DISPLAY is set,
+           cli otherwise
+  Host:   always $HOSTNAME (not overridable)
+HELP
+      exit 0
+      ;;
+    *) echo "Unknown option: $1"; exit 1 ;;
+  esac
+done
 
-echo 'Linking configuration files under your home'
-"${myLinker}" "${homeFolder}profile" .profile
-"${myLinker}" "${homeFolder}bash_profile" .bash_profile
-"${myLinker}" "${homeFolder}bashrc" .bashrc
-"${myLinker}" "${homeFolder}bash_logout" .bash_logout
-"${myLinker}" "${homeFolder}dircolors" .dircolors
-"${myLinker}" "${homeFolder}inputrc" .inputrc
-"${myLinker}" "${homeFolder}psqlrc" .psqlrc
-"${myLinker}" "${homeFolder}Xresources" .Xresources
-"${myLinker}" "${homeFolder}xprofile" .xprofile
-"${myLinker}" "${homeFolder}gitconfig" .gitconfig
-"${myLinker}" "${homeFolder}npmrc" .npmrc
-"${myLinker}" "${homeFolder}iex.exs" .iex.exs
-
-echo "Install personal stuff? (y/N)"
-read -r answer
-if [[ 'y' = "${answer}" ]]; then
-  # gpg data
-  "${myLinker}" "${HOME}/Dropbox/.gnupg" .gnupg
+# --- Auto-detect ---
+if [[ -n "$shellOverride" ]]; then
+  detectedShell="$shellOverride"
+else
+  detectedShell=$(basename "$SHELL")
 fi
 
-# Don't erase ~/.pgpass if there's one already
-if [[ ! -e .pgpass ]]; then
-  cp "${homeFolder}pgpass" ~/.pgpass
+if [[ -n "$displayOverride" ]]; then
+  detectedDisplay="$displayOverride"
+elif [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
+  detectedDisplay="wayland"
+elif [[ -n "${DISPLAY:-}" ]]; then
+  detectedDisplay="x11"
+else
+  detectedDisplay="cli"
 fi
 
-if [[ ! -d .config ]]; then
-  mkdir .config
-fi
+host="$HOSTNAME"
 
-echo "Install apps configuration? (y/N)"
-read -r answer
-if [[ 'y' = "${answer}" ]]; then
-  echo 'Linking configuration files under ~/.config'
-  "${myLinker}" "${baseFolder}/git" "${XDG_CONFIG_HOME}/git"
-  # Parece que esto no va mas, no encontre el directorio
-  # Revisar git log
-  # "${myLinker}" "${baseFolder}/mc" "${XDG_CONFIG_HOME}/mc"
-
-  # esta mejor mi nueva configuracion de Kitty, revisar y comparar
-  # "${myLinker}" "${baseFolder}/kitty" "${XDG_CONFIG_HOME}/kitty"
-
-  "${myLinker}" "${baseFolder}/yay" "${XDG_CONFIG_HOME}/yay"
-fi
-
-###
-### LLEGUE HASTA AQUI
-###
-
-# TODO La configuracion de i3 la quiero comparar con lo que trae Garuda y hacer un
-# mix
-echo "Install i3 configuration? (y/N)"
-read -r answer
-if [[ 'y' = "${answer}" ]]; then
-  i3Folder="${HOME}/.i3"
-  if [[ ! -d "${i3Folder}" ]]; then
-    mkdir "${i3Folder}"
+# --- Helper: idempotent symlink ---
+myLink() {
+  local src="$1" dst="$2"
+  if $dryRun; then
+    echo "[DRY-RUN] ln -sfT $src $dst"
+    return 0
   fi
-  cd "${i3Folder}" || exit
-  "${myLinker}" "${baseFolder}/i3/config" "${i3Folder}/config"
-  "${myLinker}" "${baseFolder}/i3/status.conf" "${i3Folder}/status.conf"
+  if [[ -L "$dst" ]]; then
+    local current
+    current=$(readlink "$dst") || true
+    if [[ "$current" != "$src" ]]; then
+      rm -f "$dst"
+    fi
+  elif [[ -e "$dst" && ! -L "$dst" ]]; then
+    echo "WARNING: $dst exists and is not a symlink, skipping"
+    return 0
+  fi
+  ln -sfT "$src" "$dst"
+}
+
+# --- Ensure host folder exists (for new machines) ---
+hostBashDir="${baseFolder}/host/${host}/bash/autoload"
+if [[ ! -d "$hostBashDir" ]]; then
+  echo "Creating host folder: host/${host}/..."
+  if ! $dryRun; then
+    mkdir -p "$hostBashDir"
+    touch "${baseFolder}/host/${host}/bash/autoload/.gitkeep"
+  fi
 fi
 
-# Finally, write down configuration folder path so it can be used by
-# ~/.bashrc
+cd "$HOME" || exit 1
 
-echo "${baseFolder}" >| "${HOME}/.envFolder"
+# 1. Universal dotfiles
+echo "Linking universal dotfiles..."
+for f in dircolors gitconfig iex.exs npmrc pgpass plan profile project psqlrc pylintrc root-bashrc user-dirs.dirs; do
+  [[ -f "${baseFolder}/home/$f" ]] && myLink "${baseFolder}/home/$f" ".$f"
+done
+
+# 2. Env folder marker
+if ! $dryRun; then
+  echo "${baseFolder}" >| "${HOME}/.envFolder"
+fi
+
+# 3. Shell-specific configs
+case "$detectedShell" in
+  bash)
+    echo "Configuring bash..."
+    for f in bashrc bash_profile bash_logout inputrc; do
+      myLink "${baseFolder}/host/common/bash/$f" ".$f"
+    done
+    ;;
+  xonsh)
+    echo "Configuring xonsh..."
+    myLink "${baseFolder}/host/common/xonsh/xonshrc" ".xonshrc"
+    ;;
+  fish)
+    echo "Configuring fish... (no configs yet, placeholder only)"
+    ;;
+  zsh)
+    echo "Configuring zsh... (no configs yet, placeholder only)"
+    ;;
+  *)
+    echo "Unknown shell: $detectedShell"; exit 1
+    ;;
+esac
+
+# 4. Display-specific home dotfiles
+case "$detectedDisplay" in
+  x11)
+    echo "Configuring X11..."
+    for f in xprofile Xresources; do
+      [[ -f "${baseFolder}/display/x11/home/$f" ]] && myLink "${baseFolder}/display/x11/home/$f" ".$f"
+    done
+    ;;
+  wayland)
+    echo "Configuring Wayland..."
+    ;;
+  cli)
+    echo "Configuring CLI/headless..."
+    ;;
+esac
+
+# 5. Ensure ~/.config exists
+if [[ ! -d "${HOME}/.config" ]]; then
+  if ! $dryRun; then mkdir -p "${HOME}/.config"; fi
+fi
+
+# 6. Generic app configs (display-agnostic)
+echo "Linking generic app configs..."
+for app in git kitty wezterm yay; do
+  [[ -d "${baseFolder}/app/$app" ]] && myLink "${baseFolder}/app/$app" "${HOME}/.config/$app"
+done
+
+# 7. Display-specific app configs
+case "$detectedDisplay" in
+  x11)
+    for app in i3; do
+      [[ -d "${baseFolder}/display/x11/app/$app" ]] && myLink "${baseFolder}/display/x11/app/$app" "${HOME}/.config/$app"
+    done
+    ;;
+  wayland)
+    for app in wayland; do
+      [[ -d "${baseFolder}/display/wayland/app/$app" ]] && myLink "${baseFolder}/display/wayland/app/$app" "${HOME}/.config/$app"
+    done
+    ;;
+esac
+
+echo "Done."
