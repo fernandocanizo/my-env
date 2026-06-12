@@ -58,8 +58,11 @@ fi
 
 host="$HOSTNAME"
 
+YELLOW='\033[33m'
+RESET='\033[0m'
+
 _warn() {
-  printf '\033[33mWARNING: %s\033[0m\n' "$1"
+  printf '%bWARNING: %s%b\n' "$YELLOW" "$1" "$RESET"
 }
 
 # --- Helper: idempotent link (hard for files, symlink for dirs) ---
@@ -67,10 +70,40 @@ myLink() {
   local src="$1" dst="$2"
 
   if $dryRun; then
-    if [[ -d "$src" ]]; then
-      echo "[DRY-RUN] ln -sfT $src $dst"
+    local conflict=false
+    if [[ -L "$dst" ]]; then
+      local current
+      current=$(readlink "$dst" 2>/dev/null) || true
+      if [[ "$current" != "$src" ]]; then
+        conflict=false   # stale symlink, will be auto-removed
+      fi
+    elif [[ -e "$dst" ]]; then
+      if [[ -d "$src" && ! -d "$dst" ]] || [[ ! -d "$src" && -d "$dst" ]]; then
+        conflict=true    # type mismatch
+      elif [[ ! -d "$src" ]]; then
+        local srcInode dstInode
+        srcInode=$(stat -c %i "$src" 2>/dev/null) || srcInode=""
+        dstInode=$(stat -c %i "$dst" 2>/dev/null) || dstInode=""
+        if [[ -z "$srcInode" || "$srcInode" != "$dstInode" ]]; then
+          conflict=true  # same type, different content
+        fi
+      else
+        conflict=true    # both dirs — existing dir blocks symlink
+      fi
+    fi
+
+    if $conflict; then
+      if [[ -d "$src" ]]; then
+        printf '%b[DRY-RUN] ln -sfT %s %s (conflict)%b\n' "$YELLOW" "$src" "$dst" "$RESET"
+      else
+        printf '%b[DRY-RUN] ln -f %s %s (conflict)%b\n' "$YELLOW" "$src" "$dst" "$RESET"
+      fi
     else
-      echo "[DRY-RUN] ln -f $src $dst"
+      if [[ -d "$src" ]]; then
+        echo "[DRY-RUN] ln -sfT $src $dst"
+      else
+        echo "[DRY-RUN] ln -f $src $dst"
+      fi
     fi
     return 0
   fi
