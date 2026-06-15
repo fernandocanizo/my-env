@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # ~/.bashrc — interactive non-login shell configuration
-# Merged: Cygnus dotfiles + Omarchy functionality (now owned in my-env)
 #
 # Structure:
 #   1. Early exit for non-interactive shells

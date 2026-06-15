@@ -1,9 +1,3 @@
-# I never recall where does Tor Browser save downloads
-# alias cd.torbrowser='cd /home/flc/.local/share/torbrowser/tbb/x86_64/tor-browser/Browser/Downloads'
-
-# alias cd.dgb='cd /home/flc/my/diaz-garage-back'
-# alias cd.dgf='cd /home/flc/my/diaz-garage-front'
-
 # SMC
 alias cd.rocky='cd /home/flc/my/smc/nexus/rocky'
 alias cd.pachuli='cd /home/flc/my/smc/nexus/pachuli'
