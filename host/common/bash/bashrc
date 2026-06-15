@@ -76,6 +76,9 @@ fi
 # --- 8. User extras ---
 eval "$(fnm env --use-on-cd --shell bash)"
 
+# readline config
+[[ -f "$HOME/.my-env/host/common/bash/inputrc" ]] && bind -f "$HOME/.my-env/host/common/bash/inputrc"
+
 # fastfetch only on login shells, not every new terminal
 if shopt -q login_shell; then
   fastfetch -l garuda 2>/dev/null || true

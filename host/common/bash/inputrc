@@ -2,9 +2,17 @@
 # be replaced with the last command used. If you are using history
 # search, only past commands beginning with ls (the current input) will
 # be shown.
-
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+
+# 8-bit/UTF-8 character handling (from Omarchy):
+# meta-flag/input-meta: enable 8-bit input for UTF-8 and extended chars
+# output-meta: output high-bit chars directly instead of \xxx escapes
+# convert-meta off: do not strip the high bit from input chars
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
 
 set bell-style none
 
@@ -30,12 +38,49 @@ set completion-ignore-case on
 # When listing possible file completions, put / after directory names and * after programs:
 set visible-stats on
 
+# Colorize file completions by type (dirs, executables, symlinks, etc.) — requires Bash 4+ (from Omarchy)
+set colored-stats on
+
 # List the possible completions when Tab is pressed:
 set show-all-if-ambiguous on
 
+# Also show the match list when there is only one possible completion (from Omarchy)
+set show-all-if-unmodified on
+
+# Show only the last 2 chars of a long common prefix with leading ellipsis (from Omarchy)
+set completion-prefix-display-length 2
+
+# Immediately add trailing slash when autocompleting symlinks to directories (from Omarchy)
+set mark-symlinked-directories on
+
+# Do not paginate completion lists; show everything at once (from Omarchy)
+set page-completions off
+
+# Ask before displaying more than 200 completion candidates (from Omarchy)
+set completion-query-items 200
+
+# Be more intelligent when autocompleting by also looking at text after
+# the cursor. Example: "cd ~/src/mozil" with cursor on "z" completes to
+# "cd ~/src/mozilla". (Requires Bash 4.) (from Omarchy)
+set skip-completed-text on
+
+# Tab completion behavior (from Omarchy):
+# Default behavior inserts the longest common prefix:
+# TAB: complete
+# New behavior: cycle forward through candidates with Tab:
+TAB: menu-complete
+# Cycle backward through candidates with Shift+Tab:
+"\e[Z":menu-complete-backward
+# On first Tab, complete the common prefix before cycling candidates (from Omarchy)
+set menu-complete-display-prefix on
+
+# Right/Left arrows: explicit defaults for cursor movement (from Omarchy)
+"\e[C":forward-char
+"\e[D":backward-char
+
 # unused keys for future mappings:
 # Ctrl+\ and Ctrl+^
-# Meta+A, Meta+E, Meta+G, Meta+H, Meta+I, Meta+J, Meta+K, Meta+M, Meta+O, Meta+Q, Meta+S, Meta+V, Meta+W, Meta+X, and Meta+Z
+# Meta+A, Meta+E, Meta+G, Meta+H, Meta+I, Meta=J, Meta=K, Meta=M, Meta=O, Meta=Q, Meta=S, Meta=V, Meta=W, Meta+X, and Meta=Z
 
 # 2013.05.14 highlight parenthesis on newlisp
 set blink-matching-paren on
