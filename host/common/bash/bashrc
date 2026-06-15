@@ -1,139 +1,82 @@
-# This file is called when bash is invoked as an interactive non login
-# shell. Ensure it doesn't output anything
-
-# Note: urxvt and guake load this file instead of ~/.bash_profile
+#!/usr/bin/env bash
+# ~/.bashrc — interactive non-login shell configuration
+# Merged: Cygnus dotfiles + Omarchy functionality (now owned in my-env)
+#
+# Structure:
+#   1. Early exit for non-interactive shells
+#   2. PATH (from host/<hostname>/autoload/path.sh)
+#   3. Omarchy environment (copied to host/common/bash/omarchy/envs.sh)
+#   4. User autoload system (common + host-specific scripts)
+#      - Includes: GBT prompt, eternal history, ssh-agent, functions, etc.
+#   5. Consolidated aliases (from host/<hostname>/bash/alias.sh)
+#   6. Omarchy functions (copied to host/common/bash/omarchy/fns/)
+#   7. Omarchy init: mise, zoxide, fzf (starship explicitly dropped)
+#   8. User extras: fnm, fastfetch (login shells only)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Some ANSI colors to play with prompt below
-reset='\[\e[0m\]'
-whitefg='\[\e[38;5;255m\]'
-redfg='\[\e[38;5;160m\]'
-bluefg='\[\e[38;5;68m\]'
-grayfg='\[\e[38;5;236m\]'
-blackfg='\[\e[30m\]'
-yellowfg='\[\e[38;5;226m\]'
-whitebg='\[\e[48;5;255m\]'
-redbg='\[\e[48;5;160m\]'
-bluebg='\[\e[48;5;68m\]'
-graybg='\[\e[48;5;236m\]'
-yellowbg='\[\e[48;5;226m\]'
-blackbg='\[\e[40m\]'
+# --- 2. PATH ---
+source "$HOME/.my-env/host/cygnus/bash/autoload/path.sh"
 
-export EDITOR="/usr/bin/nvim"
+# --- 3. Omarchy environment ---
+source "$HOME/.my-env/host/common/bash/omarchy/envs.sh"
 
-# ~/.envFolder is generated on installation
-read baseFolder < ~/.envFolder
+# --- 4. User autoload system ---
+read baseFolder < ~/.envFolder 2>/dev/null
+[[ -z "$baseFolder" ]] && baseFolder="$HOME/.my-env"
 
 autoload="${baseFolder}/host/common/bash/autoload/*.sh"
 thisHostScriptsFolder="${baseFolder}/host/$HOSTNAME/bash/autoload"
 thisHost="${thisHostScriptsFolder}/*.sh"
-# ensure thisHost folder exists on new machines
-test -d ${thisHostScriptsFolder} || mkdir -p ${thisHostScriptsFolder}
+test -d "${thisHostScriptsFolder}" || mkdir -p "${thisHostScriptsFolder}"
 completions="${baseFolder}/host/common/bash/completions"
 
-# automatically load what's in 'autoload'
-for file in `/usr/bin/env ls -1 ${autoload}`; do
-  source ${file};
+for file in $(/usr/bin/env ls -1 ${autoload} 2>/dev/null); do
+  source "${file}"
 done
 
-# after ssh agent is running and variables exported...
-# source thisHost configurations
-for file in `/usr/bin/env ls -1 ${thisHost}`; do
-  source ${file};
+for file in $(/usr/bin/env ls -1 ${thisHost} 2>/dev/null); do
+  source "${file}"
 done
 
-# source completions
-# global
-[[ $BASH_COMPLETION = '' ]]\
-  && [[ -r /etc/bash_completion ]]\
-  && source /etc/bash_completion
+# bash-completion (global)
+[[ -z "$BASH_COMPLETION" ]] && [[ -r /etc/bash_completion ]] && source /etc/bash_completion
 
-# thisHost
-for file in `/usr/bin/env ls -1 ${completions}`; do
-  source ${completions}/${file};
+# thisHost completions
+for file in $(/usr/bin/env ls -1 ${completions} 2>/dev/null); do
+  source "${completions}/${file}"
 done
 
-# From Garuda
+# --- 5. Consolidated aliases ---
+[[ -f "${baseFolder}/host/cygnus/bash/alias.sh" ]] && source "${baseFolder}/host/cygnus/bash/alias.sh"
 
-# TODO move to my aliases file and add `eza` to required apps
-## Useful aliases
+# --- 6. Omarchy functions ---
+for f in "$HOME/.my-env/host/common/bash/omarchy/fns/"*; do
+  [[ -f "$f" ]] && source "$f"
+done
 
-# Replace ls with eza
-if [[ -x /usr/bin/eza ]]; then
-  alias ls='eza -al --color=always --group-directories-first --icons'     # preferred listing
-  alias la='eza -a --color=always --group-directories-first --icons'      # all files and dirs
-  alias ll='eza -l --color=always --group-directories-first --icons'      # long format
-  alias lt='eza -aT --color=always --group-directories-first --icons'     # tree listing
-  alias l.='eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+# --- 7. Omarchy init (mise, zoxide, fzf; starship dropped) ---
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
 fi
 
-
-# Replace some more things with better alternatives
-if [[ -x /usr/bin/bat ]]; then
-  alias cat='bat --style header --style snip --style changes --style header'
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
 fi
 
-[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
+if command -v fzf &> /dev/null; then
+  [[ -f /usr/share/fzf/completion.bash ]] && source /usr/share/fzf/completion.bash
+  [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
+fi
 
-# Common use
-alias grubup="sudo update-grub"
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias tarnow='tar -acf '
-alias untar='tar -zxvf '
-alias wget='wget -c '
-alias rmpkg="sudo pacman -Rdd"
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias upd='/usr/bin/garuda-update'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='ugrep --color=auto'
-alias fgrep='ugrep -F --color=auto'
-alias egrep='ugrep -E --color=auto'
-alias hw='hwinfo --short'                          # Hardware Info
-alias biggestPkgs="expac -H M '%m\t%n' | sort -h | nl"     # Sort installed packages according to size in MB (expac must be installed)
-alias gitPkgs='pacman -Q | grep -i "\-git" | wc -l' # List amount of -git packages
-alias ip='ip -color'
-alias vi='nvim'
-alias vim='nvim'
+# omarchy completions
+[[ -f "$HOME/.my-env/host/common/bash/omarchy/completions" ]] && source "$HOME/.my-env/host/common/bash/omarchy/completions"
 
-# Get fastest mirrors
-alias mirror="sudo reflector --fastest 30 --latest 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+# --- 8. User extras ---
+eval "$(fnm env --use-on-cd --shell bash)"
 
-# Cleanup orphaned packages
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
-
-# Get the error messages from journalctl
-alias jctl="journalctl -p 3 -xb"
-
-# Recent installed packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-
-# Root-specific prompt
-if [[ $EUID -eq 0 ]]; then
-  # root-specific GBT config
-  export GBT_CAR_HOSTNAME_BG='red'
-  export GBT_CAR_HOSTNAME_FG='white'
-  export GBT_CAR_OS_SYMBOL_TEXT='💀'
-
-  if [[ -x /usr/bin/gbt ]]; then
-    export PS1='$(gbt $?)'
-  else
-    # Fallback prompt when GBT is missing
-    emoji="${graybg}${whitefg} 💀 ${reset}"
-    arrow1="${redbg}${grayfg}${reset}"
-    userHost="${redbg}${whitefg} root@\h ${reset}"
-    arrow2="${bluebg}${redfg}${reset}"
-    directory="${bluebg}${whitefg} \W ${reset}"
-    arrow3="${blackbg}${bluefg}${reset}"
-    end=" ${redfg}#${reset} "
-    export PS1="${emoji}${arrow1}${userHost}${arrow2}${directory}${arrow3}${end}"
-  fi
-else
-  fastfetch -l garuda
-
-  # Ensure we have Nodejs and pnpm globally available
-  fnm use 24
+# fastfetch only on login shells, not every new terminal
+if shopt -q login_shell; then
+  fastfetch -l garuda 2>/dev/null || true
 fi
