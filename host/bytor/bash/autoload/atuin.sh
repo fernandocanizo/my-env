@@ -1,1 +1,0 @@
-../other/atuin.sh
