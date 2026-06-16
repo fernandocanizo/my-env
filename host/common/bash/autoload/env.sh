@@ -3,6 +3,7 @@
 # this variable to be useful, then it pertains to an specific installation, not
 # autoload
 
+export SUDO_EDITOR="$EDITOR"
 export EDITOR=/usr/bin/nvim
 #
 # fix "xdg-open fork-bomb" export your preferred browser from here
@@ -12,8 +13,11 @@ export TERM=kitty
 
 # less options, -R is to allow ANSI escape sequences
 export LESS="-iCwqf -R"
+export BAT_THEME=ansi
 export PAGER='less'
-export MANPAGER="/bin/less -s"
+# Color man pages with bat
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 export GREP_COLORS='auto'
 
