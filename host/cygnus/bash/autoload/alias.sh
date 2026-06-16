@@ -158,3 +158,6 @@ alias tb='nc termbin.com 9999'
 # 2018.12.11 always activate mpg123 play controls
 alias mpg='mpg123 -C --buffer 10240 *.mp3'
 
+# markdown viewer
+alias md='glow -p'
+
