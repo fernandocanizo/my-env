@@ -1,0 +1,19 @@
+# Open Arch package URL in browser (requires yaourt, chromium)
+pkgpage() {
+  local url
+  url=$(yaourt -Si "$1" | grep -E '^URL' | grep -E -o 'https?://[^ ]+')
+  echo "Opening ${url} ..."
+  chromium "$url"
+}
+
+# Get package owning a command
+owner() {
+  pacman -Qo $(whereis "$1" | awk '{print $2}')
+}
+
+# List other commands/files from a command's package
+whatelse() {
+  local package
+  package=$(owner "$1" | sed -e 's/.*is owned by \([[:alpha:]]\+\).*/\1/')
+  pacman -Ql "$package" | grep bin
+}

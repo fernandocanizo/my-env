@@ -1,0 +1,3 @@
+# Compression
+compress() { tar -czvf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzvf"

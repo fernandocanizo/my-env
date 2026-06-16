@@ -1,0 +1,14 @@
+# Quick calculator
+calc() {
+  echo "$*" | bc -l
+}
+
+# Remind you of something later via zenity popup
+# Usage: cue <time> <message>
+cue() {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: $0 <time> <text string>"
+  else
+    sleep "$1" && shift && zenity --title 'Remind that...' --info --text "$*" &
+  fi
+}

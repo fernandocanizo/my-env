@@ -1,0 +1,15 @@
+# Fake install progress bar
+pretendInstall() {
+  for i in $(seq 0 100); do
+    timeout 1 dialog --gauge "Install..." 6 40 "$i"
+  done
+  reset
+}
+
+# Fake garbage data stream
+pretendGarbage() {
+  while true; do
+    pwgen -ny 72
+    sleep 1
+  done
+}

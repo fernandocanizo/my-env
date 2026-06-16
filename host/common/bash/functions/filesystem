@@ -1,0 +1,9 @@
+# cd into a date-prefixed directory by partial name match
+# e.g. mcd project → cd 2024.01.15-project-name
+mcd() {
+  local found_dir
+  found_dir=$(find . -maxdepth 1 -type d | grep -v '^\.$' | sort | grep -i "$1" | head -n 1)
+  if [[ -n $found_dir ]]; then
+    cd "$found_dir" || return
+  fi
+}

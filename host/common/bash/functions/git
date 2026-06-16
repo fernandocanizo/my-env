@@ -1,0 +1,5 @@
+# Report time span for a git project
+git-span() {
+  git log | grep '^Date' | tail -n 1
+  git log | grep '^Date' | head -n 1
+}

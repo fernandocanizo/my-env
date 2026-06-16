@@ -1,0 +1,5 @@
+# Extract columns from piped output
+# Usage: ls -l | col 2
+col() {
+  awk '{print $'"$(echo "$*" | sed -e 's/ /,$/g')"'}'
+}

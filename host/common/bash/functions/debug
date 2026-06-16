@@ -1,0 +1,10 @@
+# More precise bash debugging
+# Usage: bashDebug /path/to/script.sh
+bashDebug() {
+  env PS4=' ${BASH_SOURCE}:${LINENO}(${FUNCNAME[0]}) ' sh -x "$1"
+}
+
+# Spits a crontab line with time one minute ahead
+crontest() {
+  date '-d +1 minutes' +'%M %k %d %m *'
+}
