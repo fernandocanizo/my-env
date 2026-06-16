@@ -4,13 +4,12 @@
 # Structure:
 #   1. Early exit for non-interactive shells
 #   2. PATH (from host/<hostname>/autoload/path.sh)
-#   3. Omarchy environment (copied to host/common/bash/omarchy/envs.sh)
-#   4. User autoload system (common + host-specific scripts)
-#      - Includes: GBT prompt, eternal history, ssh-agent, functions, etc.
-#   5. Consolidated aliases (from host/<hostname>/bash/alias.sh)
-#   6. Omarchy functions (copied to host/common/bash/omarchy/fns/)
-#   7. Omarchy init: mise, zoxide, fzf (starship explicitly dropped)
-#   8. User extras: fnm, fastfetch (login shells only)
+#   3. User autoload system (common + host-specific scripts)
+#      - Includes: GBT prompt, eternal history, ssh-agent, etc.
+#   4. Consolidated aliases (from host/<hostname>/bash/alias.sh)
+#   5. Functions (host/common/bash/functions/*)
+#   6. Omarchy init: mise, zoxide, fzf (starship explicitly dropped)
+#   7. User extras: fnm, fastfetch (login shells only)
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -18,10 +17,7 @@
 # --- 2. PATH ---
 source "$HOME/.my-env/host/cygnus/bash/autoload/path.sh"
 
-# --- 3. Omarchy environment ---
-source "$HOME/.my-env/host/common/bash/omarchy/envs.sh"
-
-# --- 4. User autoload system ---
+# --- 3. User autoload system ---
 read baseFolder < ~/.envFolder 2>/dev/null
 [[ -z "$baseFolder" ]] && baseFolder="$HOME/.my-env"
 
@@ -47,15 +43,15 @@ for file in $(/usr/bin/env ls -1 ${completions} 2>/dev/null); do
   source "${completions}/${file}"
 done
 
-# --- 5. Consolidated aliases ---
+# --- 4. Consolidated aliases ---
 [[ -f "${baseFolder}/host/cygnus/bash/alias.sh" ]] && source "${baseFolder}/host/cygnus/bash/alias.sh"
 
-# --- 6. Omarchy functions ---
-for f in "$HOME/.my-env/host/common/bash/omarchy/fns/"*; do
+# --- 5. Functions ---
+for f in "$HOME/.my-env/host/common/bash/functions/"*; do
   [[ -f "$f" ]] && source "$f"
 done
 
-# --- 7. Omarchy init (mise, zoxide, fzf; starship dropped) ---
+# --- 6. Omarchy init (mise, zoxide, fzf; starship dropped) ---
 if command -v mise &> /dev/null; then
   eval "$(mise activate bash)"
 fi
@@ -69,10 +65,7 @@ if command -v fzf &> /dev/null; then
   [[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash
 fi
 
-# omarchy completions
-[[ -f "$HOME/.my-env/host/common/bash/omarchy/completions" ]] && source "$HOME/.my-env/host/common/bash/omarchy/completions"
-
-# --- 8. User extras ---
+# --- 7. User extras ---
 eval "$(fnm env --use-on-cd --shell bash)"
 
 # readline config
