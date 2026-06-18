@@ -15,4 +15,4 @@
 # absolute path. No other format is supported.
 
 XDG_DOWNLOAD_DIR="$HOME/bajado"
-XDG_PICTURES_DIR="$HOME/pictures"
+XDG_PICTURES_DIR="$HOME/img"
