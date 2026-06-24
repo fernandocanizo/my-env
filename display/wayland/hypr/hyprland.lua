@@ -32,6 +32,7 @@ reloadable_require("lua/theme")
 reloadable_require("lua/autostart")
 reloadable_require("lua/windowrules")
 reloadable_require("lua/bindings")
+reloadable_require("lua/toggles")
 
 -- TODO before this becomes the real hyprland.lua:
--- Omarchy defaults/theme/toggles equivalents currently sourced by hyprland.conf.
+-- Finish migrating any remaining Omarchy defaults currently sourced by hyprland.conf.
