@@ -1,8 +1,7 @@
 -- Extra autostart processes.
--- Migrated from ../autostart.conf for Hyprland 0.55 Lua config.
+-- Migrated from Omarchy's default hypr/autostart.conf for Hyprland 0.55 Lua config.
 
--- No local autostart processes are enabled yet.
--- Example:
--- hl.on("hyprland.start", function()
---   hl.exec_cmd("uwsm-app -- my-service")
--- end)
+hl.on("hyprland.start", function()
+  -- Omarchy default: start Waybar unless the user disabled it via the toggle.
+  hl.exec_cmd("sh -lc '! omarchy-toggle-enabled waybar-off && uwsm-app -- waybar'")
+end)
