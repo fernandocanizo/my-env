@@ -241,7 +241,7 @@ case "$detectedDisplay" in
     ;;
   wayland)
     for app in wayland; do
-      [[ -d "${baseFolder}/display/wayland/app/$app" ]] && myLink "${baseFolder}/display/wayland/app/$app" "${HOME}/.config/$app"
+      [[ -d "${baseFolder}/display/wayland/$app" ]] && myLink "${baseFolder}/display/wayland/$app" "${HOME}/.config/$app"
     done
     ;;
 esac
