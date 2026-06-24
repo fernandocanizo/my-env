@@ -17,13 +17,20 @@ pcall(function()
 end)
 
 -- Converted local modules. Keep order deliberate: low-risk basics first, hy3-dependent later.
-require("lua/monitors")
-require("lua/envs")
-require("lua/input")
-require("lua/looknfeel")
-require("lua/autostart")
-require("lua/windowrules")
-require("lua/bindings")
+-- Clear package.loaded so `hyprctl reload` re-executes modules instead of using
+-- stale Lua require cache.
+local function reloadable_require(module)
+  package.loaded[module] = nil
+  require(module)
+end
+
+reloadable_require("lua/monitors")
+reloadable_require("lua/envs")
+reloadable_require("lua/input")
+reloadable_require("lua/looknfeel")
+reloadable_require("lua/autostart")
+reloadable_require("lua/windowrules")
+reloadable_require("lua/bindings")
 
 -- TODO before this becomes the real hyprland.lua:
 -- Omarchy defaults/theme/toggles equivalents currently sourced by hyprland.conf.
