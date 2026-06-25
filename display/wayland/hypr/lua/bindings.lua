@@ -64,6 +64,17 @@ end
 
 local hy3 = hl.plugin.hy3
 
+local function cycle_window(prev)
+  return function()
+    local workspace = hl.get_active_workspace()
+    if workspace and workspace.tiled_layout == "hy3" then
+      hl.dispatch(hy3.focus_tab({ direction = prev and "l" or "r", wrap = true }))
+    else
+      hl.dispatch(hl.dsp.window.cycle_next({ prev = prev }))
+    end
+  end
+end
+
 -- hy3: group creation (i3-style splits and tabs).
 bindd("SUPER + H", "Make horizontal split", hy3.make_group("h"))
 bindd("SUPER + G", "Make vertical split", hy3.make_group("v"))
@@ -86,11 +97,12 @@ bindd("SUPER + SHIFT + RIGHT", "Move window right", hy3.move_window("r"))
 bindd("SUPER + SHIFT + UP", "Move window up", hy3.move_window("u"))
 bindd("SUPER + SHIFT + DOWN", "Move window down", hy3.move_window("d"))
 
--- Simple native window cycling.
-bindd("SUPER + TAB", "Next window", hl.dsp.window.cycle_next())
-bindd("SUPER + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ prev = true }))
-bindd("ALT + TAB", "Next window", hl.dsp.window.cycle_next())
-bindd("ALT + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ prev = true }))
+-- Window cycling. Native cycling works in dwindle; hy3 tabbed mode needs
+-- hy3's tab focus because non-active tabs are hidden from native cyclenext.
+bindd("SUPER + TAB", "Next window", cycle_window(false))
+bindd("SUPER + SHIFT + TAB", "Previous window", cycle_window(true))
+bindd("ALT + TAB", "Next window", cycle_window(false))
+bindd("ALT + SHIFT + TAB", "Previous window", cycle_window(true))
 
 -- Mouse.
 -- Mouse drag uses the raw plugin dispatcher because hy3's Lua move_window factory expects a direction.
