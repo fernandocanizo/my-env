@@ -39,5 +39,3 @@ reloadable_require("lua/bindings")
 reloadable_require("lua/tiling_bindings")
 reloadable_require("lua/toggles")
 
--- TODO before this becomes the real hyprland.lua:
--- Finish migrating any remaining Omarchy defaults currently sourced by hyprland.conf.
