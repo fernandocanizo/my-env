@@ -1,7 +1,5 @@
 -- Local look-and-feel configuration.
 -- Migrated from Omarchy's default hypr/looknfeel.conf for Hyprland 0.55 Lua config.
--- Dwindle/master/scrolling layout defaults are intentionally left for later;
--- keep the active layout on hy3.
 
 hl.config({
   general = {
@@ -67,6 +65,30 @@ hl.config({
   animations = {
     enabled = true,
   },
+
+  dwindle = {
+    preserve_split = true,
+    force_split = 2,
+  },
+
+
+  misc = {
+    disable_hyprland_logo = true,
+    disable_splash_rendering = true,
+    disable_scale_notification = true,
+    focus_on_activate = true,
+    anr_missed_pings = 3,
+    on_focus_under_fullscreen = 1,
+  },
+
+  cursor = {
+    hide_on_key_press = true,
+    warp_on_change_workspace = 1,
+  },
+
+  binds = {
+    hide_special_on_workspace_change = true,
+  },
 })
 
 -- Omarchy default animation curves and rules.
@@ -96,23 +118,7 @@ hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "e
 -- With Lua cold-start/verification, `hl.config({ plugin = { hy3 = ... } })` is
 -- parsed before hy3's config keys are registered, producing unknown-key errors.
 local function apply_hy3_config()
-  hl.exec_cmd(table.concat({
-    "hyprctl --batch '",
-    "keyword plugin:hy3:tab_first_window true;",
-    "keyword plugin:hy3:tabs:height 22;",
-    "keyword plugin:hy3:tabs:padding 6;",
-    "keyword plugin:hy3:tabs:from_top false;",
-    "keyword plugin:hy3:tabs:radius 6;",
-    "keyword plugin:hy3:tabs:border_width 2;",
-    "keyword plugin:hy3:tabs:render_text true;",
-    "keyword plugin:hy3:tabs:text_center true;",
-    "keyword plugin:hy3:tabs:text_font Sans;",
-    "keyword plugin:hy3:tabs:text_height 8;",
-    "keyword plugin:hy3:tabs:text_padding 3;",
-    "keyword plugin:hy3:tabs:blur true;",
-    "keyword plugin:hy3:tabs:opacity 1.0",
-    "' >/dev/null 2>&1 || true",
-  }))
+  hl.exec_cmd([[hyprctl eval 'hl.config({ plugin = { hy3 = { tab_first_window = true, tabs = { height = 22, padding = 6, from_top = false, radius = 6, border_width = 2, render_text = true, text_center = true, text_font = "Sans", text_height = 8, text_padding = 3, blur = true, opacity = 1.0 } } } })' >/dev/null 2>&1 || true]])
 end
 
 hl.on("hyprland.start", apply_hy3_config)

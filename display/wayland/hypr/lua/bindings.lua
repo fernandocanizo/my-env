@@ -8,11 +8,11 @@ local function bindd(keys, description, dispatcher, opts)
 end
 
 local function hypr_dispatch(dispatcher, args)
-  local cmd = "hyprctl dispatch " .. dispatcher
+  local cmd = dispatcher
   if args and args ~= "" then
     cmd = cmd .. " " .. args
   end
-  return hl.dsp.exec_cmd(cmd)
+  return hl.dsp.exec_raw(cmd)
 end
 
 -- Application bindings
@@ -65,8 +65,6 @@ end
 -- hy3: group creation (i3-style splits and tabs).
 bindd("SUPER + H", "Make horizontal split", hypr_dispatch("hy3:makegroup", "h"))
 bindd("SUPER + G", "Make vertical split", hypr_dispatch("hy3:makegroup", "v"))
-bindd("SUPER + T", "Make tab group", hypr_dispatch("hy3:makegroup", "tab"))
-bindd("SUPER + Q", "Toggle group tabbed/untabbed", hypr_dispatch("hy3:changegroup", "toggletab"))
 
 -- hy3: change existing group layout.
 bindd("SUPER + SHIFT + H", "Change group to horizontal", hypr_dispatch("hy3:changegroup", "h"))

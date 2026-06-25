@@ -1,18 +1,46 @@
 -- Non-conflicting Omarchy tiling-v2/workspace bindings.
--- Migrated from ~/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf.
---
--- Hy3 does not install keybindings by itself; our hy3 bindings are managed in
--- lua/bindings.lua. This file intentionally skips Omarchy defaults that collide
--- with those hy3 bindings or are dwindle/group-specific.
---
--- Local workspace-number change:
---   SUPER+SHIFT+<number> moves the window silently and keeps the current view.
---   SUPER+SHIFT+ALT+<number> moves the window and follows it.
+-- Hy3 tabbed mode is the default; dwindle stays available as a sparse/manual layout.
+-- Scrolling layout is intentionally not configured or bound.
 
 local function bindd(keys, description, dispatcher, opts)
   opts = opts or {}
   opts.description = description
   hl.bind(keys, dispatcher, opts)
+end
+
+local function set_workspace_layout(layout)
+  local extra = ""
+  if layout == "hy3" then
+    extra = [[
+hyprctl eval "hl.dispatch(hl.plugin.hy3.make_group('tab', { ephemeral = 'force' }))" >/dev/null 2>&1 || true
+hyprctl eval "hl.dispatch(hl.plugin.hy3.change_group('tab'))" >/dev/null 2>&1 || true
+]]
+  end
+
+  return hl.dsp.exec_cmd([[
+workspace=$(hyprctl activeworkspace -j | jq -r '.id')
+hyprctl eval "hl.workspace_rule({ workspace = '$workspace', layout = ']] .. layout .. [[' })"
+]] .. extra .. [[
+notify-send -u low "󱂬    Workspace layout set to ]] .. layout .. [["
+]])
+end
+
+local function toggle_hy3_dwindle()
+  return hl.dsp.exec_cmd([[
+workspace=$(hyprctl activeworkspace -j | jq -r '.id')
+layout=$(hyprctl activeworkspace -j | jq -r '.tiledLayout')
+if [ "$layout" = "hy3" ]; then
+  new_layout=dwindle
+else
+  new_layout=hy3
+fi
+hyprctl eval "hl.workspace_rule({ workspace = '$workspace', layout = '$new_layout' })"
+if [ "$new_layout" = "hy3" ]; then
+  hyprctl eval "hl.dispatch(hl.plugin.hy3.make_group('tab', { ephemeral = 'force' }))" >/dev/null 2>&1 || true
+  hyprctl eval "hl.dispatch(hl.plugin.hy3.change_group('tab'))" >/dev/null 2>&1 || true
+fi
+notify-send -u low "󱂬    Workspace layout set to $new_layout"
+]])
 end
 
 -- Close windows.
@@ -24,7 +52,9 @@ bindd("SUPER + F", "Full screen", hl.dsp.window.fullscreen({ mode = 0 }))
 bindd("SUPER + CTRL + F", "Tiled full screen", hl.dsp.window.fullscreen_state({ internal = 0, client = 2 }))
 bindd("SUPER + ALT + F", "Full width", hl.dsp.window.fullscreen({ mode = 1 }))
 bindd("SUPER + O", "Pop window out (float & pin)", hl.dsp.exec_cmd("omarchy-hyprland-window-pop"))
-bindd("SUPER + L", "Toggle workspace layout", hl.dsp.exec_cmd("omarchy-hyprland-workspace-layout-toggle"))
+bindd("SUPER + T", "Tabbed mode (hy3)", set_workspace_layout("hy3"))
+bindd("SUPER + D", "Dwindle mode", set_workspace_layout("dwindle"))
+bindd("SUPER + Q", "Toggle workspace layout hy3/dwindle", toggle_hy3_dwindle())
 
 -- Switch workspaces with SUPER + [1-9; 0].
 for i = 1, 10 do
@@ -33,7 +63,9 @@ for i = 1, 10 do
   bindd("SUPER + code:" .. code, "Switch to workspace " .. workspace, hl.dsp.focus({ workspace = workspace }))
 end
 
--- Move active window silently with SUPER + SHIFT + [1-9; 0], keeping current view.
+-- Local workspace-number change:
+-- SUPER+SHIFT+<number> moves the window silently and keeps the current view.
+-- SUPER+SHIFT+ALT+<number> moves the window and follows it.
 for i = 1, 10 do
   local code = i == 10 and 19 or (9 + i)
   local workspace = tostring(i)
@@ -42,12 +74,6 @@ for i = 1, 10 do
     "Move window silently to workspace " .. workspace,
     hl.dsp.window.move({ workspace = workspace, follow = false })
   )
-end
-
--- Move active window and follow it with SUPER + SHIFT + ALT + [1-9; 0].
-for i = 1, 10 do
-  local code = i == 10 and 19 or (9 + i)
-  local workspace = tostring(i)
   bindd(
     "SUPER + SHIFT + ALT + code:" .. code,
     "Move window to workspace " .. workspace,
