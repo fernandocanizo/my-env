@@ -36,6 +36,7 @@ reloadable_require("lua/media_bindings")
 reloadable_require("lua/clipboard_bindings")
 reloadable_require("lua/utility_bindings")
 reloadable_require("lua/bindings")
+reloadable_require("lua/tiling_bindings")
 reloadable_require("lua/toggles")
 
 -- TODO before this becomes the real hyprland.lua:
