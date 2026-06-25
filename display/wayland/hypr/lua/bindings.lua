@@ -62,36 +62,38 @@ for _, keys in ipairs({
   hl.unbind(keys)
 end
 
+local hy3 = hl.plugin.hy3
+
 -- hy3: group creation (i3-style splits and tabs).
-bindd("SUPER + H", "Make horizontal split", hypr_dispatch("hy3:makegroup", "h"))
-bindd("SUPER + G", "Make vertical split", hypr_dispatch("hy3:makegroup", "v"))
+bindd("SUPER + H", "Make horizontal split", hy3.make_group("h"))
+bindd("SUPER + G", "Make vertical split", hy3.make_group("v"))
 
 -- hy3: change existing group layout.
-bindd("SUPER + SHIFT + H", "Change group to horizontal", hypr_dispatch("hy3:changegroup", "h"))
-bindd("SUPER + SHIFT + G", "Change group to vertical", hypr_dispatch("hy3:changegroup", "v"))
-bindd("SUPER + SHIFT + T", "Change group to tabbed", hypr_dispatch("hy3:changegroup", "tab"))
-bindd("SUPER + SHIFT + Q", "Toggle group orientation", hypr_dispatch("hy3:changegroup", "opposite"))
+bindd("SUPER + SHIFT + H", "Change group to horizontal", hy3.change_group("h"))
+bindd("SUPER + SHIFT + G", "Change group to vertical", hy3.change_group("v"))
+bindd("SUPER + SHIFT + T", "Change group to tabbed", hy3.change_group("tab"))
+bindd("SUPER + SHIFT + Q", "Toggle group orientation", hy3.change_group("opposite"))
 
 -- hy3: focus movement.
-bindd("SUPER + LEFT", "Focus left", hypr_dispatch("hy3:movefocus", "l"))
-bindd("SUPER + RIGHT", "Focus right", hypr_dispatch("hy3:movefocus", "r"))
-bindd("SUPER + UP", "Focus up", hypr_dispatch("hy3:movefocus", "u"))
-bindd("SUPER + DOWN", "Focus down", hypr_dispatch("hy3:movefocus", "d"))
+bindd("SUPER + LEFT", "Focus left", hy3.move_focus("l"))
+bindd("SUPER + RIGHT", "Focus right", hy3.move_focus("r"))
+bindd("SUPER + UP", "Focus up", hy3.move_focus("u"))
+bindd("SUPER + DOWN", "Focus down", hy3.move_focus("d"))
 
 -- hy3: move windows in tree.
-bindd("SUPER + SHIFT + LEFT", "Move window left", hypr_dispatch("hy3:movewindow", "l"))
-bindd("SUPER + SHIFT + RIGHT", "Move window right", hypr_dispatch("hy3:movewindow", "r"))
-bindd("SUPER + SHIFT + UP", "Move window up", hypr_dispatch("hy3:movewindow", "u"))
-bindd("SUPER + SHIFT + DOWN", "Move window down", hypr_dispatch("hy3:movewindow", "d"))
+bindd("SUPER + SHIFT + LEFT", "Move window left", hy3.move_window("l"))
+bindd("SUPER + SHIFT + RIGHT", "Move window right", hy3.move_window("r"))
+bindd("SUPER + SHIFT + UP", "Move window up", hy3.move_window("u"))
+bindd("SUPER + SHIFT + DOWN", "Move window down", hy3.move_window("d"))
 
--- hy3: tab cycling within a tabbed group.
-bindd("SUPER + TAB", "Next tab", hypr_dispatch("hy3:focustab", "r wrap"))
-bindd("SUPER + SHIFT + TAB", "Previous tab", hypr_dispatch("hy3:focustab", "l wrap"))
-bindd("ALT + TAB", "Next tab", hypr_dispatch("hy3:focustab", "r wrap"))
-bindd("ALT + SHIFT + TAB", "Previous tab", hypr_dispatch("hy3:focustab", "l wrap"))
+-- Simple native window cycling.
+bindd("SUPER + TAB", "Next window", hl.dsp.window.cycle_next())
+bindd("SUPER + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ prev = true }))
+bindd("ALT + TAB", "Next window", hl.dsp.window.cycle_next())
+bindd("ALT + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ prev = true }))
 
 -- Mouse.
--- hy3's mouse dispatcher is invoked through hyprctl because Lua stubs do not expose plugin dispatchers.
+-- Mouse drag uses the raw plugin dispatcher because hy3's Lua move_window factory expects a direction.
 bindd("SUPER + mouse:272", "Move window", hypr_dispatch("hy3:movewindow"), { mouse = true })
 bindd("SUPER + mouse:273", "Resize window", hl.dsp.window.resize(), { mouse = true })
 
