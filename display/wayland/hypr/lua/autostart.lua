@@ -11,6 +11,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("omarchy-first-run")
   hl.exec_cmd("omarchy-powerprofiles-init")
   hl.exec_cmd("uwsm-app -- omarchy-hyprland-monitor-watch")
+  hl.exec_cmd("uwsm-app -- ~/.config/hypr/scripts/battery-monitor.sh")
 
   -- Slow app launch fix -- set systemd vars.
   hl.exec_cmd("sh -lc 'systemctl --user import-environment $(env | cut -d= -f 1)'")
