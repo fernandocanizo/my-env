@@ -50,6 +50,9 @@ alias tgz='tar zcvf'
 
 # functional aliases
 
+# Wayland clipboard replacement for the old xclip-based xclipboard alias.
+alias xclipboard='wl-copy'
+
 alias findpath="find `echo $PATH | tr :. ' ''' ` -iname "
 alias psl='/bin/ps -aufx | /bin/less -i'
 
