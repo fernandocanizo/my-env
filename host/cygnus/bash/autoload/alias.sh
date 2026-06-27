@@ -50,6 +50,11 @@ alias tgz='tar zcvf'
 
 # functional aliases
 
+# pass aliases
+alias pim='pass insert -m '
+alias pe='pass edit '
+alias pgp='pass git push'
+
 # Wayland clipboard replacement for the old xclip-based xclipboard alias.
 alias xclipboard='wl-copy'
 
