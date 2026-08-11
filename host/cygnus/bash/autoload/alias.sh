@@ -169,3 +169,4 @@ alias mpg='mpg123 -C --buffer 10240 *.mp3'
 # markdown viewer
 alias md='glow -p'
 
+alias homm='cd "$HOME/games/homm" && gamescope -f -w 800 -h 600 -W 1920 -H 1080 -s 0.45 -- wine Heroes3.exe'
