@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+sink='@DEFAULT_AUDIO_SINK@'
+step='5%'
+precise_step='1%'
+
+case "${1:-}" in
+  up)
+    wpctl set-volume -l 1 "$sink" "${step}+"
+    ;;
+  down)
+    wpctl set-volume "$sink" "${step}-"
+    ;;
+  up-precise)
+    wpctl set-volume -l 1 "$sink" "${precise_step}+"
+    ;;
+  down-precise)
+    wpctl set-volume "$sink" "${precise_step}-"
+    ;;
+  mute)
+    wpctl set-mute "$sink" toggle
+    ;;
+  *)
+    echo "Usage: $0 {up|down|up-precise|down-precise|mute}" >&2
+    exit 2
+    ;;
+esac
+
+status="$(wpctl get-volume "$sink")"
+volume="$(awk '{for (i=1; i<=NF; i++) if ($i ~ /^[0-9.]+$/) { printf "%d", ($i * 100) + 0.5; exit }}' <<<"$status")"
+if grep -qi muted <<<"$status"; then
+  notify-send -a volume -h string:x-canonical-private-synchronous:volume "Volume muted"
+else
+  notify-send -a volume -h string:x-canonical-private-synchronous:volume -h "int:value:${volume:-0}" "Volume ${volume:-?}%"
+fi

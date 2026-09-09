@@ -11,9 +11,9 @@ local locked = { locked = true }
 local locked_repeating = { locked = true, repeating = true }
 
 -- Laptop multimedia keys for volume and LCD brightness (with OSD).
-bindd("XF86AudioRaiseVolume", "Volume up", "omarchy-swayosd-client --output-volume raise", locked_repeating)
-bindd("XF86AudioLowerVolume", "Volume down", "omarchy-swayosd-client --output-volume lower", locked_repeating)
-bindd("XF86AudioMute", "Mute", "omarchy-swayosd-client --output-volume mute-toggle", locked_repeating)
+bindd("XF86AudioRaiseVolume", "Volume up", "~/.config/hypr/scripts/audio-volume up", locked_repeating)
+bindd("XF86AudioLowerVolume", "Volume down", "~/.config/hypr/scripts/audio-volume down", locked_repeating)
+bindd("XF86AudioMute", "Mute", "~/.config/hypr/scripts/audio-volume mute", locked_repeating)
 bindd("XF86AudioMicMute", "Mute microphone", "omarchy-audio-input-mute", locked_repeating)
 bindd("XF86MonBrightnessUp", "Brightness up", "omarchy-brightness-display +5%", locked_repeating)
 bindd("XF86MonBrightnessDown", "Brightness down", "omarchy-brightness-display 5%-", locked_repeating)
@@ -27,8 +27,8 @@ bindd("XF86TouchpadOn", "Enable touchpad", "omarchy-toggle-touchpad on", locked)
 bindd("XF86TouchpadOff", "Disable touchpad", "omarchy-toggle-touchpad off", locked)
 
 -- Precise 1% multimedia adjustments with Alt modifier.
-bindd("ALT + XF86AudioRaiseVolume", "Volume up precise", "omarchy-swayosd-client --output-volume +1", locked_repeating)
-bindd("ALT + XF86AudioLowerVolume", "Volume down precise", "omarchy-swayosd-client --output-volume -1", locked_repeating)
+bindd("ALT + XF86AudioRaiseVolume", "Volume up precise", "~/.config/hypr/scripts/audio-volume up-precise", locked_repeating)
+bindd("ALT + XF86AudioLowerVolume", "Volume down precise", "~/.config/hypr/scripts/audio-volume down-precise", locked_repeating)
 bindd("ALT + XF86MonBrightnessUp", "Brightness up precise", "omarchy-brightness-display +1%", locked_repeating)
 bindd("ALT + XF86MonBrightnessDown", "Brightness down precise", "omarchy-brightness-display 1%-", locked_repeating)
 
