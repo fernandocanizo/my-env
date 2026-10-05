@@ -11,3 +11,6 @@ app/mc/panels.ini
 app/mc/ini
 
 app/git/gitk
+
+# ignore Wayland backups
+display/wayland/hypr/lua/*.bak.*
