@@ -27,3 +27,16 @@ hl.window_rule({
   match = { class = "org.omarchy.btop-modal" },
   center = true,
 })
+
+-- Make Geeqie's Ctrl+R rename dialog large enough to edit long filenames.
+hl.window_rule({
+  name = "geeqie-rename-dialog-size",
+  match = { class = "org.geeqie.Geeqie", title = "Rename - Geeqie" },
+  size = { 1200, 840 },
+})
+
+hl.window_rule({
+  name = "geeqie-rename-dialog-center",
+  match = { class = "org.geeqie.Geeqie", title = "Rename - Geeqie" },
+  center = true,
+})
