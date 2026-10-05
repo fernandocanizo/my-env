@@ -116,6 +116,7 @@ bindd("SUPER + ALT + MINUS", "Extract window from scratchpad", hl.dsp.exec_cmd("
 
 -- Remap Print Screen to require Ctrl.
 bindd("CTRL + PRINT", "Screenshot", hl.dsp.exec_cmd("omarchy-capture-screenshot"))
+bindd("CTRL + ALT + PRINT", "Screenshot directly to file", hl.dsp.exec_cmd("bash -lc 'file=$(omarchy-capture-screenshot smart save); [ -n \"$file\" ] && notify-send \"Screenshot saved\" \"$file\" -i \"$file\" -t 3000'"))
 
 -- Move original togglefloating to free key.
 bindd("SUPER + CTRL + T", "Toggle window floating/tiling", hl.dsp.window.float())
