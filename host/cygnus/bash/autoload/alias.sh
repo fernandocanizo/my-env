@@ -170,3 +170,6 @@ alias mpg='mpg123 -C --buffer 10240 *.mp3'
 alias md='glow -p'
 
 alias homm='cd "$HOME/games/homm" && gamescope -f -w 800 -h 600 -W 1920 -H 1080 -s 0.45 -- wine Heroes3.exe'
+
+# list models in sorted order, preserving header at the top
+alias ollama-list='ollama list | (read -r h; echo "$h"; sort)'
