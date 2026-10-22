@@ -35,6 +35,9 @@ The installer records the checkout path in `~/.envFolder`, links universal dotfi
 - Bash is the most complete shell path today.
 - `host/common/bash/bashrc` sources shared autoload scripts from `host/common/bash/autoload/*.sh`, then host-specific scripts from `host/$HOSTNAME/bash/autoload/*.sh`.
 - Shared Bash functions live in `host/common/bash/functions/`.
+- `host/common/bash/autoload/fnm.sh` reserves Node for fnm via `MISE_DISABLE_TOOLS` when fnm is installed; mise continues managing other tools. The main bashrc initializes fnm after mise.
+- Cygnus reuses `host/cygnus/bash/autoload/pnpm.sh` for pnpm. `90-opencode.sh` and `91-gentle-ai.sh` preserve app launcher paths, with Gentle AI ahead of OpenCode.
+- Run `bash tests/shell-environments.sh` to check Node ownership and app environment ordering. Open a new terminal after changes; existing processes retain their inherited environment.
 - Shared Bash completions live in `host/common/bash/completions/`.
 - `fish`, `xonsh`, and `zsh` directories exist as structure/placeholders, with xonsh having some shared scripts.
 

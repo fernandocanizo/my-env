@@ -6,3 +6,7 @@ init-license=MIT
 init-version=1.0.0
 save-exact=false
 save-prefix=^
+# opencode v2 plugin installer resolves plugins with npm's strict peer
+# resolver; opentui/solid pins solid-js@1.9.12 while the tree pulls 1.9.17,
+# which makes ERESOLVE ("unable to resolve dependency tree") abort installs.
+legacy-peer-deps=true
