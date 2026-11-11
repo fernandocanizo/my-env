@@ -40,3 +40,11 @@ hl.window_rule({
   match = { class = "org.geeqie.Geeqie", title = "Rename - Geeqie" },
   center = true,
 })
+
+-- VCMI (HoMM 3 engine) runs under XWayland and ignores its own fullscreen
+-- setting on Hyprland, opening a small floating window. Force fullscreen.
+hl.window_rule({
+  name = "vcmi-fullscreen",
+  match = { class = "^vcmiclient$" },
+  fullscreen = true,
+})
