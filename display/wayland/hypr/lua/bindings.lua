@@ -16,6 +16,7 @@ local function hypr_dispatch(dispatcher, args)
 end
 
 -- Application bindings
+bindd("SUPER + ALT + T", "Toggle Telegram", hl.dsp.exec_cmd("python3 ~/.config/hypr/scripts/telegram-toggle.py"))
 bindd("SUPER + RETURN", "Terminal", hl.dsp.exec_cmd([[uwsm-app -- xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)"]]))
 bindd("SUPER + ALT + RETURN", "Tmux", hl.dsp.exec_cmd([[uwsm-app -- xdg-terminal-exec --dir="$(omarchy-cmd-terminal-cwd)" bash -c "tmux attach || tmux new -s Work"]]))
 bindd("SUPER + SHIFT + RETURN", "Browser", hl.dsp.exec_cmd("omarchy-launch-browser"))
