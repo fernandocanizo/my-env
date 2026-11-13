@@ -28,6 +28,16 @@ hl.window_rule({
   center = true,
 })
 
+-- Give Impala the same large centered terminal size as the btop modal.
+hl.window_rule({
+  name = "impala-modal",
+  match = { class = "org.omarchy.impala" },
+  tag = "-floating-window",
+  float = true,
+  size = { 2112, 1320 },
+  center = true,
+})
+
 -- Make Geeqie's Ctrl+R rename dialog large enough to edit long filenames.
 hl.window_rule({
   name = "geeqie-rename-dialog-size",
